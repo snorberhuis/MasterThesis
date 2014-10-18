@@ -1,0 +1,9 @@
+#Tex
+*.log
+*.aux
+*.pdf
+
+#Vim
+#*.swp
+
+
