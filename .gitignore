@@ -2,6 +2,10 @@
 *.log
 *.aux
 *.pdf
+*.bbl
+*.blg
+*.out
+*.toc
 
 #Vim
 *.swp

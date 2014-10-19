@@ -1,17 +1,36 @@
 \documentclass{article}
 
+%Needed for bibtex
+\usepackage{hyperref}
+
 \title{Master Thesis:\\ Preliminary research into a possible thesis topic}
 \author{S.D. Norberhuis\\steffan@norberhuis.nl}
 \date{\today}
+
+\bibliographystyle{plain}
 
 \begin{document}
 
 \maketitle
 
+\tableofcontents
+
 \section{Introduction}
 This document is a overview and analysis of possible master thesis subjects.
 The goal is to be able to receive feedback on the potential subjects from various people possible involved in the master thesis
 and ultimately choose a subject for the thesis.
+
+The requirements for the subject of the thesis is limited:
+\begin{itemize}
+\item Be in the field of Parallel and Distributed systems.
+\item Be in the field of security.
+\end{itemize}
+The thesis can be conducted in a collaboration with a organization outside the Delft University of Technology,
+but this is not a requirement of the student. 
+
+Each of the potential subjects are discussed below.
+For each potential subject the following is discussed: 
+a brief problem summary, potential directions of research, threats to successful completion of the thesis, and related work.
 
 The potential subjects are:
 \begin{itemize}
@@ -26,6 +45,9 @@ The potential subjects are:
 	\item Location privacy
 \end{itemize}
 
+\input{blockchain}
 
+
+\bibliography{bibliography}
 
 \end{document}
