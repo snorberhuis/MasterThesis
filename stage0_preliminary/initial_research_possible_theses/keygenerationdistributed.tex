@@ -1,0 +1,26 @@
+\section{Distributed key generation in a malicious network}
+This field of research was thought up by the author himself while daydreaming during the Security and Cryptography course.
+This idea seem to be a hurdle in other technological challenges and seems interesting.
+
+\subsection*{Problem summary}
+In a distributed network or a smart grid nodes can share a common key to operate.
+This can be potentially a partial key.
+It is good practice to rotate this key to minimize the threat when the key is compromised.
+But it is preferable to not depend on a central node for key generation in a master-slave setup.
+This is because it introduces a single point of failure or a dependency on a company to keep supporting a product.
+
+The preliminary step before using this key is the key generation in the distributed network.
+It is possible that this key generation has to take place inside a malicious network.
+\subsection*{Directions of research}
+The direction of research is how to do this using distributed algorithms and key generation algorithms in a combined fashion.
+
+\subsection*{Threats}
+A threat to this thesis is that it is unclear at the time if it is a field with unsolved problems,
+if it is of any interests to solve these problems, and finally how likely it is to solve these problems.
+A possibility is to develop an algorithm for a different key type.
+
+\subsection*{Related work}
+There is a paper proposing an algorithm for RSA keys\cite{boneh1997efficient} where at the end $N=pq$ is known,
+but no party knows $p$ or $q$. Each party holds a share of the private exponent.
+A similar protocol is proposed for RSA\cite{gilboa1999two}.
+
