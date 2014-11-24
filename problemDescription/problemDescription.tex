@@ -34,10 +34,16 @@ These blocks are created by nodes in the network, so called miners.
 A miner receives transactions from other nodes in the Bitcoin network.
 But the transactions are received in a non deterministic way induced by network characteristics.
 The non deterministic nature causes blocks to differ from miner to miner.
-The order of transactions has to be agreed upon by the network to eliminate this inconsistentcy.
+The order of transactions has to be agreed upon by the network to eliminate this inconsistency.
 
 Bitcoin uses election based upon Proof-Of-Work system.
-To every block a nonce is added. 
+A nonce is added to every block a nonce. 
 This nonce is just a number that can be varied,
 but is only sound if the result of the hash of the whole block starts with a certain number of zeros.
 The amount of zeros required will be discussed later.
+
+\begin{figure}[H]
+        \centerline{\includegraphics[scale=0.3]{problemDescription/figs/blocks.eps}}
+        \caption{Block chain}
+\end{figure}
+
