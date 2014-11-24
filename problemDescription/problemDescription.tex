@@ -6,13 +6,22 @@ These limitations on Bitcoin can be seen as the initial motivation
 for our work to improve the block chain.
 But block chain and our improvement can be used in several other fields as well.
 
-Bitcoin and how it uses the block chain technology will be introduced first.
+How uses the block chain technology will be introduced first.
 After that the limitations imposed by the block chain will be explained.
 Finally an overview will be given of how block chains and our improvements can be used in other fields.
 
 \section{Bitcoin}
+We will only introduce how Bitcoins uses the block chain and why it does so in such a way.
+This section is not a full explanation of the Bitcoin protocol
+and only discusses relevant parts of the Bitcoin protocol.
+The best starting point for a full explanation of Bitcoins 
+is the original paper by Nakamoto\cite{Nakamoto-bitcoin}.
+Further information and improvements can be found on the Bitcoin website\cite{Bitcoin.org-site}.
+
 \subsection{Block Chain}
-For a currency to work, people have to be able to trust that no double spending can occur.%cite
+For a currency to work, people have to be able to trust that no double spending can occur.
+With physical tokens it is impossible to double spend,
+but the guarantee is not trivial for digital currencies without a trusted third party.
 Bitcoin has multiple safe gaurds that work together to prevent double spending.
 These safe gaurds will be mentioned during the explanation of how Bitcoin works.
 
@@ -86,3 +95,23 @@ This also makes the system susceptible if more compute power is owned by a malic
 In the end the current branch can be overtaken
 and the whole transaction history can be rewritten by the attacker.
 Bitcoin introduces points in the chain that are to be considered final and can no longer change.
+
+\subsection{Limitations}
+In this section we will discuss the several limitations of Bitcoins
+that originate from the use of the block chain.
+
+\subsubsection{Size}
+To be able to prevent double spending and rightfull spending by the right owner, 
+the node verifying a transaction needs to be aware of the full history of a bitcoin.
+This results in that a node needs the entire block chain to verify a transaction.
+
+The block chain is an data structure ever increasing in size.
+No block or data contained in that block is removed.
+The block chain has been growing since 2009 exponantially.
+The size and growth can be seen in figure \ref{fig:bc-size}\cite{Blockchain.info-bcs}.
+
+\begin{figure}[H]
+        \centerline{\includegraphics[scale=0.6]{problemDescription/figs/bcs/blockchainsize.eps}}
+        \caption{Block chain size}
+	\label{fig:bc-size}
+\end{figure}
