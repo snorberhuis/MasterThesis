@@ -6,6 +6,8 @@
 \usepackage[british]{babel}
 % Graphics: like the DUT logo on the front cover
 \usepackage[dvips]{graphicx}
+%Enables [H] for figures.
+\usepackage{float}
 % FONT: times
 \usepackage{times}
 % for url's use "\url{http://www.google.com/}"
@@ -64,8 +66,14 @@
 
 % INTRODUCTION: page 1
 \include{introduction}
+%Problem description
+\input{problemDescription/problemDescription.tex}
 
 % CHAPTERS ... For instance: History/Prior Work, Design/Implementation, Experiments
+
+
+
+
 
 % CONCLUSIONS AND FUTURE WORK
 
