@@ -1,0 +1,33 @@
+\chapter{CHAPTER TITLE}
+\label{chp:CHAPTERTITLE}
+INTRODUCTION TEXT TO THIS CHAPTER IN WHICH ALL SECTIONS ARE DESCRIBED ROUGHLY (1 SENTENCE EACH).
+
+This chapter describes the ... In Section~\ref{sec:SECTIONTITLE}, examples are given of how to use tables and figures in MSc theses.
+
+\section{SECTION TITLE}
+\label{sec:SECTIONTITLE}
+
+Every caption of a table (or figure) should start with a capital letter, and should end with a period. References to tables are given with a capital letter for table, as in ``(see Table~\ref{tab:EXAMPLETABLE})'' or ``in Table~\ref{tab:EXAMPLETABLE}, ...''.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{|l|c|r|}
+\hline % horizontal line
+left aligned & centred & right aligned \\
+\hline \hline
+12           & 34      & 56            \\
+\hline
+\end{tabular}
+\caption{Complete sentence describing the tabular data.}
+\label{tab:EXAMPLETABLE}
+\end{table}
+
+References to figures are given with a capital letter for figure, as in ``(see Figure~\ref{fig:EXAMPLEFIGURE})'' or ``in Figure~\ref{fig:EXAMPLEFIGURE}, ...''.
+
+\begin{figure}[htb]
+% most GNUplot figures need to be rotated, width should be the same throughout the complete document, and no extension is needed
+\includegraphics[angle=180,width=\textwidth]{pics/TUD_logo_zw}
+\caption{Complete sentence describing the figure thoroughly.}
+\label{fig:EXAMPLEFIGURE}
+\end{figure}
+
