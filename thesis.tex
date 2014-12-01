@@ -1,0 +1,81 @@
+% This document provides the style to be used for a MSc Thesis at the
+% Parallel and Distributed Systems group
+\documentclass[11pt,twoside,a4paper,openright]{report}
+
+% use babel for proper hyphenation
+\usepackage[british]{babel}
+% Graphics: like the DUT logo on the front cover
+\usepackage[dvips]{graphicx}
+% FONT: times
+\usepackage{times}
+% for url's use "\url{http://www.google.com/}"
+\usepackage{url}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hoffset=1.63cm
+\oddsidemargin=0in
+\evensidemargin=0in
+\textwidth=5in
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\parindent=1em
+
+\pagestyle{empty}
+
+% FRONTCOVER
+\include{frontcover}
+
+% EMPTY PAGE
+\cleardoublepage
+
+\pagestyle{plain}
+
+% TITLE PAGE: page i (hidden)
+\include{titlepage}
+
+% GRADUATION DATA AND ABSTRACT: pages ii and iii (hidden)
+\include{graduationdata}
+
+\pagenumbering{roman}
+\setcounter{page}{4}
+
+% EMPTY PAGE: page iv
+\cleardoublepage
+
+% OPTIONAL QUOTATION: page v
+%\include{quotation}
+% EMPTY PAGE: page vi
+%\cleardoublepage
+
+% PREFACE: page v
+\include{preface}
+% EMPTY PAGE: page vi
+\cleardoublepage
+
+% TABLE OF CONTENTS: starting at page vii
+\tableofcontents
+
+\cleardoublepage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% INTRODUCTION: page 1
+\include{introduction}
+
+% CHAPTERS ... For instance: History/Prior Work, Design/Implementation, Experiments
+
+% CONCLUSIONS AND FUTURE WORK
+
+% BIBLIOGRAPHY
+\bibliographystyle{bib/latex8}
+\bibliography{bib/bibliography}
+
+%\appendix
+
+%\include{appendix_a}
+
+\end{document}
+
