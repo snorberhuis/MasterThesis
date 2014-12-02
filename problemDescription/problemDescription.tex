@@ -19,6 +19,9 @@ But if one node choose to not help, then he will receive more benefit and at no 
 The node that provided the aid will now receive no benefit and only incur a cost $C$.
 If both nodes choose to not help each other, 
 then they will both receive a penalty $P$, which is higher then the cost of helping each other.
+
+This dilemma can be repeated several times with the same nodes and is the Iterated Prisoner's Dilemma.
+Each time both nodes will have to decide if it will help the other node.
 The utility received can be seen in Table \ref{tab:pd-um}.
 
 \begin{table}[h]
@@ -32,10 +35,8 @@ The utility received can be seen in Table \ref{tab:pd-um}.
 \label{tab:pd-um}
 \end{table}
 
-This dilemma can be repeated several times with the same nodes and is the Iterated Prisoner's Dilemma.
-Each time both nodes will have to decide if it will help the other node.
-
-A node wants to receive maximum benefit at a minimal cost.
+A node wants to receive maximum benefit at a minimal cost
+and follows a strategy that he believes will achieve this.
 At first it might seem that a rational node will always choose to not provide aid,
 because it will never incur a cost and receive maximal benefit.
 But the other node will be reluctant to help a node if the aid is never returned.
@@ -66,6 +67,12 @@ In the Iterated Prisoner's Dilemma the history of the previous transactions can 
 to track the previous response of a node in past transactions.
 Adding a history improves the performance of even the simple strategies previously mentioned.
 %TODO: #35 check
+But this private history is not effective to achieve high overall utility in distributed systems,
+because the peers are often interacted with for the first time.
+No history is known for these peers.
+A public history, containting every interaction, is necessary to prevent abuse
+and is able to achieve high overall utility\cite{Lai-Incentives}.
+
 A history can be used to create a currency or a reputation system.
 The node providing help will receive a boost in currency or a beneficial reputation, 
 that can be used in the future to receive aid.
