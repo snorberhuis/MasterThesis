@@ -9,13 +9,29 @@ Using this simplification, the problem will be transformed gradually
 to the real problem faced in distributed systems today.
 
 \section{Deciding to help}
-Nodes can decide to lent aid to a peer or choose to not help a peer.
+Nodes can decide to cooperate with a peer or choose to not help a peer and defect.
+This is the traditional Prisoner's Dilemma 
+and we will explain this dilemma\cite{Nowak-PrisonerDilemma}\cite{Lai-Incentives}.
+A node will receive a certain utility based upon his decision, which is either a benefit or a cost.
 Nodes can help each other at a cost, but the recipient of the help will receive a benefit from the help.
-In the traditional Prisoner's Dilemma\cite{Nowak-PrisonerDilemma} both nodes will benefit, if they choose to help each other.
-But if one node choose to not help, then he will receive more benefit and less cost, then if he helped.
-The node that provided the aid will now receive no benefit and only incur a cost.
+The benefit received is greater than the cost and is denoted by $R$ for reward.
+But if one node choose to not help, then he will receive more benefit and at no cost, $T$ for temptation.
+The node that provided the aid will now receive no benefit and only incur a cost $C$.
 If both nodes choose to not help each other, 
-then they will both receive a cost higher then the cost of helping each other.
+then they will both receive a penalty $P$, which is higher then the cost of helping each other.
+The utility received can be seen in Table \ref{tab:pd-um}.
+
+\begin{table}[h]
+\center
+	\begin{tabular}{l|ll}
+	A\textbackslash B       & cooperate  & defect     \\ \hline
+	cooperate & $R_A /R_B$ & $T_A /C_B$ \\
+	defect    & $T_A /C_B$ & $P_A /P_B$
+	\end{tabular}
+\caption{Prisoner's Dilemma utility matrix}
+\label{tab:pd-um}
+\end{table}
+
 This dilemma can be repeated several times with the same nodes and is the Iterated Prisoner's Dilemma.
 Each time both nodes will have to decide if it will help the other node.
 
@@ -28,9 +44,10 @@ and will perform well\cite{Nowak-Cooperation}.
 
 In a large scale, distributed system, this dilemma occurs with every interaction between nodes.
 The node can already be familair with the peer,
-but more often the peer will be a peer the node has not interacted with before.
+But more often the peer will be a peer the node has not interacted with before.
 A further commplication is that help is one way and can no longer be exchanged.
-This excludes the direct opportunty to barter for help or to barter for help in the future.
+This complication excludes the direct opportunty to barter for help 
+or to barter for help in the future\cite{Lai-Incentives}.
 The performance of the tit-for-tat or win-stay, lose-shift strategies
 quickly deterioriate in such a situation.
 
@@ -39,16 +56,16 @@ Nodes that help others will be penalized through the cost they incur
 and incentivized to adopt the malicious behaviour themselves.
 Nodes in general will become more reluctant to help nodes\cite{Nowak-PrisonerDilemma}.
 In the end no node will help and all nodes will receive a penalty.
-This is commonly called the Tragedy of the Commons in the literature \cite{Hardin-Tragedy}.
+This is commonly called the Tragedy of the Commons in the literature \cite{hardin-tragedy}.
 The whole network will actually receive more benefit in total if everyone corporates.
-But nodes have no way of knowing if the peer they meet are willing to help.
+but nodes have no way of knowing if the peer they meet are willing to help.
 
-\section{History of nodes}
+\section{History of decisions}
 
-In the iterated Prisoner's Dilemma the history of the previous transactions can be used 
+In the Iterated Prisoner's Dilemma the history of the previous transactions can be used 
 to track the previous response of a node in past transactions.
 Adding a history improves the performance of even the simple strategies previously mentioned.
-%TODO: CHECK
+%TODO: #35 check
 A history can be used to create a currency or a reputation system.
 The node providing help will receive a boost in currency or a beneficial reputation, 
 that can be used in the future to receive aid.
@@ -60,7 +77,7 @@ But a node publicizing to hold a certain reputation is not trustworthy.
 So a interaction history, that contains every prior interaction a node has conducted, is publicized.
 Nodes can check the interaction history and calculate the amount of currency 
 or the reputation that a node has.
-Based upon this calculation the node can decide to provide aid or not.
+Based upon this calculation, the node can decide to provide aid or not.
 
 The interaction history has to be distributed among the nodes in the network
 to become publicly available.
@@ -69,7 +86,7 @@ But distribution is worth mentioning, because it puts constraints on the interac
 The interaction history has to be distributable in an efficient manner.
 Only if it meets this constraints, will an interaction history be usable in a distributed system.
 
-\section{Tamper-proof to facilitate thrust}
+\section{Tamper-proofness to facilitate thrust}
 
 Interaction histories only prevent direct abuse of the generousity of the nodes.
 A malicious node can still try to tamper with the interaction history.
