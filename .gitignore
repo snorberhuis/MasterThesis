@@ -6,6 +6,7 @@
 *.blg
 *.out
 *.toc
+*.dvi
 
 #Vim
 *.swp
