@@ -1,13 +1,13 @@
 \chapter{Problem Description}
-In a distributed system nodes will have interactions with other peer nodes
+In a distributed system nodes will have interactions with other peer nodes.
 A node will have to decide how to react to these peers.
 Our work is beneficial to the process of deciding how to react to these peers.
 
 In this chapter the problem will be described of how to decide to react to a peer.
-It will first be explained in a simplified form.
+The problem will first be explained in a simplified form.
 Using this simplification, the problem will be transformed gradually
-to the real problem faced in distributed systems today.
-Finally several real world examples will be described.
+to the real world problem faced in distributed systems today.
+Finally several real world examples of the problem will be described.
 
 \section{Deciding to help}
 Nodes can decide to cooperate with a peer or decide not to help a peer and defect.
@@ -16,7 +16,8 @@ and we will explain this dilemma\cite{Nowak-PrisonerDilemma}\cite{Lai-Incentives
 Nodes can help each other at a cost, a negative utility, 
 but the recipient of the help will receive a beneficial utility from the help.
 The benefit received is greater than the cost and is denoted by $R$ for reward.
-But if one node choose to not help, then he will receive more benefit and at no cost, $T$ for temptation.
+But if one node chooses to not help the other node,
+ then he will still receive a beneficial utility and at no cost, $T$ for temptation.
 The node that provided the aid will now receive no benefit and only incur a cost $C$.
 If both nodes choose to not help each other, 
 then they will both receive a penalty $P$, which is higher then the cost of helping each other.
@@ -36,9 +37,9 @@ The utility received can be seen in Table \ref{tab:pd-um}.
 \label{tab:pd-um}
 \end{table}
 
-A node wants to receive maximum benefit at a minimal cost
-and follows a strategy that he believes will achieve this.
-At first it might seem that a rational node will always choose to not provide aid,
+A rational node wants to receive maximum benefit at a minimal cost.
+The node will follow a strategy that he believes will achieve this.
+At first it might seem that a node will always choose to defect,
 because it will never incur a cost and receive maximal benefit.
 But the other node will be reluctant to help a node if the aid is never returned.
 Simple strategies, like tit-for-tat or win-stay, lose-shift, suffice in the Iterated Prisoner's Dilemma
@@ -57,7 +58,7 @@ For a node it is easier to abuse the generosity of others in this more anonymous
 Nodes that help others will be penalized through the cost they incur
 and incentivized to adopt the malicious behavior themselves.
 Nodes in general will become more reluctant to help nodes\cite{Nowak-PrisonerDilemma}.
-In the end no node will help and all nodes will receive a penalty.
+In the end no node will help another and all nodes will receive a penalty.
 This is commonly called the Tragedy of the Commons in the literature \cite{hardin-tragedy}.
 The whole network will actually receive more benefit in total if everyone would corporates.
 But nodes have no way of knowing if the peer they meet are willing to help.
@@ -66,7 +67,8 @@ But nodes have no way of knowing if the peer they meet are willing to help.
 
 In the Iterated Prisoner's Dilemma the history of the previous transactions can be used 
 to see if a node helped others in the past.
-The simple strategies previously mentioned, use a history to improve performance to avoid getting abused.
+The simple strategies, previously mentioned, use a history to improve performance
+to avoid getting abused.
 But this private history is not effective to achieve high overall utility in distributed systems,
 because the peers are often interacted with for the first time.
 No history is known for these peers.
@@ -88,7 +90,7 @@ Based upon this calculation, the node can decide to provide aid or not.
 
 The interaction history has to be distributed among the nodes in the network
 to become publicly available.
-Efficient distribution protocols are a difficult challenge themselves and outside the scope of our work.
+Efficient distribution protocols are a difficult challenge themselves and outside the problem scope.
 But distribution is worth mentioning, because it puts constraints on the interaction history.
 The interaction history has to be distributable in an efficient manner.
 Only if it meets these constraints, will an interaction history be usable in a distributed system.
@@ -97,20 +99,22 @@ Only if it meets these constraints, will an interaction history be usable in a d
 
 Interaction histories only prevent direct abuse of the generosity of the nodes.
 A malicious node can still try to tamper with the interaction history.
-Example of these attacks are double spending attacks\cite{Nakamoto-bitcoin},
+An example of a type of these attacks are double spending attacks\cite{Nakamoto-bitcoin},
 where a interaction is altered.
 But a node can also try to deny an interaction.
 The interaction history has to be resilient to attacks that tamper the interaction history, 
 or no one will trust the history.
 
 A digital currency system builds upon trust just as much as a banknote currency.
+A reputation system will also need a level of trust.
 A system cannot be fully secure, 
-but still a reasonable certainty is required that no tampering of the interaction history can occur.
+but still a reasonable certainty can be achieved that no tampering of the interaction history can occur.
 Reasonable certainty is for example that no attack can happen 
 if more than half of the network consists of honest nodes.
 
 \section{Real world examples}
 In this section we will describe real world problems of the problem type introduced.
+This is meant as an illustration of the real world problems and is not a complete survey.
 
 Ad hoc networks are networks that rely on the willingness of nodes to cooperate
 and forward messages to each other.
