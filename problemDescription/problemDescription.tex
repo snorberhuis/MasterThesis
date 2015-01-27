@@ -1,21 +1,23 @@
 \chapter{Problem Description}
-In a distributed system nodes will have interactions with peers.
+In a distributed system nodes will have interactions with other peer nodes.
 A node will have to decide how to react to these peers.
-Our work is beneficial to deciding how to react to these peers.
+Our work is beneficial to the process of deciding how to react to these peers.
 
-In this chapter the problem will be described of reacting to peers.
-It will be explained in a simplified form.
+In this chapter the problem will be described of how to decide to react to a peer.
+The problem will first be explained in a simplified form.
 Using this simplification, the problem will be transformed gradually
-to the real problem faced in distributed systems today.
+to the real world problem faced in distributed systems today.
+Finally several real world examples of the problem will be described.
 
 \section{Deciding to help}
-Nodes can decide to cooperate with a peer or choose to not help a peer and defect.
+Nodes can decide to cooperate with a peer or decide not to help a peer and defect.
 This is the traditional Prisoner's Dilemma 
 and we will explain this dilemma\cite{Nowak-PrisonerDilemma}\cite{Lai-Incentives}.
-A node will receive a certain utility based upon his decision, which is either a benefit or a cost.
-Nodes can help each other at a cost, but the recipient of the help will receive a benefit from the help.
+Nodes can help each other at a cost, a negative utility, 
+but the recipient of the help will receive a beneficial utility from the help.
 The benefit received is greater than the cost and is denoted by $R$ for reward.
-But if one node choose to not help, then he will receive more benefit and at no cost, $T$ for temptation.
+But if one node chooses to not help the other node,
+ then he will still receive a beneficial utility and at no cost, $T$ for temptation.
 The node that provided the aid will now receive no benefit and only incur a cost $C$.
 If both nodes choose to not help each other, 
 then they will both receive a penalty $P$, which is higher then the cost of helping each other.
@@ -35,73 +37,98 @@ The utility received can be seen in Table \ref{tab:pd-um}.
 \label{tab:pd-um}
 \end{table}
 
-A node wants to receive maximum benefit at a minimal cost
-and follows a strategy that he believes will achieve this.
-At first it might seem that a rational node will always choose to not provide aid,
+A rational node wants to receive maximum benefit at a minimal cost.
+The node will follow a strategy that he believes will achieve this.
+At first it might seem that a node will always choose to defect,
 because it will never incur a cost and receive maximal benefit.
 But the other node will be reluctant to help a node if the aid is never returned.
-Simple strategies, like tit-for-tat or win-stay, lose-shift, suffice in this scenario
+Simple strategies, like tit-for-tat or win-stay, lose-shift, suffice in the Iterated Prisoner's Dilemma
 and will perform well\cite{Nowak-Cooperation}.
 
 In a large scale, distributed system, this dilemma occurs with every interaction between nodes.
-The node can already be familair with the peer,
-But more often the peer will be a peer the node has not interacted with before.
-A further commplication is that help is one way and can no longer be exchanged.
-This complication excludes the direct opportunty to barter for help 
+The node can already be familiar with the peer,
+but more often the peer will be a peer the node has not interacted with before.
+A further complication is that help is one way and can no longer be exchanged.
+This complication excludes the direct opportunity to barter for help 
 or to barter for help in the future\cite{Lai-Incentives}.
 The performance of the tit-for-tat or win-stay, lose-shift strategies
-quickly deterioriate in such a situation.
+quickly deteriorate in such a situation.
 
-For a node it is easier to abuse the generousity of others in this more anonymous situation.
+For a node it is easier to abuse the generosity of others in this more anonymous situation.
 Nodes that help others will be penalized through the cost they incur
-and incentivized to adopt the malicious behaviour themselves.
+and incentivized to adopt the malicious behavior themselves.
 Nodes in general will become more reluctant to help nodes\cite{Nowak-PrisonerDilemma}.
-In the end no node will help and all nodes will receive a penalty.
+In the end no node will help another and all nodes will receive a penalty.
 This is commonly called the Tragedy of the Commons in the literature \cite{hardin-tragedy}.
-The whole network will actually receive more benefit in total if everyone corporates.
-but nodes have no way of knowing if the peer they meet are willing to help.
+The whole network will actually receive more benefit in total if everyone would corporates.
+But nodes have no way of knowing if the peer they meet are willing to help.
 
 \section{History of decisions}
 
 In the Iterated Prisoner's Dilemma the history of the previous transactions can be used 
-to track the previous response of a node in past transactions.
-Adding a history improves the performance of even the simple strategies previously mentioned.
-%TODO: #35 check
+to see if a node helped others in the past.
+The simple strategies, previously mentioned, use a history to improve performance
+to avoid getting abused.
 But this private history is not effective to achieve high overall utility in distributed systems,
 because the peers are often interacted with for the first time.
 No history is known for these peers.
-A public history, containting every interaction, is necessary to prevent abuse
+A public history of node, containing every previous interaction, is necessary to prevent abuse
 and is able to achieve high overall utility\cite{Lai-Incentives}.
 
 A history can be used to create a currency or a reputation system.
-The node providing help will receive a boost in currency or a beneficial reputation, 
-that can be used in the future to receive aid.
+The node providing help will receive a boost in currency or a beneficial reputation.
+The currency or reputation can be used in the future to receive aid.
 In a currency system, receiving help will transfer currency to the helper.
 In a reputation system, only nodes with a sufficiently good reputation will be helped.
 
-The currency or reputation has to be made publicy available to all nodes in the network.
-But a node publicizing to hold a certain reputation is not trustworthy.
+The currency or reputation has to be made publicly available to all nodes in the network.
+But a node publicizing to hold a certain reputation is not sufficient as it is not trustworthy.
 So a interaction history, that contains every prior interaction a node has conducted, is publicized.
-Nodes can check the interaction history and calculate the amount of currency 
+Nodes can cross-reference the interaction history with other nodes and calculate the amount of currency 
 or the reputation that a node has.
 Based upon this calculation, the node can decide to provide aid or not.
 
 The interaction history has to be distributed among the nodes in the network
 to become publicly available.
-Efficient distribution protocols are a difficult challenge themselves and outside the scope of our work.
+Efficient distribution protocols are a difficult challenge themselves and outside the problem scope.
 But distribution is worth mentioning, because it puts constraints on the interaction history.
 The interaction history has to be distributable in an efficient manner.
-Only if it meets this constraints, will an interaction history be usable in a distributed system.
+Only if it meets these constraints, will an interaction history be usable in a distributed system.
 
-\section{Tamper-proofness to facilitate thrust}
+\section{Tamper-proof to facilitate thrust}
 
-Interaction histories only prevent direct abuse of the generousity of the nodes.
+Interaction histories only prevent direct abuse of the generosity of the nodes.
 A malicious node can still try to tamper with the interaction history.
-Example of these attacks are double spending attacks.
-If the interaction history is not resilient to these types of attacks, 
-no one will trust the history as fraud can happen.
+An example of a type of these attacks are double spending attacks\cite{Nakamoto-bitcoin},
+where a interaction is altered.
+But a node can also try to deny an interaction.
+The interaction history has to be resilient to attacks that tamper the interaction history, 
+or no one will trust the history.
 
-Tamper-proof interaction histories prevents classes of attacks that involve altering the interaction history.
 A digital currency system builds upon trust just as much as a banknote currency.
+A reputation system will also need a level of trust.
 A system cannot be fully secure, 
-but still a reasonable certainty is required that no tampering of the interaction history can occur.
+but still a reasonable certainty can be achieved that no tampering of the interaction history can occur.
+Reasonable certainty is for example that no attack can happen 
+if more than half of the network consists of honest nodes.
+
+\section{Real world examples}
+In this section we will describe real world problems of the problem type introduced.
+This is meant as an illustration of the real world problems and is not a complete survey.
+
+Ad hoc networks are networks that rely on the willingness of nodes to cooperate
+and forward messages to each other.
+These messages are forwarded at a cost to the node.
+For example, the cost can be the power consumption, 
+which is limited due to the node running on battery power.
+Energy efficiency becomes a prime concern for these node. 
+Every node may not display the same willingness to forward messages and be more selfish.
+Protocols that use currency or reputation are already proposed
+for this problem\cite{Anderegg-AdHoc}.
+
+In BitTorrent networks nodes help each other to download files by sharing chunks of files.
+Especially in these networks are interactions with the same node infrequent\cite{Lai-Incentives}.
+Cooperating nodes should receive more aid in the form of higher download speed,
+then the nodes that feed upon the network and contribute no upload speed to the network.
+It has been shown that in these network
+free riding takes place in large quantities\cite{Adar-Freeriding}.
