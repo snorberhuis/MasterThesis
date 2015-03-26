@@ -38,7 +38,7 @@ by verifying the whole history of the bitcoin.
 A transaction is usually shortend to Tx in Bitcoin related work and is used in images in this report.
 
 \begin{figure}[H]
-	\centerline{\includegraphics[scale=0.3]{problemDescription/figs/transactions.eps}}
+	\centerline{\includegraphics[scale=0.3]{relatedWork/figs/transactions.eps}}
 	\caption{Transaction chain}
 \end{figure}
 
@@ -65,7 +65,7 @@ but is only sound if the hash of the whole block starts with a certain number of
 Miners have to find the correct nonce for their block and this is a proof of work.
 
 \begin{figure}[H]
-        \centerline{\includegraphics[scale=0.3]{problemDescription/figs/blocks.eps}}
+        \centerline{\includegraphics[scale=0.3]{relatedWork/figs/blocks.eps}}
         \caption{Block chain}
 \end{figure}
 
@@ -80,10 +80,18 @@ More nodes will dedicate compute power to extend this branch and the growth rate
 The faster growth rate will ensure that the branch will be adopted by the network as a whole.
 
 The amount of zeros needed in the hash is adjusted to compensate for the fluctuating speed of the network to be able to find nonces.
-In the bitcoin network the speed has increased dramatically.
+This is called the hash speed and is the amount of hashes calculated per second.
+The hash speed of the Bitcoin network has increased nine fold.
 The amount of zeros balances the probability of branches occuring
 and the time before a new block is found,
 which in turn is how fast transactions are processed.
+The growth of the hash speed can be seen in \ref{fig:hash-speed}.
+
+\begin{figure}[H]
+        \centerline{\includegraphics[scale=0.6]{relatedWork/figs/hashspeed/hashspeed.eps}}
+        \caption{Amount of hashes calculated per second in the Bitcoin network.\cite{Blockchain.info-bcs}}
+	\label{fig:hash-speed}
+\end{figure}
 
 Another possible attack to double spend a bitcoin is by sending a transaction to one part of the network,
 but to the other part of the network a transaction with a different receipient.
@@ -113,8 +121,8 @@ The block chain has been growing since its inception in 2009.
 The size and growth can be seen in figure \ref{fig:bc-size}.
 
 \begin{figure}[H]
-        \centerline{\includegraphics[scale=0.6]{problemDescription/figs/bcs/blockchainsize.eps}}
-        \caption{Block chain size\cite{Blockchain.info-bcs}}
+        \centerline{\includegraphics[scale=0.6]{relatedWork/figs/blockchainsize/blockchainsize.eps}}
+        \caption{The size of the block chain.\cite{Blockchain.info-bcs}}
 	\label{fig:bc-size}
 \end{figure}
 
