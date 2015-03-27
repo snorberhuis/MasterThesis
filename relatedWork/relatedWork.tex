@@ -80,17 +80,26 @@ More nodes will dedicate compute power to extend this branch and the growth rate
 The faster growth rate will ensure that the branch will be adopted by the network as a whole.
 
 The amount of zeros needed in the hash is adjusted to compensate for the fluctuating speed of the network to be able to find nonces.
-This is called the hash speed and is the amount of hashes calculated per second.
-The hash speed of the Bitcoin network has increased nine fold.
+The speed of the network is called the hash rate and is the amount of hashes calculated per second.
+The hash rate of the Bitcoin network has increased nine fold.
 The amount of zeros balances the probability of branches occuring
 and the time before a new block is found,
 which in turn is how fast transactions are processed.
-The growth of the hash speed can be seen in \ref{fig:hash-speed}.
+The amount of zeros can be seen as the difficulty of finding the new block.
+More zeros decreases the likelyhood a nonce will be valid.
+he growth of the hash speed can be seen in \ref{fig:hash-speed},
+and the difficulty in \ref{fig:hash-difficulty}.
 
 \begin{figure}[H]
         \centerline{\includegraphics[scale=0.6]{relatedWork/figs/hashspeed/hashspeed.eps}}
         \caption{Amount of hashes calculated per second in the Bitcoin network.\cite{Blockchain.info-hashspeed}}
 	\label{fig:hash-speed}
+\end{figure}
+
+\begin{figure}[H]
+        \centerline{\includegraphics[scale=0.6]{relatedWork/figs/difficulty/difficulty.eps}}
+	\caption{Amount of zeros needed in the hash.\cite{Blockchain.info-difficulty}}
+	\label{fig:hash-difficulty}
 \end{figure}
 
 Another possible attack to double spend a bitcoin is by sending a transaction to one part of the network,
