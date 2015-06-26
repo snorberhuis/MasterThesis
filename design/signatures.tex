@@ -1,0 +1,76 @@
+\section{Exchanging signatures}
+Nodes will exchange signatures on a common payload that contains the reputation metrics.
+A simple design would be to let the initiator node $A$ send a payload containing a claim on an increase of reputation and a signature of this claim from himself to a other node $B$.
+If the node $B$ accepts the claim of the increase in reputation,
+then he will create his own signature of the claim.
+The payload and the two signatures are now a new block.
+The block will be added to the current chain of node $B$ 
+and the block will be sent to node $A$ to be appended to the chain of $A$.
+
+This simple design does have one major problem.
+It can never be decided in an asynchronous communication model,
+if the other node will ever respond and when it will respond.
+The proposed block by $A$ only needs an interaction of $B$ to be finished
+and $B$ can finish this transaction at anytime that he decides upon.
+But the future block contains an immutable hash pointer
+to the previous block in the chain of node $A$.
+So While this transaction for a potential block is outstanding, 
+node $A$ cannot interact with any other node $C$ to create a different block.
+If it would, then if $B$ could ultimately respond and a branch with different blocks
+would be created for the chain of $A$.
+This simple design introduces therefor an external response dependency problem.
+
+The to-be-designed system has to be fault tolerant to 
+common problems in a large scale distributed system such as node failure.
+A second design goal is to be able to process transactions quickly and on a large scale.
+These design goals prevent the adaption of a simple design that will halt until node $B$ responds.
+There are several possible designs that are a solution to this problem.
+
+\subsection{Fair exchange signature scheme}
+A fair exchange signature scheme (FESS) allows two players to exchange digital signatures in a fair way.
+Fair constitutes that no player can take advantage of the other.
+Either both players receive each others signature or no player receives the other's signature.
+It is infeasible for a node to acquire a signature without giving up their own signature.\cite{asokan-fairexchange}.
+A FESS could be implement for the fair creation of the block.
+
+But all known current FESSs use a trusted third party (TTP) at some point\cite{asokan-fairexchange}.
+Some schemes exist that are optimistic and will only need a TTP to resolve conflicts.
+But any TTP will not adhere to the Tribler philosphy 
+of being a truly fully distributed peer-to-peer system.
+The TTP will introduce a single point of trust and a scalability bottleneck.
+
+\subsection{Reverse repairing of chain}
+Another potential solution would be to rework part of the chain.
+The creation of block could be deemed to have failed by node $A$.
+If at a later point the block is still created by $B$,
+then this situation can be handled by node $A$ in two possible ways.
+
+The block could be reworked back into the chain.
+This would require every hash pointer to be updated afterwards.
+If these hash pointers are modified, then the signatures are invalid.
+Every signature would have to be renewed and requested at every node.
+This can become unscalable if nodes needs to rework many blocks and can clog the system.
+These nodes can possible no longer respond and would result in new invalid blocks.
+
+\subsection{Half signed blocks}
+The chosen solution is to keep it simple and introduce half signed blocks.
+Node $A$ is as optimistic as possible and will wait for $B$ as long as possible.
+But if $A$ needs to interact with another node $C$, 
+then $A$ will introduce only his part of the block to his chain 
+and interact with $C$ with a hash pointer to this half signed block.
+$A$ will lose his claim of increase of reputation and continue with his previous total of reputation.
+
+If at any point $B$ will create the requested block, 
+then $B$ will always append this block to his chain. 
+But if $A$ receives a created block 
+then he will only append it he has not already continued building his chain.
+
+This design does have a possible positive inconsistency between the chains of $A$ and $B$.
+Because this is a reputation system, this consistency is a allowable comprimise.
+In a currency system, this comprimise would not be allowable.
+
+The design is scalable as it will not block too long waiting for a failed node 
+and will try to interact as fast as possible with other nodes.
+A small grace period can be used to allow node $B$ to have enough time to respond in a normal manner.
+No trusted third party is introduced so a distributed design is achieved.
+
