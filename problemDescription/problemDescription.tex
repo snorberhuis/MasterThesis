@@ -62,20 +62,23 @@ In the end no node will help another and all nodes will receive a penalty.
 This is commonly called the Tragedy of the Commons in the literature \cite{hardin-tragedy}.
 The whole network will actually receive more benefit in total if everyone would corporates.
 But nodes have no way of knowing if the peer they meet are willing to help.
+A lack of altruism and selfishness will become a problem 
+and will cause the network to be suspectible to freeriding.
 
 \section{History of decisions}
 
 In the Iterated Prisoner's Dilemma the history of the previous transactions can be used 
 to see if a node helped others in the past.
 The simple strategies, previously mentioned, use a history to improve performance
-to avoid getting abused.
+to avoid freeriding.
 But this private history is not effective to achieve high overall utility in distributed systems,
 because the peers are often interacted with for the first time.
 No history is known for these peers.
 A public history of node, containing every previous interaction, is necessary to prevent abuse
 and is able to achieve high overall utility\cite{Lai-Incentives}.
 
-A history can be used to create a currency or a reputation system.
+A history can be used to create a currency or a reputation system
+and can be seen as a bookkeeping system.
 The node providing help will receive a boost in currency or a beneficial reputation.
 The currency or reputation can be used in the future to receive aid.
 In a currency system, receiving help will transfer currency to the helper.
@@ -100,13 +103,13 @@ Only if it meets these constraints, will an interaction history be usable in a d
 Interaction histories only prevent direct abuse of the generosity of the nodes.
 A malicious node can still try to tamper with the interaction history.
 An example of a type of these attacks are double spending attacks\cite{Nakamoto-bitcoin},
-where a interaction is altered.
+where an interaction is altered.
 But a node can also try to deny an interaction.
 The interaction history has to be resilient to attacks that tamper the interaction history, 
-or no one will trust the history.
+or no one will trust the history. 
+A reputation or digital currency system requires a level of trust in the system to function.
+The challenge of this thesis is to create a tamper-proof interaction history.
 
-A digital currency system builds upon trust just as much as a banknote currency.
-A reputation system will also need a level of trust.
 A system cannot be fully secure, 
 but still a reasonable certainty can be achieved that no tampering of the interaction history can occur.
 Reasonable certainty is for example that no attack can happen 
@@ -145,3 +148,12 @@ Nodes can award each other with higher cooperation if a node has a reputation it
 This requires for a tamper-proof interaction history to base a reputation on in a network.
 Those contributing more receive more help in return, 
 and malicious nodes cannot abuse the network by tampering with the interaction history.
+
+Tribler has recently implemented anonymous connections using onion routing. 
+This feature allows downloaders to become indistinguishable from other users in the network.
+But every data packets has to be forwarded 
+by a number of intermediate hop between the downloader and seeder\cite{Plak-anonymous}.
+The requirement of forwarding packets increases the network load of data being sent.
+The total cost of bandwidth per file is increased,
+but also the number of nodes helping a single node downloading a file increases.
+This in turn increases the necessity of an incentive system to reward collaboration.
