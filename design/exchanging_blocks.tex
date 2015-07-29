@@ -104,13 +104,14 @@ and will try to interact as fast as possible with other nodes.
 A small grace period can be used to allow node $B$ to have enough time to respond in a normal manner.
 No trusted third party is introduced so a distributed design is achieved.
 
-\subsection{Dispersy: implementation of signature exchange}
+\subsection{Dispersy}
 Dispersy is middleware for data dissemination in a network.
 Dispersy is used heavily within Tribler
 and is also the core library MultiChain has been build upon.
 Dispersy can also be used to exchange data between two specific nodes \cite{zeilemaker-dispersy}.
 Dispersy is used to exchange messages between nodes implementing MultiChain.
 
+\subsection{Adding append functionality}
 Within Dispersy functionality was already build to create a message, sign the message
 and request multiple nodes to also provide their signature on this message.
 This existing functionality could be used by MultiChain to exchange signatures
@@ -124,7 +125,7 @@ Only Bob knows the hash of his head node, and the total up and total download me
 So Bob will always modify the message and insert his own data in the message.
 But this would invalidate the signature of Alice,
 because the signature of Alice was also placed on the empty part of the message.
-The contents of the message and who signs what can be seen in \ref{fig:payload-signature-old}.
+The contents of the message and who signs what can be seen in Figure: \ref{fig:payload-signature-old}.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/signature_old.eps}}
@@ -137,7 +138,7 @@ After Bob returns the message,
 Alice would have to resign the message.
 But Bob also needs this valid signature from Alice before he can add the block to his own chain.
 So Alice would need to send a third message to with the new, valid signature back to Bob.
-A sequence diagram can be seen in \ref{fig:exchange-old-sequence}.
+A sequence diagram can be seen in Figure: \ref{fig:exchange-old-sequence}.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/exchange_old.eps}}
@@ -151,7 +152,7 @@ So she does not need to sign the data containing the previous hash and the total
 This property allows Bob to append his own data to that of Alice.
 Alice's signature would not become invalid.
 Functionality was added to Dispersy that allows to append data in a signature request.
-The new parts of what is signed by Alice and Bob can be seen in \ref{fig:payload-signature-new}.
+The new parts of what is signed by Alice and Bob can be seen in Figure: \ref{fig:payload-signature-new}.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/signature_new.eps}}
@@ -166,7 +167,7 @@ Bob saves this message as a block to his own chain
 and sends the message back to Alice.
 Upon arrival Alice can also convert the message to a new block and add this to her own chain.
 Now only two messages are between Alice and Bob are necessary.
-The new sequence diagram can be seen in \ref{fig:exchange-new-sequence}.
+The new sequence diagram can be seen in Figure: \ref{fig:exchange-new-sequence}.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/exchange_new.eps}}
@@ -174,29 +175,35 @@ The new sequence diagram can be seen in \ref{fig:exchange-new-sequence}.
 	\label{fig:exchange-new-sequence}
 \end{figure}
 
-\section{Irrevocable Proof-of-Help}
-Digital signatures have the property to be non-repudiable of origin.\cite{VanderLubbe-crypto}.
-After signing a message the signer cannot later deny providing his signature.
-Only in the possesion of a secret key can a signature be made,
-so only the signer could have made the signature.
-This is assuming the secret key was not comprimised at the time of signing.
+\subsection{Block size}
+The size of a block is important as it determines how fast the total size of a chain will grow
+and the utilization of the network.
+The size is dependend on the size of the parts of the blocks
+and can be determined by the choice of cryptographic primitives.
+Hashing function turn a variable message string to a fixed size message digest\cite{VanderLubbe-crypto}.
+The fixed size is dependend on the choice of hashing function.
+Similair cryptographic signing functions deterimine the size of a signature.
+An overview of the size of the parts of a block can be seen in Table: \ref{table:block_size}.
+The total size of a block is 240 bytes.
 
-This property results in that after creating a block
-both participants can no longer deny involvement in that block.
-Because they cannot repudiate their own signature
-and the act of creating signature needs a conscious decision denoting approval of the claim of help.
-The blocks become irrevocable proofs-of-help.
+\begin{table}[]
+\centering
+\begin{tabular}{l|lll|ll}
+                  & Type             & Bytes                   &                   & Type             & Bytes \\ \hline
+Up                & unsigned integer & \multicolumn{1}{l|}{4}  & Down              & unsigned integer & 4     \\
+Total Up A        & unsigned integer & \multicolumn{1}{l|}{4}  & Total Up B        & unsigned integer & 4     \\
+Total Down A      & unsigned integer & \multicolumn{1}{l|}{4}  & Total Down B      & unsigned integer & 4     \\
+Hash A            & SHA1 digest      & \multicolumn{1}{l|}{20} & Hash B            & SHA1 digest      & 20    \\
+Sequence Number A & signed integer   & \multicolumn{1}{l|}{4}  & Sequence Number B & signed integer   & 4     \\
+Public Key A      & EC binary format & \multicolumn{1}{l|}{64} & Public Key B      & EC binary format & 64    \\
+Signature A       & EC signature     & \multicolumn{1}{l|}{40} & Signature A       & EC signature     & 40
+\end{tabular}
+\caption{Block size}
+\label{table:block_size}
+\end{table}
 
-\section{Publicly known free-riding}
-The system will make a node's share ratio publicly accessibly,
-but it will expose and limit freeriding in several other ways.
 
-The window of potential freeriding is chosen by the willingness of seeders to be altruistic.
-Because the creation of blocks is driven by seeders,
-downloaders cannot postpone creation of blocks and continue freeriding.
-If downloaders does not participate in block creation,
-then uploading to them will stop.
 
-Downloaders cannot repudiate downloading.
-For they granted their signature to a block containing information about the amount that they downloaded.
-A freerider cannot try to hide his freeriding afterwards.
+
+
+
