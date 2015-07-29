@@ -108,7 +108,7 @@ No trusted third party is introduced so a distributed design is achieved.
 Dispersy is middleware for data dissemination in a network.
 Dispersy is used heavily within Tribler
 and is also the core library MultiChain has been build upon.
-Dispersy can also be used to exchange data between two specific nodes.
+Dispersy can also be used to exchange data between two specific nodes \cite{zeilemaker-dispersy}.
 Dispersy is used to exchange messages between nodes implementing MultiChain.
 
 Within Dispersy functionality was already build to create a message, sign the message
@@ -124,25 +124,55 @@ Only Bob knows the hash of his head node, and the total up and total download me
 So Bob will always modify the message and insert his own data in the message.
 But this would invalidate the signature of Alice,
 because the signature of Alice was also placed on the empty part of the message.
+The contents of the message and who signs what can be seen in \ref{fig:payload-signature-old}.
+
+\begin{figure}
+	\centerline{\includegraphics[scale=0.3]{design/figs/signature_old.eps}}
+	\caption{Payload and signature using existing functionality.}
+	\label{fig:payload-signature-old}
+\end{figure}
+
 
 After Bob returns the message,
 Alice would have to resign the message.
 But Bob also needs this valid signature from Alice before he can add the block to his own chain.
 So Alice would need to send a third message to with the new, valid signature back to Bob.
+A sequence diagram can be seen in \ref{fig:exchange-old-sequence}.
 
-But the full signature exchange can be achieved within two messages.
+\begin{figure}
+	\centerline{\includegraphics[scale=0.3]{design/figs/exchange_old.eps}}
+	\caption{Exchanging signatures using existing functionality.}
+	\label{fig:exchange-old-sequence}
+\end{figure}
+
+
 Alice can only make valid claims about and have authority over the interaction between her and Bob.
 So she does not need to sign the data containing the previous hash and the total up and down of Bob.
 This property allows Bob to append his own data to that of Alice.
 Alice's signature would not become invalid.
+Functionality was added to Dispersy that allows to append data in a signature request.
+The new parts of what is signed by Alice and Bob can be seen in \ref{fig:payload-signature-new}.
 
-Functionality was added that allows to append data in a signature request.
+\begin{figure}
+	\centerline{\includegraphics[scale=0.3]{design/figs/signature_new.eps}}
+	\caption{Payload and signature using new functionality.}
+	\label{fig:payload-signature-new}
+\end{figure}
+
+This allows the full signature exchange to be achieved within two messages.
 Alice creates a message to Bob, but only signs her data.
 Bob inserts his data upon arrival and signs everything.
 Bob saves this message as a block to his own chain
 and sends the message back to Alice.
 Upon arrival Alice can also convert the message to a new block and add this to her own chain.
 Now only two messages are between Alice and Bob are necessary.
+The new sequence diagram can be seen in \ref{fig:exchange-new-sequence}.
+
+\begin{figure}
+	\centerline{\includegraphics[scale=0.3]{design/figs/exchange_new.eps}}
+	\caption{Exchanging signatures using added functionality.}
+	\label{fig:exchange-new-sequence}
+\end{figure}
 
 \section{Irrevocable Proof-of-Help}
 Digital signatures have the property to be non-repudiable of origin.\cite{VanderLubbe-crypto}.
