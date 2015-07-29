@@ -1,5 +1,31 @@
 \chapter{Design}
-\input{design/signatures.tex}
 
+\section{Irrevocable Proof-of-Help}
+Digital signatures have the property to be non-repudiable of origin.\cite{VanderLubbe-crypto}.
+After signing a message the signer cannot later deny providing his signature.
+Only in the possesion of a secret key can a signature be made,
+so only the signer could have made the signature.
+This is assuming the secret key was not comprimised at the time of signing.
 
+This property results in that after creating a block
+both participants can no longer deny involvement in that block.
+Because they cannot repudiate their own signature
+and the act of creating signature needs a conscious decision denoting approval of the claim of help.
+The blocks become irrevocable proofs-of-help.
+
+\section{Publicly known free-riding}
+The system will make a node's share ratio publicly accessibly,
+but it will expose and limit freeriding in several other ways.
+
+The window of potential freeriding is chosen by the willingness of seeders to be altruistic.
+Because the creation of blocks is driven by seeders,
+downloaders cannot postpone creation of blocks and continue freeriding.
+If downloaders does not participate in block creation,
+then uploading to them will stop.
+
+Downloaders cannot repudiate downloading.
+For they granted their signature to a block containing information about the amount that they downloaded.
+A freerider cannot try to hide his freeriding afterwards.
+
+\input{design/exchanging_blocks.tex}
 
