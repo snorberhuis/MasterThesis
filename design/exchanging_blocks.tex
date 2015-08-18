@@ -125,7 +125,7 @@ Only Bob knows the hash of his head node, and the total up and total download me
 So Bob will always modify the message and insert his own data in the message.
 But this would invalidate the signature of Alice,
 because the signature of Alice was also placed on the empty part of the message.
-The contents of the message and who signs what can be seen in Figure: \ref{fig:payload-signature-old}.
+The contents of the message and who signs what can be seen in Figure \ref{fig:payload-signature-old}.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/signature_old.eps}}
@@ -138,7 +138,7 @@ After Bob returns the message,
 Alice would have to resign the message.
 But Bob also needs this valid signature from Alice before he can add the block to his own chain.
 So Alice would need to send a third message to with the new, valid signature back to Bob.
-A sequence diagram can be seen in Figure: \ref{fig:exchange-old-sequence}.
+A sequence diagram can be seen in Figure \ref{fig:exchange-old-sequence}.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/exchange_old.eps}}
@@ -146,13 +146,12 @@ A sequence diagram can be seen in Figure: \ref{fig:exchange-old-sequence}.
 	\label{fig:exchange-old-sequence}
 \end{figure}
 
-
 Alice can only make valid claims about and have authority over the interaction between her and Bob.
 So she does not need to sign the data containing the previous hash and the total up and down of Bob.
 This property allows Bob to append his own data to that of Alice.
 Alice's signature would not become invalid.
 Functionality was added to Dispersy that allows to append data in a signature request.
-The new parts of what is signed by Alice and Bob can be seen in Figure: \ref{fig:payload-signature-new}.
+The parts of what is signed by Alice and Bob can be seen in Figure \ref{fig:payload-signature-new}.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/signature_new.eps}}
@@ -167,7 +166,7 @@ Bob saves this message as a block to his own chain
 and sends the message back to Alice.
 Upon arrival Alice can also convert the message to a new block and add this to her own chain.
 Now only two messages are between Alice and Bob are necessary.
-The new sequence diagram can be seen in Figure: \ref{fig:exchange-new-sequence}.
+The new sequence diagram can be seen in Figure \ref{fig:exchange-new-sequence}.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/exchange_new.eps}}
@@ -177,7 +176,7 @@ The new sequence diagram can be seen in Figure: \ref{fig:exchange-new-sequence}.
 
 \subsection{Block size}
 The size of a block is important as it determines how fast the total size of a chain will grow
-and the utilization of the network.
+and the utilization of the bandwidth of network to transfer blocks.
 The size is dependend on the size of the parts of the blocks
 and can be determined by the choice of cryptographic primitives.
 Hashing function turn a variable message string to a fixed size message digest\cite{VanderLubbe-crypto}.
@@ -189,21 +188,20 @@ The total size of a block is 240 bytes.
 \begin{table}[]
 \centering
 \begin{tabular}{l|lll|ll}
-                  & Type             & Bytes                   &                   & Type             & Bytes \\ \hline
+Name              & Type             & Bytes                   & Name              & Type             & Bytes \\ \hline
 Up                & unsigned integer & \multicolumn{1}{l|}{4}  & Down              & unsigned integer & 4     \\
 Total Up A        & unsigned integer & \multicolumn{1}{l|}{4}  & Total Up B        & unsigned integer & 4     \\
 Total Down A      & unsigned integer & \multicolumn{1}{l|}{4}  & Total Down B      & unsigned integer & 4     \\
 Hash A            & SHA1 digest      & \multicolumn{1}{l|}{20} & Hash B            & SHA1 digest      & 20    \\
 Sequence Number A & signed integer   & \multicolumn{1}{l|}{4}  & Sequence Number B & signed integer   & 4     \\
 Public Key A      & EC binary format & \multicolumn{1}{l|}{64} & Public Key B      & EC binary format & 64    \\
-Signature A       & EC signature     & \multicolumn{1}{l|}{40} & Signature A       & EC signature     & 40
+Signature A       & EC signature     & \multicolumn{1}{l|}{40} & Signature B       & EC signature     & 40
 \end{tabular}
 \caption{Block size}
 \label{table:block_size}
 \end{table}
 
-
-
-
-
-
+MultiChain differs from Bitcoin in that a single block contains only one transaction.
+In Bitcoin a block can contain several transactions up to a certain maximum.
+The blocks are created directly between nodes containing a transaction
+that will transcribe the interaction between A and B.

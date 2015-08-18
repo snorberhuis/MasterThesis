@@ -87,8 +87,8 @@ and the time before a new block is found,
 which in turn is how fast transactions are processed.
 The amount of zeros can be seen as the difficulty of finding the a block.
 More zeros decreases the likelyhood a nonce will be valid.
-The growth of the estimated hash rate can be seen in Figure: \ref{fig:hash-speed},
-and the difficulty in Figure: \ref{fig:hash-difficulty}.
+The growth of the estimated hash rate can be seen in Figure \ref{fig:hash-speed},
+and the difficulty in Figure \ref{fig:hash-difficulty}.
 
 \begin{figure}
         \centerline{\includegraphics[scale=0.6]{relatedWork/figs/hashspeed/hashspeed.eps}}
@@ -120,6 +120,7 @@ In this section we will discuss the several limitations of Bitcoins
 that originate from the use of the block chain.
 
 \subsubsection{Size}
+\label{bitcoin-limit-size}
 To be able to prevent double spending and rightfull spending by the right owner, 
 the node verifying a transaction needs to be aware of the full history of a bitcoin.
 This results in that a node needs the entire block chain to verify a transaction.
@@ -127,7 +128,7 @@ This results in that a node needs the entire block chain to verify a transaction
 The block chain is a data structure ever increasing in size.
 No block or data contained in that block is removed.
 The block chain has been growing since its inception in 2009.
-The size and growth can be seen in figure Figure: \ref{fig:bc-size}.
+The size and growth can be seen in Figure \ref{fig:bc-size}.
 
 \begin{figure}
         \centerline{\includegraphics[scale=0.6]{relatedWork/figs/blockchainsize/blockchainsize.eps}}
@@ -155,3 +156,48 @@ than a transaction deep down in the block chain.
 This is only an acceptable solution for clients willing to accept more risk due to having a less secure system.
 Therefor it is not a solution for the problem for every one.
 
+\subsubsection{Amount of transaction}
+The usability of a digital currency is in part determined by the time it takes to process a transaction
+and how many transactions can be processed in a certain time scale.
+The amount of transactions that can be handled by Bitcoins are determined by three factors:
+\begin{itemize}
+\item Block size
+\item Block creation time
+\end{itemize}
+
+The block size is currently capped at a fixed maximum size.
+A block can be smaller, but cannot exceed the maximum size
+Inside a block there is date that is always present and the rest is filled up by transactions picked by the miner.
+The number of transactions that can be fitted inside a block is limited by the upper limit of the size of a block.
+The current blocksize limit is 1mb.
+
+This maximum size has no clear documentation of why it was picked as such.
+There are several implications of raising the size, aswell as lowering.
+Increasing the block size will increase the number of transactions that can be processed.
+But the increased block size will increase propogation time of the block when found by a number.
+A longer propogation time will in turn result in a higher orphane rate of the miner.
+
+Large clusters of hash power owned by a single miner or mine cluster can be placed closer together
+reducing propogation time for this miner.
+This will benefit this single miner in reducing his orphaned rate
+and will increase the chance of his block being adopted.
+This will make the network as a whole more susptible to attack by a single powerful miner
+and will reduce the power of other miners.
+
+The difficulty of finding a new block roughly regulates how fast new blocks are created.
+The difficulty is set according to the hash rate of the whole network to equal roughly a new block every 10 minutes.
+If the time of finding a new block is decreased,
+then more blocks are generated and obviously more transactions can be fitted inside these blocks.
+The reverse is true if the time is increased.
+But the time between blocks is a balance between the orphan rate of blocks
+and how fast transactions are committed to the blockchain.
+%TODO growth of blocks.
+
+%TODO source
+These two factors currently result in a maximum of roughly 7 transactions per second.
+The performance of Bitcoin can be changed by changing the settings of these two factors.
+This limits the usability of Bitcoins heavily.
+In comparison Visanet, that handles transactions under Visa, is able to process 54.000 transactions per second.
+To be a real replacement of the current traditional currencies
+a higher number of transactions per second have to be achieved by a digital currency.
+There are at time of writing several competing proposals to increase the block size\cite{garzik-blocksize}\cite{andresen-blocksize}.

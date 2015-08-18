@@ -1,35 +1,37 @@
-\chapter{Problems}
+\chapter{Known vulnerabilities}
 There are several problems with the design that limit the usability
 and the ability of the design to reach its design goals.
 In this chapter we will explain the problems and their impact.
 
 \section{Branch attack}
 In this section we will explain an attack that can be done by a malicious node M.
+The attack consists of obscuring a part of his transaction history (TH).
+M creates a new branch of his TH that is more favourable to him.
 
 \subsection{Abandoning full transaction history distribution}
 One of the main pillars of the design is to not distribute
-and have one common, full transaction history(TH) between every peer.
+and have one common, full transaction history between every peer.
 While this is the main pillar of design for the blockchain of Bitcoins.
 The reasoning behind the idea to abandon is that a common, full truth
-will the amount of interactions in scalability or the participiation of less powerfull machines.
+will limit the amount of interactions that can be processed
+or the participiation of less powerfull machines.
 
 The reason for the limitation is that every interactions will have to be distributed to every peer in the network.
-This will come at the cost of bandwidth, compute power and storage for every node for every transaction.
+Every transaction has to be processed by every node at the cost of bandwidth, compute power and storage.
 The cost might be very limited for a single transaction,
 but with greater scale these cost will add up.
 The amount of these three resources is limited and will limit the amount of transactions that can be processed.
 
-The limitation can be delayed by excluding particitpation of lesser powerfull devices.
+The limitation can be delayed by naturally excluding particitpation of less powerfull devices.
 For example, mobile devices have generally much less storage available.
 When the full TH becomes too large,
 participation of these mobile devices is excluded due to the fact that they cannot fully store the TH.
 This problem can be seen to affect Bitcoins and has been demonstrated in section \ref{bitcoin-limit-size}.
-Mobile devices now typically operate in the less secure SPV mode.
 
 \subsection{Alternating partial transaction history}
 A malicious node M has his own chain of transactions
-and he might not be happy with his transactions starting from a certain point.
-He wants to rewrite history from that point and create an alternate TH.
+and he might not be happy with his transactions after a certain point.
+He wants to rewrite his TH from that point and create an alternate TH.
 The node can simply choose to forget and obscure blocks after that point.
 A new branch will be created by chaining new blocks to the desired point in history.
 
@@ -42,12 +44,12 @@ A new branch will be created by chaining new blocks to the desired point in hist
 In Figure \ref{fig:problem-branch-obscure} an example can be seen of a branch created by M.
 In this example M tries to obscure block 2 and any subsequent blocks from C.
 When C requests the TH of M, M will only send the TH up to block 1.
-If M and C create a block together,
-then M will reuse the hash of block 1 in the new block.
+When M and C create a block together,
+M will reuse the hash of block 1 in the new block.
 For clarity of the diagram, the node interacting with M in block 1 is not displayed.
 
 Now malicious node M does have the problem that not only he knows his TH.
-When node M interacted with node A a block was created that node M tries to obscure.
+When M interacted with node A a block was created that M tries to obscure.
 A has this block in his own chain
 and therefore knows about it being part of the TH of M.
 This can be seen in the example in Figure \ref{fig:problem-branch-obscure}.
@@ -79,7 +81,7 @@ But C will have no sure way of exposing this type of fraud by his own doing,
 except for requesting every TH of every node in the system.
 This is in a way a common, full TH and was chosen to be avoided by the design to become more scalable.
 C can limited the possibility of the attack by increasing his knowledge by collecting more TH of other nodes.
-If node A or B stop participating and exit,
+If node A or B stop participating and exit the network,
 then C will have no way of detecting the fraud by M.
 
 The second way M can limit the exposure of his cheating is in a more sophisticated way.
@@ -106,5 +108,112 @@ All these properties will influence the chance of C coming across an obscured bl
 When the fraud is detected C can only punish M by no longer interacting with him.
 There is currently no way of making it globally know to every node in the network that fraud was committed.
 So only M is punished by C and can continue his abuse of other nodes in the network.
+It is recommended as future work to do so.
+
+\section{The Sybil Attack}
+
+In this section we will explain the Sybil Attack\cite{douceur-sybil}
+and how it can be used in the MultiChain system to create an artificial reputation.
+An universallly applicable solution has not yet be found\cite{levine-sybilsurvey}.
+
+\subsection{Using fake indentities}
+In large distributed systems convincingly distinct identities can be presented
+that are infact all under the control of a single adversary M.
+Identities can be public keys like in the Dispersy system
+or other abstractions of information without direct physical knowledge.
+These identities can participate in the system acting like normal agents,
+but they can also help each other malificiently to boost each other towards a common goal.
+
+In the MultiChain system the attack is done in the following way.
+M creates several other identities besides his own.
+This involves generating several key pairs.
+Now M controls several identities that can be presented convincingly.
+The key pairs do not have to be linked to a node responding to requests.
+Failure of nodes are typical in large distributed systems.
+
+Using these key pairs M can now generate an artificial reputation.
+Transactions between M and the fake identities are generated by M.
+These are signed using the keys of the fake identities.
+Using a single transaction it cannot be determined if it is between two distinct identities or a single distinct identity and a fake identity.
+
+\begin{figure}
+	\centerline{\includegraphics[scale=0.3]{problems/figs/sybil.eps}}
+	\caption{The sybil attack by M.}
+	\label{fig:sybil-example}
+\end{figure}
+
+An example of the Sybil Attack can be seen in \ref{fig:sybil-example}.
+In this example M is the malificient node and F1 and F2 his fake identities.
+Block 1 and block 2 contain a transaction that is favourable to M,
+but M has done nothing to deserve these.
+Similair blocks like block 3 can be generated between fake identities in an effort to thwart efforts to analyse the network
+and detect fake identities.
+
+In this way M is able to boost his reputation without much work.
+The more sophisticated the generation is done by M,
+the harder it will be to detect that M boosted his reputation using fake identities.
+M can then abuse his fake reputation by solliciting cooperation from other nodes in the network.
+They will respond positively on the request by M based upon the false reputation M claims to have.
+
+\subsection{Validating Identities}
+A node can have three potential sources of validation of distinct identities:
+\begin{itemize}
+\item Itself
+\item Other entitites
+\item A trusted, central authority
+\end{itemize}
+
+A node itself could try to directly validate two identities to be distinct.
+It would challenge several identities to complete a task that only two entities could complete.
+The task would require more resources then a single entity possesses and will be issued simultaneously to all identities.
+If the identities complete the task, they have proven to be distinct.
+Example of required resources are communication, storage and computation.
+These challenges can scale to validate more entities at once.
+
+Indirect validation can be used by a node to by delegating validation to other entities.
+A node could accept additional identities to be distinct when an accepted identity vouches for it.
+The node has the delegated responsibility to challenge the entity with a challenge.
+This would limit the total amount of challenges needed.
+But an obvious pitfall of delegating this to other identities is that these can vouch for fraudelent identities.
+Next to this, it involves an increase in complexity as the challenges still have to be issued concurrently.
+
+But these challenges are highly indesirable.
+These challenges require by definition to occupy between two nodes a limited resource to the maximum capacity of a single node.
+While not providing any additional functionality beyond asserting distinct identities.
+These challenges also prove inworkable when entities have hugely different amount of resources available.
+No challenge can be constructed that can be worked by less powerfull devices,
+that could not be worked several times by more powerfull devices.
+
+Next to this, these challenges are only usable with nodes that are active and responding to challenges.
+If a node becomes inactive it cannot be ascertained if the node is a fake identity.
+But this identity still makes claim about a reputation of another entity.
+A choice has to be made between either not counting these claims and allow for a drop in reputation of a node or
+allow claims that cannot be validated to be taken into account.
+Both options lower the usability of the system.
+
+A trusted, central authority would be able to vouch for distinct indentities
+if it has an other way outside the system of asserting that it indeed is a distinct identity.
+Approaches exists that implicitly rely on the authority of a trusted agency.
+But a central authority goes against the principles of a peer-to-peer network.
+
+Several other defenses against the Sybil Attack have been proposed\cite{newsome-sybil}\cite{dinger-sybil}
+or variants on the defenses stated here\cite{levine-sybilsurvey}.
+But these either have the same limitation and are minor improvements or are non-applicable for MultiChain.
+
+\subsection{Possibility of attack and likelyhood of detecting fraud}
+For M to conduct the Sybil Attack he will need to generate a set of key pairs.
+This is trivial to do and Dispersy provides functionality to do this very easily.
+
+%TODO Timing of generating several keys
+
+With these keys M has to generate blocks.
+
+%TODO timing of generating blocks
+
+Sybil Attack can have a wide range of sophistication.
+Ranging from a large amount of fake identities with a large amount of transaction between them
+to a single, fake identity boosting the reputation of M in a couple of transaction.
+Even these simple Sybil Attack are hard to defend against if these are not done to obviously.
+
 
 
