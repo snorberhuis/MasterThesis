@@ -12,3 +12,47 @@ This master thesis was conducted as part of the research mission to improve Trib
 \noindent
 TODO ORGANISATIONAL DESCRIPTION OF THESIS
 
+\section{Tribler}
+%TODO update
+In peer-to-peer file sharing a node called a seeder uploads parts
+of a file to another node, the downloader.
+The role of being a seeder and downloader constantly changes
+and a node can be both at the same time for different, parallel connections.
+A seeder can become a downloader when they wish to download other files
+and downloaders can become seeders,
+if they posses a file someone else wants.
+The ratio between the total size downloaded and uploaded is called the seeding ratio\cite{Cohen-bittorrent}.
+private community source
+
+The uploading can be seen as an interaction of one node helping another node.
+These interactions comes at the cost of consuming bandwidth for both parties.
+There is only direct benefit for the downloader.
+The downloader receives a file he wants.
+There is no direct barter between the seeder and downloader.
+As the seeder does not get anything in return for uploading the file.
+Although it can happen by chance that a downloader is also a seeder directly to the original seeder,
+but this is unlikely\cite{Lai-Incentives}.
+
+If everyone contributes, files become more available and are downloaded at higher speed.
+This claim is supported by measurements taken in private communities
+\cite{meulpolder-privatecommunities}.
+In private communities high seeding ratio's are enforced by a third party.
+Both high availability and high download speeds result in a higher utility for the downloaders.
+But currently freeriding in these networks takes places in high quantities\cite{Adar-Freeriding},
+The BitTorrent Tit-for-Tat protocol is not enough to stop abuse\cite{Pouwelse-tribler}.
+
+Tribler wants to achieve a high global seeding ratio by making it benificial to have such a ratio.
+Nodes can award each other with higher cooperation if a node has a reputation itself to be cooperative.
+This requires for a tamper-proof interaction history to base a reputation on in a network.
+Those contributing more receive more help in return,
+and malicious nodes cannot abuse the network by tampering with the interaction history.
+
+Tribler has recently implemented anonymous connections using onion routing.
+This feature allows downloaders to become indistinguishable from other users in the network.
+But every data packets has to be forwarded
+by a number of intermediate hop between the downloader and seeder\cite{Plak-anonymous}.
+The requirement of forwarding packets increases the network load of data being sent.
+The total cost of bandwidth per file is increased,
+but also the number of nodes helping a single node downloading a file increases.
+This in turn increases the necessity of an incentive system to reward collaboration.
+

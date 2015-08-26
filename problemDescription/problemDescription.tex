@@ -1,16 +1,18 @@
 \chapter{Problem Description}
-In a distributed system nodes will have interactions with other peer nodes.
-A node will have to decide how to react to these peers.
-Our work is beneficial to the process of deciding how to react to these peers.
+The essence of a distributed system is that every node performs tasks for other nodes.
+With open systems, where every one can join, an unsolved problem is how to prevent nodes
+from only consuming and not contributing to the system.
+Our work is beneficial in solving this problem.
 
-In this chapter the problem will be described of how to decide to react to a peer.
+In this chapter the problem will be described of how to decide to perform a task for a peer.
+In such a way that prevents that peer from freeloading.
 The problem will first be explained in a simplified form.
 Using this simplification, the problem will be transformed gradually
 to the real world problem faced in distributed systems today.
-Finally, in this chapter it will be described how Tribler specifically faces this problem. 
 
 \section{Deciding to help}
-Nodes can decide to cooperate with a peer or decide not to help a peer and defect.
+The field of game theory has studied for decades this problem of how
+nodes can decide to cooperate with a peer or decide not to help a peer and defect.
 This is the traditional Prisoner's Dilemma 
 and we will explain this dilemma\cite{Nowak-PrisonerDilemma}\cite{Lai-Incentives}.
 Nodes can help each other at a cost, a negative utility, 
@@ -26,7 +28,7 @@ This dilemma can be repeated several times with the same nodes and is the Iterat
 Each time both nodes will have to decide if it will help the other node.
 The utility received can be seen in Table \ref{tab:pd-um}.
 
-\begin{table}[h]
+\begin{table}
 \center
 	\begin{tabular}{l|ll}
 	A\textbackslash B       & cooperate  & defect     \\ \hline
@@ -98,8 +100,7 @@ But distribution is worth mentioning, because it puts constraints on the interac
 The interaction history has to be distributable in an efficient manner.
 Only if it meets these constraints, will an interaction history be usable in a distributed system.
 
-\section{Tamper-proof to facilitate trust}
-
+\section{Tamper-proof interaction history to facilitate trust}
 Interaction histories only prevent direct abuse of the generosity of the nodes.
 A malicious node can still try to tamper with the interaction history.
 An example of a type of these attacks are double spending attacks\cite{Nakamoto-bitcoin},
@@ -115,45 +116,10 @@ but still a reasonable certainty can be achieved that no tampering of the intera
 Reasonable certainty is for example that no attack can happen 
 if more than half of the network consists of honest nodes.
 
-\section{Tribler}
-In peer-to-peer file sharing a node called a seeder uploads parts 
-of a file to another node, the downloader. 
-The role of being a seeder and downloader constantly changes 
-and a node can be both at the same time for different, parallel connections.
-A seeder can become a downloader when they wish to download other files
-and downloaders can become seeders,
-if they posses a file someone else wants.
-The ratio between the total size downloaded and uploaded is called the seeding ratio\cite{Cohen-bittorrent}.
-private community source
-
-The uploading can be seen as an interaction of one node helping another node.
-These interactions comes at the cost of consuming bandwidth for both parties.
-There is only direct benefit for the downloader.
-The downloader receives a file he wants.
-There is no direct barter between the seeder and downloader.
-As the seeder does not get anything in return for uploading the file.
-Although it can happen by chance that a downloader is also a seeder directly to the original seeder,
-but this is unlikely\cite{Lai-Incentives}.
-
-If everyone contributes, files become more available and are downloaded at higher speed.
-This claim is supported by measurements taken in private communities
-\cite{meulpolder-privatecommunities}.
-In private communities high seeding ratio's are enforced by a third party. 
-Both high availability and high download speeds result in a higher utility for the downloaders.
-But currently freeriding in these networks takes places in high quantities\cite{Adar-Freeriding}, 
-The BitTorrent Tit-for-Tat protocol is not enough to stop abuse\cite{Pouwelse-tribler}.
-
-Tribler wants to achieve a high global seeding ratio by making it benificial to have such a ratio.
-Nodes can award each other with higher cooperation if a node has a reputation itself to be cooperative.
-This requires for a tamper-proof interaction history to base a reputation on in a network.
-Those contributing more receive more help in return, 
-and malicious nodes cannot abuse the network by tampering with the interaction history.
-
-Tribler has recently implemented anonymous connections using onion routing. 
-This feature allows downloaders to become indistinguishable from other users in the network.
-But every data packets has to be forwarded 
-by a number of intermediate hop between the downloader and seeder\cite{Plak-anonymous}.
-The requirement of forwarding packets increases the network load of data being sent.
-The total cost of bandwidth per file is increased,
-but also the number of nodes helping a single node downloading a file increases.
-This in turn increases the necessity of an incentive system to reward collaboration.
+\section{Aim of this thesis}
+\label{pb-aim}
+The overall aim of this thesis is to design, implement and conduct experiments with a tamper-proof interaction history
+implemented within Tribler.
+The interaction history will keep a history of the amount of data downloaded between nodes in the network.
+An incremental approach is taken with this thesis as the first step in creating a fully tamper-proof interaction history.
+Several more steps are needed and these steps are explained in chapter \ref{kv}.

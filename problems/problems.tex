@@ -1,12 +1,15 @@
 \chapter{Known vulnerabilities}
-There are several problems with the design that limit the usability
-and the ability of the design to reach its design goals.
-In this chapter we will explain the problems and their impact.
+\label{kv}
+There are several known security vulnerabilities with the current design.
+As said in section \ref{pb-aim} an incremental approach was taken.
+As such, the design is part of a bigger system that as a whole is to be deployed in the real world.
+In this section we will describe the known vulnerabilities
+and explain the future work that is needed to solve these.
 
 \section{Branch attack}
 In this section we will explain an attack that can be done by a malicious node M.
-The attack consists of obscuring a part of his transaction history (TH).
-M creates a new branch of his TH that is more favourable to him.
+The attack consists of obscuring a part of his transaction history.
+M creates a new branch of his transaction history that is more favourable to him.
 
 \subsection{Abandoning full transaction history distribution}
 One of the main pillars of the design is to not distribute
@@ -24,14 +27,15 @@ The amount of these three resources is limited and will limit the amount of tran
 
 The limitation can be delayed by naturally excluding particitpation of less powerfull devices.
 For example, mobile devices have generally much less storage available.
-When the full TH becomes too large,
-participation of these mobile devices is excluded due to the fact that they cannot fully store the TH.
+When the full transaction history becomes too large,
+participation of these mobile devices is excluded due to the fact that they cannot fully store the transaction history.
 This problem can be seen to affect Bitcoins and has been demonstrated in section \ref{bitcoin-limit-size}.
 
 \subsection{Alternating partial transaction history}
 A malicious node M has his own chain of transactions
-and he might not be happy with his transactions after a certain point.
-He wants to rewrite his TH from that point and create an alternate TH.
+and he wants to falsify his transactions after a certain point.
+He wants to rewrite his transaction history from that point and create an alternate transaction history.
+M wants to do this to whitewash his reputation.
 The node can simply choose to forget and obscure blocks after that point.
 A new branch will be created by chaining new blocks to the desired point in history.
 
@@ -43,22 +47,22 @@ A new branch will be created by chaining new blocks to the desired point in hist
 
 In Figure \ref{fig:problem-branch-obscure} an example can be seen of a branch created by M.
 In this example M tries to obscure block 2 and any subsequent blocks from C.
-When C requests the TH of M, M will only send the TH up to block 1.
+When C requests the transaction history of M, M will only send the transaction history up to block 1.
 When M and C create a block together,
 M will reuse the hash of block 1 in the new block.
 For clarity of the diagram, the node interacting with M in block 1 is not displayed.
 
-Now malicious node M does have the problem that not only he knows his TH.
+Now malicious node M does have the problem that not only he knows his transaction history.
 When M interacted with node A a block was created that M tries to obscure.
 A has this block in his own chain
-and therefore knows about it being part of the TH of M.
+and therefore knows about it being part of the transaction history of M.
 This can be seen in the example in Figure \ref{fig:problem-branch-obscure}.
 
 M will want to reduce the likelyhood of the detection of his fraud.
 If his fraud is detected, he might be punished and no longer to continue his abuse.
 The first way to minimize detection is to choose
-to only interact with new nodes that do not know about the alternate part of the TH.
-Nodes that have requested an alternate part of the TH
+to only interact with new nodes that do not know about the alternate part of the transaction history.
+Nodes that have requested an alternate part of the transaction history
 or that have been interacted directly with are no longer interacted with.
 In a sufficiently healthy network this will result in node M being able to find new nodes to help him.
 
@@ -72,24 +76,24 @@ There is another example that will expose the fraud of M.
 This example can be seen in Figure \ref{fig:problem-branch-preknowledge}.
 A node C might still exposes the cheating of M by chance.
 C can have an interaction with node A by coincidence.
-Before creating block 3 C will request the TH of node A containing an obscured block of M.
+Before creating block 3 C will request the transaction history of node A containing an obscured block of M.
 Now when M wants to interact with C, M will want to create block 5.
-When C requests the full TH of M, it will detect that the TH of M no longer contains block 2.
+When C requests the full transaction history of M, it will detect that the transaction history of M no longer contains block 2.
 This exposes the fraud of M.
 
 But C will have no sure way of exposing this type of fraud by his own doing,
-except for requesting every TH of every node in the system.
-This is in a way a common, full TH and was chosen to be avoided by the design to become more scalable.
-C can limited the possibility of the attack by increasing his knowledge by collecting more TH of other nodes.
+except for requesting every transaction history of every node in the system.
+This is in a way a common, full transaction history and was chosen to be avoided by the design to become more scalable.
+C can limited the possibility of the attack by increasing his knowledge by collecting more transaction history of other nodes.
 If node A or B stop participating and exit the network,
 then C will have no way of detecting the fraud by M.
 
 The second way M can limit the exposure of his cheating is in a more sophisticated way.
-He can present several, different TH to different nodes.
-M will continue keeping track of the unmodified TH.
-When M wants to interact with A or B, both knowing this TH, he will present this TH.
+He can present several, different transaction history to different nodes.
+M will continue keeping track of the unmodified transaction history.
+When M wants to interact with A or B, both knowing this transaction history, he will present this transaction history.
 So M can still interact with A and B.
-But when interacting with C he will present his alternate TH.
+But when interacting with C he will present his alternate transaction history.
 C will only expose the fraud in the same way as previously.
 
 \subsection{Possibility of attack and likelyhood of detecting fraud}

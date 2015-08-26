@@ -1,0 +1,78 @@
+\section{BarterCast}
+BarterCast is the system used by Tribler to keep track of reputations\cite{pouwelse-buddycast}\cite{meulpolder-bartercast}.
+It is fully decentralized in contrast to previous reputation systems in a peer-to-peer network.
+Private BitTorrent communities for example depend on central servers track reputations.
+%TODO source
+BarterCast was not designed with the aim to be fully resistant to malicious nodes
+that want to falsify their reputations.
+The initial version has been first deployed in June 2006
+and subsequently has been improved.
+BarterCast will be briefly explained and its vulnerabilities.
+
+\subsection{Epidemic protocol}
+BarterCast uses BuddyCast as a protocol to build a reputation system.
+BuddyCast is an epidemic protocol stack that allows spreading information of bartering activity.
+
+An epidemic protocol works in a very simple way relying on a receive-and-forward primitive.
+Information is exchanged between peers and forwarded between peers.
+This is usually called gossiping.
+BarterCasts gossips on the donation of upload bandwidth of other peers
+and their consumption of download bandwidth.
+
+BuddyCasts spreads information of other peers with initial messages.
+This is done very 15 seconds, but a peer is only contacted every 4 hours to avoid contacting too often.
+These messages contain a prefered content list, a list of peers with similair prefered content
+and a list of random peers.
+For each peer a public key, IP adress, port number and last seen timestamp is provided.
+The peers with a similair preference are called taste buddies.
+
+BuddyCasts uses several techniques to improve the peer selection efficiency.
+Peer selection efficiency is the percentage of successfully delivered outgoing messages to peers.
+This metric measures how well BuddyCasts selects peers on availablity and connectablity.
+These are important because they determine how well BuddyCasts is able to handle with peer failure and exit.
+
+The most obvious improvement that has been made is not to forward any offline peers.
+BuddyCast maintains a live overlay
+and continuously verify the online status of 10 random peers and 10 taste buddies.
+The random peers are updated to ensure they are in fact random peers.
+
+Peers can detect their own connectivity issues.
+While they are able to connect outbound,
+no incoming connections can be excepted.
+These peers can improve the peer selection efficiency
+by broadcasting that they are having connectivity problems
+and instructing others to not gossip their identity.
+
+Each peer collects information on how much other peers have downloaded and uploaded.
+This information is forwarded in a barter record that contains the information for 10 peers.
+A peer has a chance of $p$ to be random peer or a peer with similair taste for content.
+The information is attached to BuddyCast messages and forwarded.
+
+The aggregrated information contains information about direct interactions with other peers,
+but also information about interactions between other peers gossiped.
+The information can be visualised using BarterBowser.
+A screenshot can be seen in Figure \ref{fig:barterbowser}.
+The center contains the local peer.
+Every circle contains peers for a certain degree.
+The first circle from the centre contains peers that the local peer has direct interactions with.
+The second circle contains peers that peers from the first circle has direct interactions with and so forth.
+
+The information can be used to calculate the ratio between amount of downloaded data and uploaded data by a peer.
+This shows how well or how poorly a peer has helped a network.
+The calculation is done without relying on a third party.
+No authority verifies the validity of the received information.
+Also there is no insurance that the information is complete.
+The available information can be incomplete.
+
+\subsection{Limitations}
+
+\subsubsection{Collusion}
+
+\subsubsection{Sybil Attack}
+
+
+This is one of the main problem with BarterCast.
+
+
+
+

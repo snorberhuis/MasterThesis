@@ -168,7 +168,7 @@ Upon arrival Alice can also convert the message to a new block and add this to h
 Now only two messages are between Alice and Bob are necessary.
 The new sequence diagram can be seen in Figure \ref{fig:exchange-new-sequence}.
 
-\begin{figure}
+\begin{figure}[tbp]
 	\centerline{\includegraphics[scale=0.3]{design/figs/exchange_new.eps}}
 	\caption{Exchanging signatures using added functionality.}
 	\label{fig:exchange-new-sequence}
@@ -186,19 +186,22 @@ An overview of the size of the parts of a block can be seen in Table: \ref{table
 The total size of a block is 240 bytes.
 
 \begin{table}[]
-\centering
+\begin{adjustwidth}{-.5in}{-.5in}
+\begin{center}
 \begin{tabular}{l|lll|ll}
 Name              & Type             & Bytes                   & Name              & Type             & Bytes \\ \hline
-Up                & unsigned integer & \multicolumn{1}{l|}{4}  & Down              & unsigned integer & 4     \\
-Total Up A        & unsigned integer & \multicolumn{1}{l|}{4}  & Total Up B        & unsigned integer & 4     \\
-Total Down A      & unsigned integer & \multicolumn{1}{l|}{4}  & Total Down B      & unsigned integer & 4     \\
-Hash A            & SHA1 digest      & \multicolumn{1}{l|}{20} & Hash B            & SHA1 digest      & 20    \\
+Uploaded KBytes   & integer          & \multicolumn{1}{l|}{4}  & Downloaded Bytes  & integer          & 4     \\
+Total Up A        & integer          & \multicolumn{1}{l|}{4}  & Total Up B        & integer          & 4     \\
+Total Down A      & integer          & \multicolumn{1}{l|}{4}  & Total Down B      & integer          & 4     \\
+Prior Record A    & SHA1 digest      & \multicolumn{1}{l|}{20} & Prior Record B    & SHA1 digest      & 20    \\
 Sequence Number A & signed integer   & \multicolumn{1}{l|}{4}  & Sequence Number B & signed integer   & 4     \\
 Public Key A      & EC binary format & \multicolumn{1}{l|}{64} & Public Key B      & EC binary format & 64    \\
 Signature A       & EC signature     & \multicolumn{1}{l|}{40} & Signature B       & EC signature     & 40
 \end{tabular}
 \caption{Block size}
 \label{table:block_size}
+\end{center}
+\end{adjustwidth}
 \end{table}
 
 MultiChain differs from Bitcoin in that a single block contains only one transaction.
