@@ -25,7 +25,7 @@ The cost might be very limited for a single transaction,
 but with greater scale these cost will add up.
 The amount of these three resources is limited and will limit the amount of transactions that can be processed.
 
-The limitation can be delayed by naturally excluding particitpation of less powerfull devices.
+The limitation can be delayed by naturally excluding participation of less powerfull devices.
 For example, mobile devices have generally much less storage available.
 When the full transaction history becomes too large,
 participation of these mobile devices is excluded due to the fact that they cannot fully store the transaction history.
@@ -98,6 +98,17 @@ C will only expose the fraud in the same way as previously.
 
 \subsection{Possibility of attack and likelyhood of detecting fraud}
 This attack can always be done M and is not limited to circumstances.
+Also the attack is not limited and M can try to fool any number of other nodes C.
+As shown in Figure \ref{fig:branch-multiple}.
+
+\begin{figure}
+	\centerline{\includegraphics[scale=0.3]{problems/figs/branch-multiple.eps}}
+	\caption{Example of multiple branches created by M.}
+	\label{fig:branch-multiple}
+\end{figure}
+
+
+
 The likelyhood of exposing this attack depends on several factors
 and will be the only factor to limit M in performing this fraud.
 The likelihood depends on:
