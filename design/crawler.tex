@@ -47,7 +47,9 @@ and these techniques can be reused for the MultiChain crawler.
 For example bloom filters can be used in conjunction with the knowledge
 that every record is a part of the chain to quickly request multiple blocks\cite{broder-bloomfilter}\cite{logiotatidis-splash}.
 Blocks could also be send in a more efficient way by sending multiple blocks per message.
-Lastly an obvious improvement is to also crawl and retrieve blocks from other nodes present in a node.
-This is currently not yet implemented.
+Secondly, blocks that belong to a different node than the crawled node are requested,
+but the location of this node is only stumbled upon by chance.
+Dispersy only keeps track of 20 peers at any time, so the chance is low that the node is among these nodes.
+The chance can be improved by asking if the first contacted node knows the location of the different node.
 
 
