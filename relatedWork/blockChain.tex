@@ -16,12 +16,6 @@ is the original paper by Nakamoto\cite{Nakamoto-bitcoin}.
 Further information and improvements on Bitcoin can be found on the Bitcoin website\cite{Bitcoin.org-site}.
 
 \subsection{Transfer of ownership of a bitcoin}
-For a currency to work, people have to be able to trust with a reasonable certainty that no double spending can occur.
-Double spending with physical tokens is impossible,
-but the same guarantee is not trivial for a digital coin without a trusted third party.
-Bitcoin has multiple safe gaurds that work together to prevent double spending.
-These safe gaurds will be introduced during the explanation of how Bitcoin works.
-
 The core of the Bitcoin protocol is the block chain.
 The block chain contains transactions of bitcoins.
 We will first describe how the transactions are build up
@@ -31,7 +25,7 @@ A transaction consists of three parts.
 The first part is the public key of the new owner of the bitcoin.
 The hash of the whole, previous transaction and the public key of the new owner is concatenated.
 This concatenation is hashed and this hash is the second part of the transaction.
-The third final part is the signature by the current owner of the new hash.
+The third final part is the signature by the current owner of this new hash.
 Inclusion of the hash of the previous transaction chains every transaction to the previous transaction.
 
 The previous transaction is a transaction of the same bitcoin.
@@ -63,14 +57,14 @@ These blocks in the block chain are created by nodes in the network, so called m
 A miner receives transactions from other nodes in the Bitcoin network.
 An attacker can malicously transmit transactions to double spend a bitcoin he owns or does not have.
 So every transaction is verified on arrival at a node.
-Any transaction that is invalid is just dropped by the node.
+Any transaction that double spends a bitcoin is just dropped by the node.
 No penalty is awarded to the malicous attacker.
 
 The transactions are received in a non deterministic way induced by network characteristics.
 The non deterministic nature causes blocks to differ from miner to miner.
 The order of transactions has to be agreed upon by the network to eliminate this inconsistency.
 
-Bitcoin uses election to pick the next block  based upon a Proof-Of-Work system.
+Bitcoin uses election to pick the next block based upon a Proof-Of-Work system.
 A nonce is added to every block.
 This nonce is just a number that can be varied,
 but is only sound if the hash of the whole block starts with a certain number of zeros.
@@ -88,7 +82,6 @@ The faster growth rate will ensure that the branch will be adopted by the networ
 
 The amount of zeros needed in the hash is adjusted to compensate for the fluctuating speed of the network to be able to find nonces.
 The speed of the network is called the hash rate and is the amount of hashes calculated per second.
-The hash rate of the Bitcoin network has increased nine fold.
 The amount of zeros balances the probability of branches occuring
 and the time before a new block is found,
 which in turn is how fast transactions are processed.
@@ -115,12 +108,12 @@ It is possible that both transactions will be introduced into the block chain, b
 Eventually one branch will win and the attack is averted.
 
 The behaviour just described makes that a transaction can never be confirmed with full certainty.
-Another branch could possibly always over take the current longest branch.
-This also makes the network vulnerable if the total compute power is owned by a malicous attacker is more than the total compute power of the honest nodes,
-even if the attack has control of 51\% of the compute power.
+Another branch could always possibly over take the current longest branch.
+This makes the network vulnerable if the total compute power is owned by a malicous attacker is more than the total compute power of the honest nodes,
+even if the attacker only has control of 51\% of the compute power.
 In the end the current branch can be overtaken by a new branch started by the attacker.
 This new branch allows the whole transaction history to be rewritten by the attacker.
-Bitcoin introduces points in the chain that are to be considered final and can no longer change.
+Bitcoin counteracts by introducing points in the chain that are to be considered final and can no longer change.
 
 \subsection{Limitations}
 In this section we will discuss the several limitations of Bitcoins
