@@ -1,5 +1,5 @@
 \section{BarterCast}
-BarterCast is the system used by Tribler to keep track of reputations\cite{pouwelse-buddycast}\cite{meulpolder-bartercast}\cite{meulpolder-bartercast-paper}.
+BarterCast is the system used by Tribler to keep track of reputations\cite{pouwelse-buddycast}\cite{meulpolder-bartercast}\cite{meulpolder-bartercast-paper}\cite{dumitrescu-tribler}.
 It is fully decentralized in contrast to previous reputation systems in a peer-to-peer network.
 Private BitTorrent communities for example depend on central servers track reputations.
 %TODO source
@@ -107,9 +107,15 @@ The created bloom filters only contain relevant entries that have not yet been s
 BarterCasts knows which entries are relevant by keeping track of the last synchronization point
 and only using new barter records since that point.
 
-\subsection{Limitations}
-
-PERMANENT IDENTIFIERS
+\subsection{Limitation}
+The proposal of this thesis is to implement a new reputation system for Tribler,
+so obliviously Bartercast is lacking.
+The main problem with Bartercast and why it needs to be replaced with a new system is
+that the reputation is self reported.
+Barter records are not signed by any one else.
+So barter records can be created by any malicious node without a limit.
+There is no way to verify these records and enforce truthfullness.
+Finally there is no way to punish malicious nodes and therefore they are free to lie.
 
 
 
