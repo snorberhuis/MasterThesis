@@ -1,45 +1,49 @@
 \section{Denial of service attack}
 The denial of service attack is a common attack seen on the internet
 that disables a service by flooding it with requests of service.
-This is also a potential attack on MultiChain particulairly because of a potential bottleneck.
+This is also a potential attack on MultiChain particulairly because of a bottleneck within MultiChain.
 
 \subsection{Mutual exclusive code}
 A node can only perform a single operation at a time on its chain.
-Multiple blocks cannot be created because they will both point to the same block and create a block.
-This can be seen as an attack and should be punished as described in section \ref{sect:branch}.
-So safeguards have been implemented to ensure that this does not occur.
+Multiple blocks cannot be created in parallel,
+because they need be chained in sequence.
+Only after a block is created will it be possible to calculate the hash and is it possible to use this hash.
+If blocks would be created in parallel, they would point to the same previous block.
+This can be seen as a double spending attack and should be punished as described in section \ref{sect:branch}.
+So safeguards have been implemented to ensure that this never occurs.
 
 This was done by implementing mutual exclusion for code that creates a block.
 Only one block creation operation can be pending at any time.
-This can be either requesting to create a new block with another peer and wait on response or
-processing a request itself.
-Because only a single operation can be handled at one time
-this makes a node very vulnerable to a denial of service attack.
-A bottleneck is introduced by design that cannot be scaled.
+The operation can either be requesting to create a new block with another peer or
+processing a incoming request.
+Because only a single operation can be handled at once
+makes a node very vulnerable to a denial of service attack.
+A bottleneck is hereby introduced through design that cannot be scaled.
 
 If a node is flooded by sufficient bogus requests to create a new block,
-then it will become over burdend with these requests to service real requests or to send send out its own requests.
-The node is denied service and cannot create meaningfull blocks.
+then it will become overburdend with these requests to service real requests or to send send out its own requests.
+The node is denied service and cannot create meaningful blocks.
 Because the node becomes unresponsive to block creation requests other nodes will not trust him to sign future blocks
 and will not be granted upload bandwidth.
-The other node does not trust that in return he will receive a boost in his reputation and will stop collaboration.
+The other node does not trust that in return for his collaboration he will receive a boost in his reputation
+and will stop collaboration.
 The node under attack will also be unable to transform his own collaboration into a boost in reputation
-by sending his own block creation requests.
+because he cannot send his own block creation requests.
 
 The proposed denial of service attack is more sophisticated than typical denial of service attacks.
 These typicaly involve simply flooding a server with requests,
 but for the proposed attack the requests have to be crafted with care.
-They need to valid to be serviced by the attacked node and reach the mutual exclusive part
+They need to valid to be serviced by the attacked node and reach the mutual exclusive code segment
 that is the vulnerable bottleneck.
 A request has to be a counterpart of a real interaction or the request can be easily filtered.
-The filtered request will still impose a computational and network burden on the node,
-but this is always a vulnerability and not a specific vulnerability of MultiChain.
+Any request that is not carefully constructed in this way
+will still impose a computational and network burden on the node,
+but this is always a risk and not a specific vulnerability of MultiChain.
 
 \subsection{Filtering requests}
-
 Detection can be implemented that will help in detecting fake requests.
 The detection can be run in parallel and does not have to enter the mutual exclusive part.
 Any request that is fake will not reach the mutual exclusive part
 and will not drown out the service of valid block creation.
-Effective analyses have to be researched and implemented in future work to harden the system to this attack.
+Effective analyses have to be researched and implemented in future work to harden the system against this attack.
 
