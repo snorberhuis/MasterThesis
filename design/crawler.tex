@@ -40,6 +40,29 @@ Because block 4 is already known, block 4 is ignored.
 Only block 5 is retrieved.
 The crawler follows the links further outside the displayed example.
 
+\subsection{Recreation over retransmission}
+An effort was made to try to reuse code of the community for the crawler and to not introduce another payload type in the community.
+The attempt would reuse payload classes and authentication classes already used in the community for the creation of blocks.
+This effort failed, because Dispersy cannot handle recreation of messages well
+and would invalidate blocks that were recreated.
+
+As said before, Dispersy also keeps tracks of messages received.
+The messages containing a block requested by the crawler could be retrieved and retransmissioned forward
+instead of being retrieved from the MultiChain database itself.
+This would eliminate the need to construct a message and encode the message before it could be send,
+because the encoded format is saved and can be retrieved and send immediately.
+This was not used as it would be impossible to distinguish messages received as an response to a signature request or a crawler request.
+The two types of responses cannot be processed in the same way.
+A response to a signature requests has to influence the way a node responds to interactions
+and a crawler response should not.
+
+In the end the crawler uses recreation of a block from the local database and uses a new payload type to forward blocks.
+The main reasons this implementation was chosen is
+that implemenation was very simple and had none of the above mentioned problems.
+Maintainabillity is also much easier this way
+as different types of messages are not using the same functions to be received in the code.
+This might not be known by a new programmer working with the code.
+
 \subsection{Improvements}
 The crawler is a first, simple step towards a more sophisticated crawler.
 Tribler has implemented already more sophisticated crawlers for Bartercast
@@ -48,7 +71,7 @@ For example bloom filters can be used in conjunction with the knowledge
 that every record is a part of the chain to quickly request multiple blocks\cite{broder-bloomfilter}\cite{logiotatidis-splash}.
 Blocks could also be send in a more efficient way by sending multiple blocks per message.
 Secondly, blocks that belong to a different node than the crawled node are requested,
-but the location of this node is only stumbled upon by chance.
+but the location of this different node is only known by chance.
 Dispersy only keeps track of 20 peers at any time, so the chance is low that the node is among these nodes.
 The chance can be improved by asking if the first contacted node knows the location of the different node.
 
