@@ -1,5 +1,9 @@
 \chapter{Design}
 
+\input{design/chains.tex}
+\input{design/exchanging_blocks.tex}
+\input{design/persistence.tex}
+
 \section{Irrevocable Proof-of-Help}
 Digital signatures have the property to be non-repudiable of origin.\cite{VanderLubbe-crypto}.
 After signing a message the signer cannot later deny providing his signature.
@@ -32,6 +36,4 @@ Downloaders cannot repudiate downloading.
 For they granted their signature to a block containing information about the amount that they downloaded.
 A freerider cannot try to hide his freeriding afterwards.
 
-\input{design/exchanging_blocks.tex}
-\input{design/persistence.tex}
 \input{design/crawler.tex}
