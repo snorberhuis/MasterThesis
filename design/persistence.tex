@@ -84,13 +84,39 @@ The SQLite Library and Dispersy layer both return the result of the SQL query.
 These results are transformed by the Persistence layer into objects of the model usable by the MultiChain Community.
 
 The only information that is saved are blocks.
-The information all fit within one table.
+The information all fits within one table.
 A single block is saved as a single record called a row in a relation database.
 Every attribute of a block is a single column in the row.
-An overview of every attribute and the size of the attribute can be seen in Table \ref{table:block_size}.
+All attributes are saved directly into the database,
+except for the public keys.
+These public keys are hashed and these hashes are used as an identifier, called mid, in Dispersy.
+The public keys are already saved in the Dispersy database.
+When a block is retrieved from the database the public key is retrieved from Dispersy using the mid.
+An overview of every attribute and the size of the attribute inside the database can be seen in Table \ref{table:block_size_persistence}.
+
+\begin{table}[]
+\begin{adjustwidth}{-.5in}{-.5in}
+\begin{center}
+\begin{tabular}{l|lll|ll}
+Name              & Type             & Bytes                   & Name              & Type             & Bytes \\ \hline
+Uploaded KBytes   & integer          & \multicolumn{1}{l|}{4}  & Downloaded Bytes  & integer          & 4     \\
+Total Up A        & integer          & \multicolumn{1}{l|}{4}  & Total Up B        & integer          & 4     \\
+Total Down A      & integer          & \multicolumn{1}{l|}{4}  & Total Down B      & integer          & 4     \\
+Prior Record A    & SHA1 digest      & \multicolumn{1}{l|}{20} & Prior Record B    & SHA1 digest      & 20    \\
+Sequence Number A & signed integer   & \multicolumn{1}{l|}{4}  & Sequence Number B & signed integer   & 4     \\
+Mid A             & SHA1 digest      & \multicolumn{1}{l|}{20} & Mid B             & SHA1 digest      & 20    \\
+Signature A       & EC signature     & \multicolumn{1}{l|}{40} & Signature B       & EC signature     & 40
+\end{tabular}
+\caption{Block size inside the database.}
+\label{table:block_size_persistence}
+\end{center}
+\end{adjustwidth}
+\end{table}
+
 This makes every attribute queryable in the database.
+A public key can be converted and searched on as well.
 This was chosen to be extensible and usable when the next incremental steps are implemented.
-It is presently unknown precisly what information will be needed,
+It is presently unknown what information precisly will be needed,
 so every information is now made available for the future.
 
 \subsection{Dispersy database}
@@ -105,9 +131,9 @@ All the information is stored in a converted format
 that prevents queries to search the message for its contents.
 For this reason, the dispersy database is not used and a separate database is used.
 
-
-
-
-
-
-
+A future, possible improvement to Dispersy would be to save messages queryable in its database.
+This would eliminate the current need for separate databases that contain aggregrated information.
+The information is stored in two places within Tribler and this could be eliminated.
+It would reduce the disk footprint and the amount of read/write transactions
+as only one database would have to be maintained.
+The I/O ineractions are a problem according to Tribler maintainers.
