@@ -1,0 +1,63 @@
+\section{Tests}
+MultiChain is tested in several ways to verify it is correctly working
+following standard software engineering practices.
+These tests work similair to other tests used to test Tribler.
+
+Tribler uses Python unit tests, that are automatically run on a Jenkins build server\cite{jenkins}\cite{jenkins-tribler},
+to validate small components of code.
+Unit tests are added to increase stability of MultiChain.
+Tribler does prove to be hard to test using unit tests.
+This is due to high coupling of code within Tribler,
+but mocking of classes helped in testing difficult to test code.
+Where possible unit tests were added and an overview of the coverage can be seen in Table \ref{tab:tests}
+
+\begin{table}
+\centering
+\begin{tabular}{l|ll|ll}
+Filename   & LOC & \%    & Conditionals & \%    \\ \hline
+Community  & 412 & 33\%  & 29           & 0\%   \\
+Conversion & 58  & 94\%  & 6            & 50\%  \\
+Database   & 113 & 78\%  & 10           & 50\%  \\
+Payload    & 89  & 100\% & 2            & 100\% \\ \hline
+Total      & 672 &       & 47           &
+\end{tabular}
+\caption{Unit tests coverage of MultiChain.}
+\label{tab:tests}
+\end{table}
+
+Next to that, Tribler uses a separated developed test runner Gumby.
+Gumby can start multiple instances of Tribler and follow test scenario's.
+Gumby can be used to perform system tests and experiments.
+These system tests have to be manually validated.
+Several scenario's have been written to validate MultiChain.
+These run MultiChain either in a standalone version or integrated into the TunnelCommunity.
+
+One of these scenario's can be found in Listing \ref{list:exp-gumby-scenario}
+In this example basic block creation is tested.
+Normal situations are tested,
+but also situations where the signature requests are answered late
+and other requests arrive at the requesting peer at the same time.
+Additionally, signature requests are controlled to not be answered at all.
+During the whole test the crawler is active and scraped the network for unknown blocks.
+
+\begin{lstlisting}[frame=single,caption=One fo the gumby test scenarios,label=list:exp-gumby-scenario,captionpos=b,float]
+@0:0 set_master_member 3081a7301006072a8648ce ... 2b51
+@0:0 set_community_class MultiChainNoResponseCommunity {4}
+@0:0 set_community_class MultiChainDelayCommunity {5}
+@0:0 set_community_class MultiChainCommunityCrawler {6}
+@0:0 set_community_class  {6}
+@0:0 start_dispersy
+@0:1 online
+@0:5 reset_dispersy_statistics
+@0:10 annotate start-experiment-1-peer
+@0:15 introduce_candidates
+@0:80 request_signature 2 {1}
+@0:84 request_signature 1 {2}
+@0:94 request_signature 4 {1}
+@0:95 request_signature 1 {3}
+@0:104 request_signature 5 {1}
+@0:106 request_block 1 5 {6}
+@0:110 close
+@0:111 stop_dispersy
+@0:112 stop
+\end{lstlisting}
