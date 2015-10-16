@@ -1,4 +1,4 @@
-\section{Block Persistence}
+\section{Block persistence}
 The blocks in the chain have to be persisted to be usable over a prolonged time.
 There are several design goals to be achieved in the way that the blocks are persisted:
 \begin{itemize}
@@ -13,7 +13,7 @@ or to be distributed to another peer on request.
 The blocks do have the property that they are likely to be needed sequentially.
 Blocks that were never known at some point by the node are ignored for this design goal
 and are treated separately.
-%TODO Were are they discussed?
+\todo{Were are they discussed?}
 
 Information is stored into the blocks and this information should be queryable in a easy way.
 Making the information queryable makes the information accessible
@@ -28,12 +28,6 @@ The chain will be persistent across system shutdown,
 but should also provide ways of preventing loss in case of hardware failure.
 
 \subsection{SQLite}
-\begin{figure}
-	\centerline{\includegraphics[scale=0.3]{design/figs/SQLite370.eps}}
-	\caption{SQLite Logo}
-	\label{fig:SQLite-logo}
-\end{figure}
-
 SQLite is a relational database and provides simple bindings to use in Python\cite{owens-sqlite}.
 It implements SQL and is ACID-compliant\cite{haerder-ACID}.
 SQLite saves its database to a single file on disk and provides local storage.
@@ -97,15 +91,15 @@ An overview of every attribute and the size of the attribute inside the database
 \begin{table}[]
 \begin{adjustwidth}{-.5in}{-.5in}
 \begin{center}
-\begin{tabular}{l|lll|ll}
+\begin{tabular}{lll||lll}
 Name              & Type             & Bytes                   & Name              & Type             & Bytes \\ \hline
-Uploaded KBytes   & integer          & \multicolumn{1}{l|}{4}  & Downloaded Bytes  & integer          & 4     \\
-Total Up A        & integer          & \multicolumn{1}{l|}{4}  & Total Up B        & integer          & 4     \\
-Total Down A      & integer          & \multicolumn{1}{l|}{4}  & Total Down B      & integer          & 4     \\
-Prior Record A    & SHA1 digest      & \multicolumn{1}{l|}{20} & Prior Record B    & SHA1 digest      & 20    \\
-Sequence Number A & signed integer   & \multicolumn{1}{l|}{4}  & Sequence Number B & signed integer   & 4     \\
-Mid A             & SHA1 digest      & \multicolumn{1}{l|}{20} & Mid B             & SHA1 digest      & 20    \\
-Signature A       & EC signature     & \multicolumn{1}{l|}{40} & Signature B       & EC signature     & 40
+Uploaded KBytes   & integer          & 4                      & Downloaded Bytes  & integer          & 4     \\
+Total Up A        & integer          & 4                      & Total Up B        & integer          & 4     \\
+Total Down A      & integer          & 4                      & Total Down B      & integer          & 4     \\
+Prior Record A    & SHA1 digest      & 20                     & Prior Record B    & SHA1 digest      & 20    \\
+Sequence Number A & signed integer   & 4                      & Sequence Number B & signed integer   & 4     \\
+Mid A             & SHA1 digest      & 20                     & Mid B             & SHA1 digest      & 20    \\
+Signature A       & EC signature     & 40                     & Signature B       & EC signature     & 40
 \end{tabular}
 \caption{Block size inside the database.}
 \label{table:block_size_persistence}
@@ -120,7 +114,7 @@ It is presently unknown what information precisly will be needed,
 so every information is now made available for the future.
 
 \subsection{Dispersy database}
-Dispersy is an elastic database and keeps track of information on its own.
+Dispersy keeps track of information on its own.
 A record is kept of any message that can be retrieved using a message id.
 The message is saved in a converted format and will be decoded when the message is retrieved.
 

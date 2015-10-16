@@ -10,10 +10,10 @@ This master thesis was conducted as part of the research mission to improve Trib
 \vspace{1\baselineskip}
 
 \noindent
-TODO ORGANISATIONAL DESCRIPTION OF THESIS
+\todo{ORGANISATIONAL DESCRIPTION OF THESIS}
 
 \section{Tribler}
-%TODO update
+\todo{update}
 In peer-to-peer file sharing a node called a seeder uploads parts
 of a file to another node, the downloader.
 The role of being a seeder and downloader constantly changes
@@ -47,7 +47,7 @@ This requires for a tamper-proof interaction history to base a reputation on in 
 Those contributing more receive more help in return,
 and malicious nodes cannot abuse the network by tampering with the interaction history.
 
-Tribler has recently implemented anonymous connections using onion routing.
+Tribler has recently implemented anonymous connections using onion routing \\\cite{Plak-anonymous}\cite{ruigrok-anonymous}.
 This feature allows downloaders to become indistinguishable from other users in the network.
 But every data packets has to be forwarded
 by a number of intermediate hop between the downloader and seeder\cite{Plak-anonymous}.
@@ -56,3 +56,9 @@ The total cost of bandwidth per file is increased,
 but also the number of nodes helping a single node downloading a file increases.
 This in turn increases the necessity of an incentive system to reward collaboration.
 
+\subsection{Dispersy}
+Dispersy is middleware for data dissemination in a network.
+Dispersy is used heavily within Tribler
+and is also the core library MultiChain has been build upon.
+Dispersy can also be used to exchange data between two specific nodes \cite{zeilemaker-dispersy}.
+Dispersy is used to exchange messages between nodes implementing MultiChain.
