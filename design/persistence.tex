@@ -87,18 +87,20 @@ These public keys are hashed and these hashes are used as an identifier, called 
 The public keys are already saved in the Dispersy database.
 When a block is retrieved from the database the public key is retrieved from Dispersy using the mid.
 An overview of every attribute and the size of the attribute inside the database can be seen in Table \ref{table:block_size_persistence}.
+SQLite can grow the size of integers in its database to fit the required size
+and therefore it can be in the range of $1,2,3,4$ bytes.
 
 \begin{table}[]
 \begin{adjustwidth}{-.5in}{-.5in}
 \begin{center}
 \begin{tabular}{lll||lll}
-Name              & Type             & Bytes                   & Name              & Type             & Bytes \\ \hline
-Uploaded KBytes   & integer          & 4                      & Downloaded Bytes  & integer          & 4     \\
-Total Up A        & integer          & 4                      & Total Up B        & integer          & 4     \\
-Total Down A      & integer          & 4                      & Total Down B      & integer          & 4     \\
-Prior Record A    & SHA1 digest      & 20                     & Prior Record B    & SHA1 digest      & 20    \\
-Sequence Number A & signed integer   & 4                      & Sequence Number B & signed integer   & 4     \\
-Mid A             & SHA1 digest      & 20                     & Mid B             & SHA1 digest      & 20    \\
+Name              & Type             & Bytes                  & Name              & Type             & Bytes    \\ \hline
+Uploaded MBytes   & unsigned integer & 1,2,4                  & Downloaded MBytes & unsigned integer & 1,2,4    \\
+Total Up A        & unsigned integer & 1,2,4,8                & Total Up B        & unsigned integer & 1,2,4,8  \\
+Total Down A      & unsigned integer & 1,2,4,8                & Total Down B      & unsigned integer & 1,2,4,8  \\
+Prior Record A    & SHA1 digest      & 20                     & Prior Record B    & SHA1 digest      & 20       \\
+Sequence Number A & signed integer   & 4                      & Sequence Number B & signed integer   & 4        \\
+Mid A             & SHA1 digest      & 20                     & Mid B             & SHA1 digest      & 20       \\
 Signature A       & EC signature     & 40                     & Signature B       & EC signature     & 40
 \end{tabular}
 \caption{Block size inside the database.}
@@ -107,11 +109,20 @@ Signature A       & EC signature     & 40                     & Signature B     
 \end{adjustwidth}
 \end{table}
 
-This makes every attribute queryable in the database.
-A public key can be converted and searched on as well.
-This was chosen to be extensible and usable when the next incremental steps are implemented.
+Every attribute is queryable in the database.
+A public key can be converted to mid and is searched this way.
+Every attribute is queryable to make the system  extensible
+and usable when the next incremental steps are implemented.
 It is presently unknown what information precisly will be needed,
 so every information is now made available for the future.
+
+\subsection{Upper limit uploaded and downloaded MB}
+The maximum integer size of the total up and total down impose an upper limit
+on the total uploaded and downloaded MB that MultiChain can track.
+This limit is imposed by SQLite and is $2^{62}$.
+Bigger numbers cannot be saved in SQLite using a native datatype.
+The upper limit for MultiChain is therefore $4.612 * 10^9$\todo{ask about *} petabytes.
+This is clearly more than sufficient.
 
 \subsection{Dispersy database}
 Dispersy keeps track of information on its own.
