@@ -1,7 +1,8 @@
 \section{Block creation}
 \label{design:block_creation}
-The blocks in the chain are created between two peers in the network.
-
+In this section we will explain how blocks can be created in a simple way that will limit and expose freeriding.
+Afterwards we will explain a fundamental problem with creating blocks in an asynchronous system
+and how MultiChain deals with this problem.
 
 \subsection{Exchanging signatures protocol}
 Two peers in a network will create their blocks together without having to rely on a third party.
@@ -48,6 +49,22 @@ The parts of what is signed by Alice and what is signed by Bob can be seen in Fi
 	\label{fig:payload-signature-new}
 \end{figure}
 
+\subsection{Limiting and exposing free-riding}
+The window of potential freeriding is chosen by the willingness of seeders to be altruistic.
+The creation of blocks is driven by seeders,
+downloaders cannot postpone creation of blocks and continue freeriding.
+If downloaders do not participate in block creation,
+then uploading to them will stop.
+
+A created block will force a downloader to expose his own freeloading,
+because he will have to add his own total amount of uploaded data and total amount of downloaded data.
+If he has not contributed his share and only downloaded,
+then his total downloaded data will be much higher then his total up.
+His freeloading is exposed as a result.
+
+Downloaders cannot repudiate downloading.
+For they granted their signature to a block containing information about the amount that they downloaded.
+A freerider cannot try to hide his freeriding afterwards.
 
 \subsection{Synchronizing block creation}
 This simple design does have one major problem.

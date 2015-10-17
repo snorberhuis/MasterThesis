@@ -16,6 +16,20 @@ so it is possible to see to which peers the transaction belongs to.
 Both peers sign the whole block using their private keys to acknowledge that the transaction has happened.
 Every block only contains one transaction.
 
+\subsection{Irrevocable proof-of-help}
+Digital signatures have the property to be non-repudiable of origin \cite{VanderLubbe-crypto}.
+After signing a block the signer cannot later deny providing his signature.
+Only in the possesion of a secret key can a signature be made,
+so only the signer could have made the signature.
+This is assuming the secret key was not comprimised.
+
+This property results in that after creating a block
+both participants can no longer deny involvement in that block.
+Because they cannot repudiate their own signature
+The blocks become durable records aand are irrevokable and irrefutable.
+
+\subsection{Example}
+
 An example of three blocks can be seen in Figure \ref{fig:chain-example}.
 The arrows denote that something is hashed or signed.
 In this example the first block contains a transaction between peer B and C.
