@@ -3,13 +3,14 @@ MultiChain is tested in several ways to verify it is correctly working
 following standard software engineering practices.
 These tests work similair to other tests used to test Tribler.
 
-Tribler uses Python unit tests, that are automatically run on a Jenkins build server\cite{jenkins}\cite{jenkins-tribler},
-to validate small components of code.
+Tribler uses Python unit tests  to validate small components of code.
+The tests can be run locally and
+are automatically run on a Jenkins build server\cite{jenkins}\cite{jenkins-tribler}.
 Unit tests are added to increase stability of MultiChain.
 Tribler does prove to be hard to test using unit tests.
-This is due to high coupling of code within Tribler,
-but mocking of classes helped in testing difficult to test code.
-Where possible unit tests were added and an overview of the coverage can be seen in Table \ref{tab:tests}
+This is due to high coupling of code within Tribler.
+But mocking of classes helped in testing difficult to test code.
+Where possible and meaningfull unit tests were added and an overview of the coverage can be seen in Table \ref{tab:tests}
 
 \begin{table}
 \centering
@@ -38,7 +39,7 @@ Normal situations are tested,
 but also situations where the signature requests are answered late
 and other requests arrive at the requesting peer at the same time.
 Additionally, signature requests are controlled to not be answered at all.
-During the whole test the crawler is active and scraped the network for unknown blocks.
+During the whole test the crawler is active and scrapes the network for unknown blocks.
 
 \begin{lstlisting}[frame=single,caption=One fo the gumby test scenarios,label=list:exp-gumby-scenario,captionpos=b,float]
 @0:0 set_master_member 3081a7301006072a8648ce ... 2b51
