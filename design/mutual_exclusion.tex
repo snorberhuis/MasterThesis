@@ -1,0 +1,34 @@
+\section{Single operations on the chain}
+\label{sect:deadlock}
+Inside a chain only a single block of a peer is allowed to point to a previous block.
+A peer cannot have multiple blocks belonging to him all pointing to the same previous block.
+As this is a potential attack as described in section \ref{sect:branch}.
+The chain of a peer can only be moved forward by a single block at any time.
+Only after a new block is created is the new hash available to be used in the next block.
+
+To ensure this happens correctly the MultiChain community contains mutual exclusive code
+that excludes any new operations on the chain if an operation is already pending.
+The mutual exclusion is achieved by having to acquire an atomic token to allow to perform an operation on the code.
+The MultiChain community will receive incoming signature requests
+or requests by other parts of Tribler to send out an outgoing signature request.
+The community will decline this request if the token is not available
+returns execution to other parts of Tribler.
+The token can be unavailable while waiting on another peer in the network to finish responding to a signature request.
+
+\subsection{Circular dependency on the token across peers}
+When a MultiChain peer has a pending signature request,
+then the peer itself will not respond to incoming signature requests from other peers.
+These peers themselves will also not respond as they have a pending signature request.
+This can create a circular dependency on the availability of the token.
+If two peers send a request to each other at the same time, they will wait on each other.
+This could result in a deadlock.
+
+MultiChain prevents this deadlock to occur by allowing a transaction to fail
+as explained in section \ref{des:halfsigned}.
+If MultiChain gets into this potential deadlock one of the peers will eventually time out of their own signature request
+and process the incoming request resolving the circular dependency.
+The deadlock is recovered and both peers can continue operation.
+
+This situation has occured during experimentation and it is explained in section \ref{sect:deadlock-exp}.
+It is shown that MultiChain correctly recovers the potential deadlock.
+

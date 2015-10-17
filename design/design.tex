@@ -2,9 +2,10 @@
 
 \input{design/chains.tex}
 \input{design/exchanging_blocks.tex}
+\input{design/mutual_exclusion.tex}
 \input{design/persistence.tex}
 
-\section{Irrevocable proof-of-help}
+\todo{MOVE}\section{Irrevocable proof-of-help}
 Digital signatures have the property to be non-repudiable of origin \cite{VanderLubbe-crypto}.
 After signing a message the signer cannot later deny providing his signature.
 Only in the possesion of a secret key can a signature be made,
@@ -16,7 +17,8 @@ both participants can no longer deny involvement in that block.
 Because they cannot repudiate their own signature
 The blocks become durable records aand are irrevokable and irrefutable.
 
-\section{Publicly known free-riding}
+
+\section{Publicly known free-riding}\todo{MOVE}
 The system will make a node's share ratio publicly accessibly,
 but it will expose and limit freeriding in several other ways.
 

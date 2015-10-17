@@ -1,8 +1,8 @@
 \section{Deadlock recovery}
-\label{exp:deadlock}
+\label{sect:deadlock-exp}
 MultiChain can run during normal operation into a situation
-where two peers are both waiting on each other.
-This could resulting in a deadlock.
+where a multiple of peers are waiting on each other as explained in section \ref{sect:deadlock}.
+This could resulting in a potential deadlock.
 This situation was encountered during experimentation
 and the experiment shows MultiChain correctly recovering from this situation.
 
@@ -31,22 +31,3 @@ In the graph a more complicated scenario can also be seen where multiple peers t
 	\caption{Potential deadlocks in MultiChain.}
 	\label{fig:deadlock-double}
 \end{figure}
-
-
-\todo{Move to design}
-When MultiChain has a pending signature request,
-then it itself will not respond to incoming signature requests from other peers.
-These peers themselves will also not respond, because they are not responding to requests for the same reason.
-During seeding the seeder will mostly initiate signature requests to the downloader,
-but the downloader will have some signature requests for metadata that he sents to the seeder.
-These signature requests can be sent in such away that both sent the request before the other receives it.
-Both peers are now waiting for the other to respond to the signature request and
-will not answer the other resulting in a potential deadlock.
-This deadlock can occur between two peers,
-but can be expanded into a multiple of peers where each peer waits for another peer in a cycle.
-
-MultiChain prevents this deadlock to occur
-by allowing a transaction to fail as explained in section \ref{des:halfsigned}.
-If MultiChain gets into this potential deadlock one of the peers will eventually time out of their own signature request
-and process the incoming request.
-The deadlock is recovered and both peers can continue operation.
