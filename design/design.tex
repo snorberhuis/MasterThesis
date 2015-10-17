@@ -1,41 +1,9 @@
-\chapter{Design}
+\chapter{Design and implementation}
 
+\input{design/community.tex}
 \input{design/chains.tex}
 \input{design/exchanging_blocks.tex}
 \input{design/mutual_exclusion.tex}
 \input{design/persistence.tex}
-
-\todo{MOVE}\section{Irrevocable proof-of-help}
-Digital signatures have the property to be non-repudiable of origin \cite{VanderLubbe-crypto}.
-After signing a message the signer cannot later deny providing his signature.
-Only in the possesion of a secret key can a signature be made,
-so only the signer could have made the signature.
-This is assuming the secret key was not comprimised.
-
-This property results in that after creating a block
-both participants can no longer deny involvement in that block.
-Because they cannot repudiate their own signature
-The blocks become durable records aand are irrevokable and irrefutable.
-
-
-\section{Publicly known free-riding}\todo{MOVE}
-The system will make a node's share ratio publicly accessibly,
-but it will expose and limit freeriding in several other ways.
-
-The window of potential freeriding is chosen by the willingness of seeders to be altruistic.
-The creation of blocks is driven by seeders,
-downloaders cannot postpone creation of blocks and continue freeriding.
-If downloaders do not participate in block creation,
-then uploading to them will stop.
-
-A created block will force a downloader to expose his own freeloading,
-because he will have to add his own total amount of uploaded data and total amount of downloaded data.
-If he has not contributed his share and only downloaded,
-then his total downloaded data will be much higher then his total up.
-His freeloading is exposed as a result.
-
-Downloaders cannot repudiate downloading.
-For they granted their signature to a block containing information about the amount that they downloaded.
-A freerider cannot try to hide his freeriding afterwards.
 
 \input{design/crawler.tex}
