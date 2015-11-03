@@ -4,26 +4,6 @@ In this section we will explain an attack that can be done by a malicious node M
 The attack consists of obscuring a part of his transaction history.
 M creates a new branch of his transaction history that is more favourable to him.
 
-\subsection{Abandoning full transaction history distribution}
-One of the main pillars of the design is to not distribute
-and have one common, full transaction history between every peer.
-While this is the main pillar of design for the blockchain of Bitcoins.
-The reasoning behind the idea to abandon is that a common, full truth
-will limit the amount of interactions that can be processed
-or the participiation of less powerfull machines.
-
-The reason for the limitation is that every interactions will have to be distributed to every peer in the network.
-Every transaction has to be processed by every node at the cost of bandwidth, compute power and storage.
-The cost might be very limited for a single transaction,
-but with greater scale these cost will add up.
-The amount of these three resources is limited and will limit the amount of transactions that can be processed.
-
-The limitation can be delayed by naturally excluding participation of less powerfull devices.
-For example, mobile devices have generally much less storage available.
-When the full transaction history becomes too large,
-participation of these mobile devices is excluded due to the fact that they cannot fully store the transaction history.
-This problem can be seen to affect Bitcoins and has been demonstrated in section \ref{bitcoin-limit-size}.
-
 \subsection{Alternating partial transaction history}
 A malicious node M has his own chain of transactions
 and he wants to falsify his transactions after a certain point.

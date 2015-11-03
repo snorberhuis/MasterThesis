@@ -1,0 +1,21 @@
+\section{Abandoning full transaction history distribution}
+One of the main pillars of the design is to have a transaction history for every peer.
+This is in contrast to not distribute a common, full transaction history containing the transactions of every peer.
+For example used in the design of the blockchain of Bitcoins, discussed in section \ref{sect:bitcoin}.
+The reasoning behind the idea to abandon is that a common, full truth
+will become the bottleneck in the system.
+This will limit the amount of interactions that can be processed
+or will limit the participiation of less powerfull machines.
+
+The reason for the limitation is that every interactions will have to be distributed to every peer in the network.
+Every transaction has to be processed by every node at the cost of bandwidth, compute power and storage.
+The cost might be very limited for a single transaction,
+but with greater scale these cost will add up.
+The amount of these three resources is limited and will limit the amount of transactions that can be processed.
+This problem can be seen to affect Bitcoins and has been demonstrated in section \ref{bitcoin-limit-size}.
+
+Every node has its own transaction history and only needs the transaction history of its peers it interacts with.
+The amount of bandwidth, compute power and storage is limited to the minimal needed amount
+that is needed to process only the relevant transactions.
+This should allow low-powered devices to keep participating when they only have a low volume of transactions.
+It also allows higher volumes of transactions in the system as a whole.
