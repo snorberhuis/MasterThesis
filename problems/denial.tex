@@ -5,17 +5,9 @@ This is also a potential attack on MultiChain particulairly because of a bottlen
 
 \subsection{Mutual exclusive code}
 A node can only perform a single operation at a time on its chain.
-Multiple blocks cannot be created in parallel,
-because they need be chained in sequence.
-Only after a block is created will it be possible to calculate the hash and is it possible to use this hash.
 If blocks would be created in parallel, they would point to the same previous block.
 This can be seen as a double spending attack and should be punished as described in section \ref{sect:branch}.
 So safeguards have been implemented to ensure that this never occurs.
-
-This was done by implementing mutual exclusion for code that creates a block.
-Only one block creation operation can be pending at any time.
-The operation can either be requesting to create a new block with another peer or
-processing a incoming request.
 Because only a single operation can be handled at once
 makes a node very vulnerable to a denial of service attack.
 A bottleneck is hereby introduced through design that cannot be scaled.
@@ -46,4 +38,5 @@ The detection can be run in parallel and does not have to enter the mutual exclu
 Any request that is fake will not reach the mutual exclusive part
 and will not drown out the service of valid block creation.
 Effective analyses have to be researched and implemented in future work to harden the system against this attack.
-
+Also priority can be given to blocks initiated by the node itself.
+This will solve the problem of the node not being able to construct blocks he wants to create.
