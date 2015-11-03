@@ -69,7 +69,6 @@ So M can still interact with A and B.
 But when interacting with C he will present his alternate transaction history.
 C will only expose the fraud in the same way as previously.
 
-\subsection{Possibility of attack and likelyhood of detecting fraud}
 This attack can always be done M and is not limited to circumstances.
 Also the attack is not limited and M can try to fool any number of other nodes C.
 As shown in Figure \ref{fig:branch-multiple}.
@@ -90,8 +89,15 @@ The likelihood depends on:
 
 All these properties will influence the chance of C coming across an obscured block.
 
-\subsection{Possible punishment of this attack}
-When the fraud is detected C can only punish M by no longer interacting with him.
+\subsection{Punishment of this attack}
+When the fraud is detected by C, then currently only C can punish M by no longer interacting with him.
 There is currently no way of making it globally know to every node in the network that fraud was committed.
 So only M is punished by C and can continue his abuse of other nodes in the network.
-It is recommended as future work to do so.
+
+A proposal for the future, that is already currently worked on, is to construct an additional network
+where the discovery of the fraud can be announced.
+Proof of the fraud is easily to distribute and cannot be repudiated by the malicious node.
+The proof of the fraud is two blocks containing the same previous hash.
+The proof cannot be repudiated, because it contains two signatures by the malicious node.
+See section \ref{sect:repudiation} for more explanation.
+To increase the likelyhood of detection every node will walk the network to look for fraud.
