@@ -23,10 +23,9 @@ But if one node chooses to not help the other node,
 The node that provided the aid will now receive no benefit and only incur a cost $C$.
 If both nodes choose to not help each other, 
 then they will both receive a penalty $P$, which is higher then the cost of helping each other.
-
+The utility received can be seen in Table \ref{tab:pd-um}.
 This dilemma can be repeated several times with the same nodes and is the Iterated Prisoner's Dilemma.
 Each time both nodes will have to decide if it will help the other node.
-The utility received can be seen in Table \ref{tab:pd-um}.
 
 \begin{table}
 \center
@@ -53,6 +52,7 @@ but more often the peer will be a peer the node has not interacted with before.
 A further complication is that help is one way and can no longer be exchanged.
 This complication excludes the direct opportunity to barter for help 
 or to barter for help in the future\cite{Lai-Incentives}.
+A third complication is that the cooperation node does not incur a penalty for not helping.
 The performance of the tit-for-tat or win-stay, lose-shift strategies
 quickly deteriorate in such a situation.
 
@@ -62,8 +62,8 @@ and incentivized to adopt the malicious behavior themselves.
 Nodes in general will become more reluctant to help nodes\cite{Nowak-PrisonerDilemma}.
 In the end no node will help another and all nodes will receive a penalty.
 This is commonly called the Tragedy of the Commons in the literature \cite{hardin-tragedy}.
-The whole network will actually receive more benefit in total if everyone would corporates.
-But nodes have no way of knowing if the peer they meet are willing to help.
+The whole network will actually receive more benefit in total if everyone would corporate.
+But nodes have no way of knowing if the peer they encounter are willing to help.
 A lack of altruism and selfishness will become a problem 
 and will cause the network to be suspectible to freeriding.
 
@@ -71,13 +71,14 @@ and will cause the network to be suspectible to freeriding.
 
 In the Iterated Prisoner's Dilemma the history of the previous transactions can be used 
 to see if a node helped others in the past.
-The simple strategies, previously mentioned, use a history to improve performance
+The simple strategies, previously mentioned, uses a history to improve performance
 to avoid freeriding.
 But this private history is not effective to achieve high overall utility in distributed systems,
 because the peers are often interacted with for the first time.
 No history is known for these peers.
-A public history of node, containing every previous interaction, is necessary to prevent abuse
+A public history of a node is necessary to prevent abuse
 and is able to achieve high overall utility\cite{Lai-Incentives}.
+This public history contains every previous interaction.
 
 A history can be used to create a currency or a reputation system
 and can be seen as a bookkeeping system.
