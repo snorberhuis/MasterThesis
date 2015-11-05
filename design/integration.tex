@@ -1,0 +1,20 @@
+\section{Integration with Tribler}
+The MultiChain community can be run standalone,
+but its main use is to integrate with Tribler and track up and download for torrents.
+It will replace the current reputation system Bartercast in the future.
+
+For integration a scheduler is implemented between the MultiChain community
+and the community that handles the anonymous download.
+For additional detail on the anonymous download communities see \cite{Plak-anonymous}\cite{ruigrok-anonymous}.
+The scheduler tracks session up and download amounts and schedules a block to be created,
+when the amount of uploaded bytes is above a certain threshold.
+The scheduler currently only tracks traffic of anonymous downloads.
+Bartercast is not yet removed and
+currently MultiChain runs together with Bartercast untill MultiChain fully replaces Bartercast.
+
+The scheduler should be expanded in the future to schedule blocks in a more sophisticated way.
+The functionality of the scheduler is very limited and is missing basic functionality.
+The most important improvement that should be introduced is the punishment of not signing blocks.
+Currently, nodes can deny to have their behaviour tracked.
+The next improvement is to actually determine the level of cooperation a node receives based upon their previous behaviour.
+The actual decision making based upon past behaviour is not part of the thesis.
