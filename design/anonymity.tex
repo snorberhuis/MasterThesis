@@ -1,0 +1,25 @@
+\section{Anonymity}
+Tribler has made effort in providing a way for users to download anonymously\cite{Plak-anonymous}\cite{ruigrok-anonymous}.
+There is anonymity in the contents of what is downloaded, not in how much is downloaded.
+MultiChain obviously cannot break this anonymity to be usuable for anonymous downloads.
+The introduction of anonymity increases the necessity of a good reputation system as more data has to be transferred.
+
+MultiChain only interacts with peers that are directly downloaded from or uploaded to.
+With these peers blocks are created and transferred.
+So anonymity is not broken by MultiChain.
+An attacker could already analyse network traffic between these peers
+and conclude they are downloading and uploading to each other.
+But Tribler does not guarantee anonymity for this.
+So MultiChain does not break anonymity with its interactions with peers.
+
+A block only transcribe the amount of data that has been transferred between peers.
+The content of the actual data is not transcribed.
+The block also does not leak information of how big a single, individual transfer is between peers.
+The amounts are aggregrated over all transfers.
+The blocks also does not break the anonymity.
+Network analysis can already measure the total amount of data transferred.
+So the design and implementation of MultiChain does not break anonymity already guaranteed by Tribler.
+
+But MultiChain does make network analysis easier as measurement points between every node do not have to be introduced.
+The chain of every node can be requested.k
+The chain contains the data of every transaction of a peer and can be used to analyse the network.
