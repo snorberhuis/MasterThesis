@@ -1,0 +1,429 @@
+norberhuis@norberhuis-lp:~/workspace$ ./gs
+INFO:ExperimentRunner:Syncing workspaces on remote head nodes...
+INFO:ExperimentRunner:Great copying success!
+INFO:ExperimentRunner:Running local and remote setup scripts
+INFO:ExperimentRunner:Remote setup successful!
+INFO:ExperimentRunner:Locally running command run_tracker.sh
+INFO:OneShotProcessProtocol:[] OUT: Project root is: /home/norberhuis/workspace
+INFO:OneShotProcessProtocol:[] OUT: NOT activating virtualenv.
+INFO:OneShotProcessProtocol:[] OUT: Running run_tracker.sh
+INFO:OneShotProcessProtocol:[] OUT: TRACKER_CRYPTO not set, using ECCrypto
+INFO:ExperimentRunner:Locally running command experiment_server.py
+INFO:OneShotProcessProtocol:[] OUT: Project root is: /home/norberhuis/workspace
+INFO:OneShotProcessProtocol:[] OUT: NOT activating virtualenv.
+INFO:OneShotProcessProtocol:[] OUT: Running experiment_server.py
+INFO:ExperimentRunner:Starting local and remote instances
+INFO:ExperimentRunner:Locally running command process_guard.py -c multichain_client.py  -c multichain_client.py -c multichain_client.py  -c multichain_client.py -c multichain_client.py  -c multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Project root is: /home/norberhuis/workspace
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: NOT activating virtualenv.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Running process_guard.py -c multichain_client.py  -c multichain_client.py -c multichain_client.py  -c multichain_client.py -c multichain_client.py  -c multichain_client.py
+INFO:OneShotProcessProtocol:[] OUT: No logger.conf found.
+INFO:OneShotProcessProtocol:[] OUT: ExperimentServiceFactory starting on 32988
+INFO:OneShotProcessProtocol:[] OUT: Starting factory <gumby.sync.ExperimentServiceFactory instance at 0x7fe41fc2fea8>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: No logger.conf found.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: No logger.conf found.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: No logger.conf found.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: No logger.conf found.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: No logger.conf found.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: No logger.conf found.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting factory <gumby.sync.ExperimentClientFactory instance at 0x7f9032215710>
+INFO:OneShotProcessProtocol:[] OUT: 1 of 6 expected subscribers connected.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting MultiChain client
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting factory <gumby.sync.ExperimentClientFactory instance at 0x7f08bece7710>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting MultiChain client
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting factory <gumby.sync.ExperimentClientFactory instance at 0x7f240f5f0710>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting MultiChain client
+INFO:OneShotProcessProtocol:[] OUT: 3 of 6 expected subscribers connected.
+INFO:OneShotProcessProtocol:[] OUT: 3 of 6 expected subscribers connected.
+INFO:OneShotProcessProtocol:[] OUT: 3 of 6 expected subscribers connected.
+INFO:OneShotProcessProtocol:[] OUT: 3 of 6 expected subscribers connected.
+INFO:OneShotProcessProtocol:[] OUT: 3 of 6 expected subscribers connected.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting factory <gumby.sync.ExperimentClientFactory instance at 0x7f56835d6710>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting MultiChain client
+INFO:OneShotProcessProtocol:[] OUT: 4 of 6 expected subscribers connected.
+INFO:OneShotProcessProtocol:[] OUT: 4 of 6 expected subscribers connected.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting factory <gumby.sync.ExperimentClientFactory instance at 0x7f6817b67710>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting MultiChain client
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting factory <gumby.sync.ExperimentClientFactory instance at 0x7f4868ca4710>
+INFO:OneShotProcessProtocol:[] OUT: All subscribers connected!
+INFO:OneShotProcessProtocol:[] OUT: 1 of 6 expected subscribers ready.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting MultiChain client
+INFO:OneShotProcessProtocol:[] OUT: All subscribers are ready, pushing data!
+INFO:OneShotProcessProtocol:[] OUT: Pushing a 1836 bytes long json doc.
+INFO:OneShotProcessProtocol:[] OUT: 1 of 6 expected subscribers received the data.
+INFO:OneShotProcessProtocol:[] OUT: Data sent to all subscribers, giving the go signal in 5.000000 secs.
+INFO:OneShotProcessProtocol:[] OUT: Starting the experiment!
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting the experiment in 4.999576 secs.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting the experiment in 4.999508 secs.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting the experiment in 4.999481 secs.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting the experiment in 4.999444 secs.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting the experiment in 4.999301 secs.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: The connection with the experiment server was lost with reason: Connection was closed cleanly.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: The connection with the experiment server was lost with reason: Connection was closed cleanly.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: The connection with the experiment server was lost with reason: Connection was closed cleanly.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Stopping factory <gumby.sync.ExperimentClientFactory instance at 0x7f9032215710>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: The connection with the experiment server was lost with reason: Connection was closed cleanly.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Stopping factory <gumby.sync.ExperimentClientFactory instance at 0x7f6817b67710>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Stopping factory <gumby.sync.ExperimentClientFactory instance at 0x7f240f5f0710>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Stopping factory <gumby.sync.ExperimentClientFactory instance at 0x7f4868ca4710>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: The connection with the experiment server was lost with reason: Connection was closed cleanly.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting the experiment in 4.998318 secs.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Stopping factory <gumby.sync.ExperimentClientFactory instance at 0x7f08bece7710>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: The connection with the experiment server was lost with reason: Connection was closed cleanly.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Stopping factory <gumby.sync.ExperimentClientFactory instance at 0x7f56835d6710>
+INFO:OneShotProcessProtocol:[] OUT: Done, disconnecting all clients.
+INFO:OneShotProcessProtocol:[] OUT: Experiment started, shutting down sync server.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Running scenario from file: /home/norberhuis/workspace/gumby/experiments/multichain/multichain_standalone.scenario
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Running scenario from file: /home/norberhuis/workspace/gumby/experiments/multichain/multichain_standalone.scenario
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Running scenario from file: /home/norberhuis/workspace/gumby/experiments/multichain/multichain_standalone.scenario
+INFO:OneShotProcessProtocol:[] OUT: (TCP Port 32988 Closed)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: CommunityType: MultiChainDelayCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Running scenario from file: /home/norberhuis/workspace/gumby/experiments/multichain/multichain_standalone.scenario
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting MultiChain client with: MultiChainDelayCommunity
+INFO:OneShotProcessProtocol:[] OUT: Stopping factory <gumby.sync.ExperimentServiceFactory instance at 0x7fe41fc2fea8>
+INFO:OneShotProcessProtocol:[] OUT: Main loop terminated.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: CommunityType: MultiChainCommunityCrawler
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting MultiChain client with: MultiChainCommunityCrawler
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Running scenario from file: /home/norberhuis/workspace/gumby/experiments/multichain/multichain_standalone.scenario
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: CommunityType: MultiChainNoResponseCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting MultiChain client with: MultiChainNoResponseCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: starting the Dispersy core...
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: starting the Dispersy core...
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Running scenario from file: /home/norberhuis/workspace/gumby/experiments/multichain/multichain_standalone.scenario
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: starting the Dispersy core...
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: starting the Dispersy core...
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: starting the Dispersy core...
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: starting the Dispersy core...
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update LAN address 145.94.62.198:0 -> 145.94.62.198:12003
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update WAN address 0.0.0.0:0 -> 145.94.62.198:12003
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update LAN address 145.94.62.198:0 -> 145.94.62.198:12005
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update WAN address 0.0.0.0:0 -> 145.94.62.198:12005
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update LAN address 145.94.62.198:0 -> 145.94.62.198:12002
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core ready (database: /home/norberhuis/workspace/output/multichain/3/sqlite/dispersy.db, port:12003)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update WAN address 0.0.0.0:0 -> 145.94.62.198:12002
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core loading DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core ready (database: /home/norberhuis/workspace/output/multichain/5/sqlite/dispersy.db, port:12005)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core loading DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core ready (database: /home/norberhuis/workspace/output/multichain/2/sqlite/dispersy.db, port:12002)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core loading DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolving bootstrap addresses
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolving bootstrap addresses
+INFO:OneShotProcessProtocol:[experiment_server.py] exit code 0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolving bootstrap addresses
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update LAN address 145.94.62.198:0 -> 145.94.62.198:12006
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update WAN address 0.0.0.0:0 -> 145.94.62.198:12006
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core ready (database: /home/norberhuis/workspace/output/multichain/6/sqlite/dispersy.db, port:12006)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core loading DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolving bootstrap addresses
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update LAN address 145.94.62.198:0 -> 145.94.62.198:12004
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update WAN address 0.0.0.0:0 -> 145.94.62.198:12004
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core ready (database: /home/norberhuis/workspace/output/multichain/4/sqlite/dispersy.db, port:12004)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core loading DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update LAN address 145.94.62.198:0 -> 145.94.62.198:12001
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update WAN address 0.0.0.0:0 -> 145.94.62.198:12001
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core ready (database: /home/norberhuis/workspace/output/multichain/1/sqlite/dispersy.db, port:12001)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Dispersy core loading DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7791
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7789
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7788
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7790
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolving bootstrap addresses
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolving bootstrap addresses
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  DiscoveryCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7790
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7791
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7788
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7789
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7790
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7791
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7788
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7789
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7788
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7790
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7789
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7791
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7791
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7789
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7790
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7788
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7788
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7789
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7791
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Resolved norberhuis-lp into 127.0.1.1:7790
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  MultiChainCommunityCrawler
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  MultiChainCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  MultiChainCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  MultiChainDelayCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  MultiChainNoResponseCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: initializing:  MultiChainCommunity
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('23.244.42.170', 7759) (WAN was ('23.244.42.170', 2142), LAN stays ('192.168.1.70', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update connection type unknown -> public
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('23.244.42.170', 7759) (WAN was ('23.244.42.170', 2142), LAN stays ('192.168.1.70', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: removing ('23.244.42.170', 2142) {192.168.1.70:7759 23.244.42.170:2142} in favor of ('23.244.42.170', 7759) {192.168.1.70:7759 23.244.42.170:7759}
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update connection type unknown -> public
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: removing ('23.244.42.170', 2142) {192.168.1.70:7759 23.244.42.170:2142} in favor of ('23.244.42.170', 7759) {192.168.1.70:7759 23.244.42.170:7759}
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Introducing every candidate
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Introducing every candidate
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Introducing every candidate
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Introducing every candidate
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Introducing every candidate
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Introducing every candidate
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('81.108.78.54', 4566) (WAN was ('81.108.78.54', 7759), LAN stays ('192.168.0.10', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update connection type unknown -> public
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update connection type unknown -> public
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('23.244.42.170', 7759) (WAN was ('23.244.42.170', 2142), LAN stays ('192.168.1.70', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('23.244.42.170', 7759) (WAN was ('23.244.42.170', 2142), LAN stays ('192.168.1.70', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('173.165.137.74', 16013) (WAN was ('173.165.137.74', 19446), LAN stays ('10.138.0.167', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: removing ('196.210.106.126', 5209) {192.168.1.200:13554 196.210.106.126:5209} in favor of ('196.210.106.126', 5212) {192.168.1.200:13554 196.210.106.126:5212}
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: removing ('196.210.106.126', 5209) {192.168.1.200:13554 196.210.106.126:5209} in favor of ('196.210.106.126', 5212) {192.168.1.200:13554 196.210.106.126:5212}
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update connection type unknown -> public
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: update connection type unknown -> public
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('62.28.7.30', 36551) (WAN was ('62.28.7.30', 61127), LAN stays ('172.18.180.107', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('62.28.7.30', 36551) (WAN was ('62.28.7.30', 61127), LAN stays ('172.18.180.107', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('23.244.42.170', 7759) (WAN was ('23.244.42.170', 2142), LAN stays ('192.168.1.70', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: drop a 136 byte packet Received introduction_request from my_member [{127.0.0.1:12001}] [dispersy-introduction-request] from {127.0.0.1:12001}
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: drop a 136 byte packet Received introduction_request from my_member [{127.0.0.1:12001}] [dispersy-introduction-request] from {127.0.0.1:12001}
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('24.224.166.46', 7759) (WAN was ('24.224.166.46', 1096), LAN stays ('192.168.1.2', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 1: Requesting Signature for candidate: 2
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Candidate known:<Member 21 5987bf9b3ba5bca278485e2237710434f43f2637>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: signature request: False
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: acquired, sending signature request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Sending signature request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Received signature request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: process request: False
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: acquired to process request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Persisting sr: 2F7bTMxyJU7hZkvaBimT2bYm4bY=
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: released after processing request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Sending signature response.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Signature response received. Modified: True
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Valid 1 signature response(s) received.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Persisting sr: 2F7bTMxyJU7hZkvaBimT2bYm4bY=
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain exclusion: released after receiving signature response.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('62.28.7.30', 36551) (WAN was ('62.28.7.30', 61127), LAN stays ('172.18.180.107', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('62.28.7.30', 44743) (WAN was ('62.28.7.30', 61127), LAN stays ('172.18.180.107', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 2: Requesting Signature for candidate: 1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Candidate known:<Member 16 15112e9f7f66a4742ddc882b524d29d396d43bcb>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: signature request: False
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: acquired, sending signature request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Sending signature request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Received signature request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: process request: False
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: acquired to process request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Persisting sr: h9qnsfRvPlEuwdrn3peaLDoFtlU=
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: released after processing request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Sending signature response.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Signature response received. Modified: True
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Valid 1 signature response(s) received.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Persisting sr: h9qnsfRvPlEuwdrn3peaLDoFtlU=
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain exclusion: released after receiving signature response.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('168.1.104.139', 7759) (WAN was ('23.244.42.170', 7759), LAN stays ('192.168.1.70', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('62.28.7.30', 36551) (WAN was ('62.28.7.30', 61127), LAN stays ('172.18.180.107', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Sending block: 1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Valid 1 block response(s) received.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Persisting sr: h9qnsfRvPlEuwdrn3peaLDoFtlU=
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: down: crawling down.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: down: crawling down.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: 0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Sending block: 0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: 0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Sending block: 0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Valid 1 block response(s) received.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Persisting sr: 2F7bTMxyJU7hZkvaBimT2bYm4bY=
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: down: reached genesis block.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: down: reached genesis block.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Valid 1 block response(s) received.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received already known block
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Sending block: 1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Valid 1 block response(s) received.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received already known block
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 1: Requesting Signature for candidate: 4
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Strict, mode enabled, stopping the reactor
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: Strict, mode enabled, stopping the reactor
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Unhandled Error
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Traceback (most recent call last):
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:   File "/home/norberhuis/workspace/gumby/experiments/multichain/multichain_client.py", line 126, in <module>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:     main(MultiChainClient)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:   File "/home/norberhuis/workspace/gumby/gumby/experiments/dispersyclient.py", line 516, in main
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:     reactor.run()
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:   File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1192, in run
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:     self.mainLoop()
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:   File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1201, in mainLoop
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:     self.runUntilCurrent()
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: --- <exception caught here> ---
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:   File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 824, in runUntilCurrent
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:     call.func(*call.args, **call.kw)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:   File "/home/norberhuis/workspace/gumby/experiments/multichain/multichain_client.py", line 60, in request_signature
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT:     print("Candidate known:%s" % candidate.get_member())
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: exceptions.AttributeError: 'NoneType' object has no attribute 'get_member'
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Main loop terminated.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: Unhandled Error
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: Traceback (most recent call last):
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/home/norberhuis/workspace/gumby/experiments/multichain/multichain_client.py", line 126, in <module>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     main(MultiChainClient)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/home/norberhuis/workspace/gumby/gumby/experiments/dispersyclient.py", line 516, in main
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     reactor.run()
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1192, in run
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     self.mainLoop()
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1201, in mainLoop
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     self.runUntilCurrent()
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: --- <exception caught here> ---
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 824, in runUntilCurrent
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     call.func(*call.args, **call.kw)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/home/norberhuis/workspace/gumby/experiments/multichain/multichain_client.py", line 60, in request_signature
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     print("Candidate known:%s" % candidate.get_member())
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: exceptions.AttributeError: 'NoneType' object has no attribute 'get_member'
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: 
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: Unhandled Error
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: Traceback (most recent call last):
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/home/norberhuis/workspace/gumby/experiments/multichain/multichain_client.py", line 126, in <module>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     main(MultiChainClient)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/home/norberhuis/workspace/gumby/gumby/experiments/dispersyclient.py", line 516, in main
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     reactor.run()
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1192, in run
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     self.mainLoop()
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 1201, in mainLoop
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     self.runUntilCurrent()
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: --- <exception caught here> ---
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/usr/lib/python2.7/dist-packages/twisted/internet/base.py", line 824, in runUntilCurrent
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     call.func(*call.args, **call.kw)
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:   File "/home/norberhuis/workspace/gumby/experiments/multichain/multichain_client.py", line 60, in request_signature
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR:     print("Candidate known:%s" % candidate.get_member())
+INFO:OneShotProcessProtocol:[process_guard.py -c...] ERR: exceptions.AttributeError: 'NoneType' object has no attribute 'get_member'
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 3: Requesting Signature for candidate: 1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Candidate known:<Member 17 15112e9f7f66a4742ddc882b524d29d396d43bcb>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: signature request: False
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Chain Exclusion: acquired, sending signature request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Sending signature request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Timeout received for signature request.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Persisting sr: WvvvHYFMUzg1qFk+eUlglNYmLdA=
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Received invalid request for block: -1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 6: Requesting block: 5 For candidate: 1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Candidate: <Member 8 15112e9f7f66a4742ddc882b524d29d396d43bcb>
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:5
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: estimate someones WAN address is ('209.222.7.237', 7212) (WAN was ('209.222.7.237', 7759), LAN stays ('132.162.71.250', 7759))
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Crawler: Requesting Block:-1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: close command received
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: close command received
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: close command received
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: close command received
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: close command received
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Stopping Dispersy Core..
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Stopping Dispersy Core..
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Stopping Dispersy Core..
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: stopping the Dispersy core...
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: stopping the Dispersy core...
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Stopping Dispersy Core..
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: stopping the Dispersy core...
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: stopping the Dispersy core...
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Stopping Dispersy Core..
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: stopping the Dispersy core...
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Main loop terminated.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Main loop terminated.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Main loop terminated.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Main loop terminated.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Main loop terminated.
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting #00000: multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting #00001: multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting #00002: multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting #00003: multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting #00004: multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Starting #00005: multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Command:
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 exited with status: 1
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Command:
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 exited with status: 0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Command:
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 exited with status: 0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Command:
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 exited with status: 0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Command:
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 exited with status: 0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: Command:
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 multichain_client.py
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: 	 exited with status: 0
+INFO:OneShotProcessProtocol:[process_guard.py -c...] OUT: All child processes have died, exiting
+INFO:OneShotProcessProtocol:[process_guard.py -c multichain_client.py  -c multichain_client.py -c multichain_client.py  -c multichain_client.py -c multichain_client.py  -c multichain_client.py] exit code 0
+INFO:ExperimentRunner:Syncing output data back from head nodes...
+INFO:ExperimentRunner:Great copying success!
+INFO:ExperimentRunner:experiment suceeded
+INFO:root:Killing leftover local sub processes...
+INFO:root:Waiting for 5 subprocess(es) to die...
+INFO:root:Waiting for 1 subprocess(es) to die...
+INFO:root:Waiting for 1 subprocess(es) to die...
+INFO:root:Waiting for 1 subprocess(es) to die...
+INFO:root:Waiting for 1 subprocess(es) to die...
+INFO:root:Waiting for 1 subprocess(es) to die...
+INFO:root:Time out waiting, sending SIGKILL to remaining processes.
+INFO:root:Done.

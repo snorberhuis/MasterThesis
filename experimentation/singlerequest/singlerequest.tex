@@ -1,0 +1,42 @@
+\section{Single block creation}
+In this experiment we try to create a block between two nodes.
+This experiment validates the MultiChain to be able to correctly create a block between nodes in normal circumstances.
+The experiment is locally run using gumby with all nodes running on a single computer.
+Only two instances of MultiChain communities are started and between these two communities a block is created.
+The logging of the both nodes is captured and recorded to verify the results of the experiment.
+
+The output of the logging can be seen in figure \ref{fig:singleblockexperiment}.
+First node 1 sends a signature request to node 2.
+This message is received and a block is persisted.
+The hash of the block is displayed in the output.
+The block is sent back as a signature response to node 1.
+The block is saved by node 1 and has the same hash as shown in the output.
+So the block between node 1 and node 2 is the same and a block was succesfully created.
+The output also shows behaviour of MultiChain
+to correctly exclude any other execution from entering mutual exclusive code.
+The lines related to the mutual exclusion are prepended by "Chain Excl".
+The nodes check if it is possible to enter the mutual exclusive part and correctly acquires
+and releases the mutual exclusion token.
+
+
+\begin{figure}
+    \begin{SaveVerbatim}{VerbCode}
+OUT: 1: Requesting Signature for candidate: 2
+OUT: 1: Chain Excl: signature request: False
+OUT: 1: Chain Excl: acquired, sending signature request.
+OUT: 1: Sending signature request.
+OUT: 2: Received signature request.
+OUT: 2: Chain Excl: process request: False
+OUT: 2: Chain Excl: acquired to process request.
+OUT: 2: Persisting sr: 2F7bTMxyJU7hZkvaBimT2bYm4bY=
+OUT: 2: Chain Excl: released after processing request.
+OUT: 2: Sending signature response.
+OUT: 1: Signature response received. Modified: True
+OUT: 1: Valid 1 signature response(s) received.
+OUT: 1: Persisting sr: 2F7bTMxyJU7hZkvaBimT2bYm4bY=
+OUT: 1: Chain Excl: released after signature response.
+    \end{SaveVerbatim}
+    \setlength{\fboxsep}{5mm}
+    \fbox{\BUseVerbatim{VerbCode}}
+    \caption{Output of single block creation experiment}~\label{fig:singleblockexperiment}
+\end{figure}

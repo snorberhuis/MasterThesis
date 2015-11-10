@@ -35,7 +35,7 @@ These system tests have to be manually validated.
 Several scenario's have been written to validate MultiChain.
 These run MultiChain either in a standalone version or integrated into the TunnelCommunity.
 
-One of these scenario's can be found in Listing \ref{list:exp-gumby-scenario}
+One of these scenario's can be found in Listing \ref{fig:exp-gumby-scenario}
 In this example basic block creation is tested.
 Normal situations are tested,
 but also situations where the signature requests are answered late
@@ -43,7 +43,9 @@ and other requests arrive at the requesting peer at the same time.
 Additionally, signature requests are controlled to not be answered at all.
 During the whole test the crawler is active and scrapes the network for unknown blocks.
 
-\begin{lstlisting}[frame=single,caption=One fo the gumby test scenarios,label=list:exp-gumby-scenario,captionpos=b,float]
+\todo{Center figure \ref{fig:exp-gumby-scenario}}
+\begin{figure}
+    \begin{SaveVerbatim}{VerbCode}
 @0:0 set_master_member 3081a7301006072a8648ce ... 2b51
 @0:0 set_community_class MultiChainNoResponseCommunity {4}
 @0:0 set_community_class MultiChainDelayCommunity {5}
@@ -63,4 +65,9 @@ During the whole test the crawler is active and scrapes the network for unknown 
 @0:110 close
 @0:111 stop_dispersy
 @0:112 stop
-\end{lstlisting}
+    \end{SaveVerbatim}
+    \setlength{\fboxsep}{5mm}
+    \fbox{\BUseVerbatim{VerbCode}}
+    \caption{One fo the gumby test scenarios}
+    \label{fig:exp-gumby-scenario}
+\end{figure}
