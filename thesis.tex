@@ -18,6 +18,20 @@
 \usepackage{listings}
 % To inserts to do's
 \usepackage{todonotes}
+% Boxed verbatim for experiments
+\usepackage{fancyvrb}
+
+\newsavebox{\FVerbBox}
+\newenvironment{FVerbatim}
+ {\VerbatimEnvironment
+  \begin{center}
+  \begin{lrbox}{\FVerbBox}
+  \begin{BVerbatim}}
+ {\end{BVerbatim}
+  \end{lrbox}
+  \fbox{\usebox{\FVerbBox}}
+  \end{center}}
+
 
 \begin{document}
 

@@ -42,10 +42,11 @@ but also situations where the signature requests are answered late
 and other requests arrive at the requesting peer at the same time.
 Additionally, signature requests are controlled to not be answered at all.
 During the whole test the crawler is active and scrapes the network for unknown blocks.
+The notation in the scenario is the time an action has to be taken place,
+the action that has to be taken, and by who if necessary.
 
-\todo{Center figure \ref{fig:exp-gumby-scenario}}
 \begin{figure}
-    \begin{SaveVerbatim}{VerbCode}
+\begin{FVerbatim}[fontsize=\small]
 @0:0 set_master_member 3081a7301006072a8648ce ... 2b51
 @0:0 set_community_class MultiChainNoResponseCommunity {4}
 @0:0 set_community_class MultiChainDelayCommunity {5}
@@ -65,9 +66,7 @@ During the whole test the crawler is active and scrapes the network for unknown 
 @0:110 close
 @0:111 stop_dispersy
 @0:112 stop
-    \end{SaveVerbatim}
-    \setlength{\fboxsep}{5mm}
-    \fbox{\BUseVerbatim{VerbCode}}
+\end{FVerbatim}
     \caption{One fo the gumby test scenarios}
     \label{fig:exp-gumby-scenario}
 \end{figure}

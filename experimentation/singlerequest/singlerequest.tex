@@ -18,25 +18,22 @@ The lines related to the mutual exclusion are prepended by "Chain Excl".
 The nodes check if it is possible to enter the mutual exclusive part and correctly acquires
 and releases the mutual exclusion token.
 
-
 \begin{figure}
-    \begin{SaveVerbatim}{VerbCode}
-OUT: 1: Requesting Signature for candidate: 2
-OUT: 1: Chain Excl: signature request: False
-OUT: 1: Chain Excl: acquired, sending signature request.
-OUT: 1: Sending signature request.
-OUT: 2: Received signature request.
-OUT: 2: Chain Excl: process request: False
-OUT: 2: Chain Excl: acquired to process request.
-OUT: 2: Persisting sr: 2F7bTMxyJU7hZkvaBimT2bYm4bY=
-OUT: 2: Chain Excl: released after processing request.
-OUT: 2: Sending signature response.
-OUT: 1: Signature response received. Modified: True
-OUT: 1: Valid 1 signature response(s) received.
-OUT: 1: Persisting sr: 2F7bTMxyJU7hZkvaBimT2bYm4bY=
-OUT: 1: Chain Excl: released after signature response.
-    \end{SaveVerbatim}
-    \setlength{\fboxsep}{5mm}
-    \fbox{\BUseVerbatim{VerbCode}}
+\begin{FVerbatim}[fontsize=\small]
+1: Requesting Signature for candidate: 2
+1: Chain Exclusion: signature request: False
+1: Chain Exclusion: acquired, sending signature request.
+1: Sending signature request.
+2: Received signature request.
+2: Chain Exclusion: process request: False
+2: Chain Exclusion: acquired to process request.
+2: Persisting sr: 2F7bTMxyJU7hZkvaBimT2bYm4bY=
+2: Chain Exclusion: released after processing request.
+2: Sending signature response.
+1: Signature response received. Modified: True
+1: Valid 1 signature response(s) received.
+1: Persisting sr: 2F7bTMxyJU7hZkvaBimT2bYm4bY=
+1: Chain exclusion: released received signature response.
+\end{FVerbatim}
     \caption{Output of single block creation experiment}~\label{fig:singleblockexperiment}
 \end{figure}
