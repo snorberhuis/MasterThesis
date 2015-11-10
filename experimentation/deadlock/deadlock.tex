@@ -8,13 +8,13 @@ This situation was also encountered during experimentation
 and the experiment shows MultiChain correctly recovering from this situation.
 
 \subsection{Forced deadlock}
-In this experiment a MultiChain node tries to senst a request to a different node to create a block.
-The other node is specifically configured for the purpose of the experiment
+In this experiment a MultiChain node 1 tries to send a request to node 2 to create a block.
+Node 2 is specifically configured for the purpose of the experiment
 to ignore and drop all requests.
-The first node now should wait for the response of the other node for a specific time.
-During the time that the first node is waiting a different request is sent from a normal node 3 to node 1.
-This request will be dropped by the first node,
-as it cannot process while node 1 has an outstanding request.
+Node 1 now should wait for the response of the other node for a specific time.
+During the time that node 1 is waiting a different request is sent from a normal node 3 to node 1.
+This request will be dropped by node 1,
+as it cannot process any incoming requests while node 1 has an outstanding request.
 Node 1 and node 2 should timeout and continue operations.
 After that node 2 will retransmit a request to node 1 and this should be completed correctly.
 
