@@ -1,16 +1,42 @@
 \chapter{Design and implementation}
-This chapter contains the design of MultiChain and how it was implemented.
+This chapter presents the design of MultiChain and how it was implemented.
+We will explain how MultiChain adresses the freeriding problem.
 We will describe how MultiChain is part of Tribler and its main pillar of design.
 The contents of blocks are presented and how they form chains in MultiChain.
 We will cover the creation of blocks and the multiple implications of the chosen design.
 Additional pheripheral systems that work with MultiChain are also explained.
 
 \input{design/community.tex}
-\input{design/multiple-histories.tex}
-\input{design/chains.tex}
+
+\section{Datastructure design}
+In this section we wil describe how the chains inside MultiChain are designed.
+We will first describe the contents of a single block.
+Next, we will explain how blocks are chained together for a single peer.
+These chains are intertwined and we will clarify this entanglement.
+Finally, we will describe how the blocks provide security against tampering.
+
+\input{design/bookkeeping.tex}
+\input{design/scalable-reciprocity.tex}
+\input{design/entanglement.tex}
+\input{design/signatures.tex}
+
+\section{Block creation protocol}
+\label{design:block_creation}
+In this section we will explain how blocks can be created with a simple design
+that will limit and expose freeriding.
+Afterwards we will explain a fundamental problem with creating blocks in an asynchronous system.
+This problem is present in the simple design
+and we will describe how MultiChain deals with this problem.
+
 \input{design/exchanging_blocks.tex}
+\input{design/limitingfreeriding.tex}
+\input{design/synchronizationproblem.tex}
+
 \input{design/mutual_exclusion.tex}
+
 \input{design/persistence.tex}
+
+\input{design/blocksize.tex}
 
 \input{design/integration.tex}
 \input{design/crawler.tex}

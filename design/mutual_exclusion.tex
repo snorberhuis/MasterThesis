@@ -1,6 +1,6 @@
 \section{Single operations on the chain}
 \label{sect:deadlock}
-Inside a chain only a single block of a peer is allowed to point to a previous block.
+In a chain only a single block of a peer is allowed to point to a previous block.
 A peer cannot have multiple blocks belonging to him all pointing to the same previous block.
 As this is a potential attack as described in section \ref{sect:branch}.
 The chain of a peer can only be moved forward by a single block at any time.
@@ -15,7 +15,6 @@ The community will decline this request if the token is not available
 returns execution to other parts of Tribler.
 The token can be unavailable while waiting on another peer in the network to finish responding to a signature request.
 
-\subsection{Circular dependency on the token across peers}
 When a MultiChain peer has a pending signature request,
 then the peer itself will not respond to incoming signature requests from other peers.
 These peers themselves will also not respond as they have a pending signature request.

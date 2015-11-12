@@ -1,181 +1,59 @@
-\section{Block creation}
-\label{design:block_creation}
-In this section we will explain how blocks can be created in a simple way that will limit and expose freeriding.
-Afterwards we will explain a fundamental problem with creating blocks in an asynchronous system
-and how MultiChain deals with this problem.
-
-\subsection{Exchanging signatures protocol}
+\subsection{Exchanging signatures}
 Two peers in a network will create their blocks together without having to rely on a third party.
 Between the peers one is uploading to the other.
 The uploader is traditionally called the seeder in BitTorrent and the receiver of this data the downloader\cite{Cohen-bittorrent}.
 The seeder will initiate the block creation.
 So the seeder can decide how altruistic he wants to be towards the downloader regarding his collaboration.
 
-The seeder, Alice, will create a packet that will be sent to the downloader, Bob.
-Alice will add the data uploaded and downloaded data between the peers
+The seeder, A, will create a packet that will be sent to the downloader, B.
+A will add to this packet the data uploaded and downloaded data between the peers
 that has not yet been added to the MultiChain.
-He will add these amounts to his total uploaded and downloaded data and add these total amounts aswell to the packet.
-Finally he adds the public keys of both peers and his own hash pointer to the packet.
+She will add these amounts to his total uploaded and downloaded data
+and add these total amounts aswell to the packet.
+Finally, he adds the public keys of both peers and his own hash pointer to the packet.
 This packet is signed using his private key and sent to the downloader.
+The data that A adds can be seen in Figure \ref{fig:packet-creation}.
 
-Bob will receive this packet and check if the amounts are correct, if the signature is correct,
-and if Alice has not used the previous hash before.
+\begin{figure}
+	\centerline{\includegraphics[scale=0.3]{design/figs/packet_creation.eps}}
+	\caption{Data added by peer A and B for a new block.}
+	\label{fig:packet-creation}
+\end{figure}
+
+B will receive this packet and check if the amounts are correct, if the signature is correct,
+and if A has not used the previous hash before.
 If this is all correct,
-then Bob will add the amounts of uploaded and downloaded data to his own total amounts.
-The data contained in the previous packet, the total amounts of Bob and the hash of the previous block is
+then B will add the amounts of uploaded and downloaded data to his own total amounts.
+The data contained in the previous packet, the total amounts of B and the hash of the previous block is
 inserted into a new packet.
-This packet is signed by the private key of Bob and sent back to Alice.
+This packet is signed by the private key of B and sent back to A.
+The data that B adds can be seen in Figure \ref{fig:packet-creation}.
 
 Both parties now have the data of the block and can add this to their chain and continue forward.
-Alice does this upon recieval of the block.
-Bob does this immediatly after sending the return packet to Alice.
+A does this upon receival of the block.
+B does this immediatly after sending the return packet to A.
 At this point a new block is created.
 A sequence diagram can be seen in Figure \ref{fig:exchange-new-sequence}.
 
 \begin{figure}[tbp]
 	\centerline{\includegraphics[scale=0.3]{design/figs/exchange_new.eps}}
-	\caption{Exchanging signatures for block creation.}
+	\caption{Exchanging data for block creation.}
 	\label{fig:exchange-new-sequence}
 \end{figure}
 
-Alice can only make valid claims about and have authority over the interaction between her and Bob.
-So Alice does not need to sign the data containing the previous hash and the total up and down of Bob.
-Alice can only verify the data of Bob inside the chain of Bob.
-The parts of what is signed by Alice and what is signed by Bob can be seen in Figure \ref{fig:payload-signature-new}.
-
-\begin{figure}
-	\centerline{\includegraphics[scale=0.3]{design/figs/signature_new.eps}}
-	\caption{Payload and signature using new functionality.}
-	\label{fig:payload-signature-new}
-\end{figure}
-
-\subsection{Limiting and exposing free-riding}
-The window of potential freeriding is chosen by the willingness of seeders to be altruistic.
-The creation of blocks is driven by seeders,
-downloaders cannot postpone creation of blocks and continue freeriding.
-If downloaders do not participate in block creation,
-then uploading to them will stop.
-
-A created block will force a downloader to expose his own freeloading,
-because he will have to add his own total amount of uploaded data and total amount of downloaded data.
-If he has not contributed his share and only downloaded,
-then his total downloaded data will be much higher then his total up.
-His freeloading is exposed as a result.
-
-Downloaders cannot repudiate downloading.
-For they granted their signature to a block containing information about the amount that they downloaded.
-A freerider cannot try to hide his freeriding afterwards.
-
-\subsection{Synchronizing block creation}
-This simple design does have one major problem.
-It can never be decided in an asynchronous communication model
-if the other node will ever respond and when it will respond.
-The proposed block by $A$ only needs an interaction of $B$ to be finished
-and $B$ can finish this transaction at anytime that he decides upon.
-
-But the future block contains an immutable hash pointer
-to the previous block in the chain of node $A$.
-So while this transaction for a potential block is outstanding,
-node $A$ cannot interact with any other node $C$ to create a different block.
-If it would, then if $B$ could ultimately respond and a branch with different blocks
-would be created for the chain of $A$.
-This simple design introduces therefor an external response dependency problem.
-
-The to-be-designed system has to be fault tolerant to 
-common problems in a challenged network, such as node failure.
-A second design goal is to be able to process transactions quickly and on a large scale.
-These design goals prevent the adaption of a simple design that will halt until node $B$ responds.
-This design would also result in a deadlock situation, as explained in section \ref{sect:deadlock}
-There are several possible designs that are a solution to this problem.
-
-\subsubsection{Fair exchange signature scheme}
-A fair exchange signature scheme (FESS) allows two players to exchange digital signatures in a fair way.
-Fair constitutes that no player can take advantage of the other.
-Either both players receive each others signature or no player receives the other's signature.
-It is infeasible for a node to acquire a signature without giving up their own signature.\cite{asokan-fairexchange}.
-A FESS could be implement for the fair creation of the block.
-
-But currently all known FESSs use a trusted third party (TTP) at some point\cite{asokan-fairexchange}.
-Some schemes exist that are optimistic and will only need a TTP to resolve conflicts.
-But any TTP will not adhere to the Tribler philosphy 
-of being a truly fully distributed peer-to-peer system.
-The TTP will introduce a single point of trust and a scalability bottleneck.
-
-\subsubsection{Reverse repairing of chain}
-Another potential solution would be to rework part of the chain.
-The creation of block could be deemed to have failed by node $A$.
-If at a later point the block is still created by $B$,
-then this situation can be handled by node $A$ in two possible ways.
-
-The block could be reworked back into the chain.
-This would require every hash pointer to be updated afterwards.
-If these hash pointers are modified, then the signatures are invalid.
-Every signature would have to be renewed and requested at every node.
-This can become unscalable if nodes needs to rework many blocks and can clog the system.
-These nodes can possible no longer respond and would result in new invalid blocks.
-
-\subsubsection{Half signed blocks}
-\label{des:halfsigned}
-The chosen solution is to keep it simple and allow for inconsistencies between the chains of $A$ and $B$.
-It will be shown that if an inconsistency does occur this is in favor of $A$.
-
-When node $A$ sends a signature request to $B$,
-then $A$ will be optimistic and will wait for $B$ for a timeout period.
-During this time $A$ will not interact with another node $C$.
-But if $A$ does not have to interact with node $C$ after the timeout period,
-then $A$ will still accept a response of $B$.
-There are three potential scenario's of what will happen to the message.
-
-\begin{enumerate}
-\item
-In the normal situation node $B$ will respond in time to the message.
-$B$ will send back the message
-and both $A$ and $B$ will have added the same block in their own chains.
-This situation also occurs if $A$ has timed out,
-but has not yet interacted with another node $C$.
-
-\item
-Node $B$ can be malicious or simply have failed and $B$ will never respond.
-Node $A$ will timeout, add a half signed block to the chain and can continue interacting with other nodes $C$.
-$A$ will have to decide how to react upon $B$ not responding.
-A possibility would be to stop helping $B$.
-
-\item
-The response of $B$ can also be late.
-After $B$ has received the request by $A$,
-$B$ will create a block and adds this block to his chain.
-$B$ will send his response to $A$,
-but the message will arrive too late at $A$.
-$A$ will ignore the message and not add the block to his chain,
-\end{enumerate}
-
-The last scenario is the most complex and requires additional clarification.
-$A$ initiates the signature request and therefor the block will be favourable for his reputation.
-Because this is a reputation system, this inconsistency is an allowable comprimise.
-In a currency system, this comprimise would not be allowable.
-
-$A$ can not later append the late block from $B$,
-because the previous hash of $A$ will be used in a new block describing an interaction with $C$.
-The late block demonstrates 
-
-The design is scalable as it will not block too long waiting for a failed node 
-and will try to interact as fast as possible with other nodes.
-A small grace period can be used to allow node $B$ to have enough time to respond in a normal manner.
-No trusted third party is introduced so a distributed design is achieved.
-
-\subsection{Adding append functionality}
+\subsubsection{Integrating with Dispersy}
 Within Dispersy functionality was already build to create a message, sign the message
 and request multiple nodes to also provide their signature on this message.
 This existing functionality could be used by MultiChain to exchange signatures
-between Alice and Bob for the creating of a new block.
+between A and B for the creating of a new block.
 
-Alice would initiate a message, insert her data into this message, sign the message, and send this message to Bob.
-The functionality would allow Bob to accept the message and provide his signature or
+A would initiate a message, insert her data into this message, sign the message, and send this message to B.
+The functionality would allow B to accept the message and provide his signature or
 modify the message and provide his signature.
-Only Bob knows the hash of his head node, and the total up and total download metrics.
-So Bob will always modify the message and insert his own data in the message.
-But this would invalidate the signature of Alice,
-because the signature of Alice was also placed on the empty part of the message where the data of Bob is inserted.
+Only B knows the hash of his head node, and the total up and total download metrics.
+So B will always modify the message and insert his own data in the message.
+But this would invalidate the signature of A,
+because the signature of A was also placed on the empty part of the message where the data of B is inserted.
 The contents of the message and who signs what can be seen in Figure \ref{fig:payload-signature-old}.
 
 \begin{figure}
@@ -184,46 +62,16 @@ The contents of the message and who signs what can be seen in Figure \ref{fig:pa
 	\label{fig:payload-signature-old}
 \end{figure}
 
-After Bob returns the message,
-Alice would have to resign the message.
-But Bob also needs this valid signature from Alice before he can add the block to his own chain.
-So Alice would need to send a third message to with the new, valid signature back to Bob.
+After B returns the message,
+A would have to resign the message.
+But B also needs this valid signature from A before he can add the block to his own chain.
+So A would need to send a third message to with the new, valid signature back to B.
 A sequence diagram can be seen in Figure \ref{fig:exchange-old-sequence} of how it would work in Dispersy.
 Functionality was added to Dispersy that allows to append data in a signature request.
 This allows the full signature exchange to be achieved within two messages.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/exchange_old.eps}}
-	\caption{Exchanging signatures using existing functionality.}
+	\caption{Exchanging data for block creation using old functionality.}
 	\label{fig:exchange-old-sequence}
 \end{figure}
-
-\subsection{Block size}
-The size of a block is important as it determines how fast the total size of a chain will grow
-and the utilization of the bandwidth of network to transfer blocks.
-The size is dependend on the size of the parts of the blocks
-and can be determined by the choice of cryptographic primitives.
-Hashing function turn a variable message string to a fixed size message digest\cite{VanderLubbe-crypto}.
-The fixed size is dependend on the choice of hashing function.
-Similair cryptographic signing functions deterimine the size of a signature.
-An overview of the size of the parts of a block can be seen in Table: \ref{table:block_size}.
-The total size of a block is 240 bytes.
-
-\begin{table}[]
-\begin{adjustwidth}{-.5in}{-.5in}
-\begin{center}
-\begin{tabular}{lll||lll}
-Name              & Type             & Bytes                   & Name              & Type             & Bytes \\ \hline
-Uploaded MBytes   & unsigned integer & 4                       & Downloaded MBytes & unsigned integer & 4     \\
-Total Up A        & unsigned integer & 8                       & Total Up B        & unsigned integer & 8     \\
-Total Down A      & unsigned integer & 8                       & Total Down B      & unsigned integer & 8     \\
-Prior Record A    & SHA1 digest      & 20                      & Prior Record B    & SHA1 digest      & 20    \\
-Sequence Number A & signed integer   & 4                       & Sequence Number B & signed integer   & 4     \\
-Public Key A      & EC binary format & 64                      & Public Key B      & EC binary format & 64    \\
-Signature A       & EC signature     & 40                      & Signature B       & EC signature     & 40
-\end{tabular}
-\caption{Block size}
-\label{table:block_size}
-\end{center}
-\end{adjustwidth}
-\end{table}
