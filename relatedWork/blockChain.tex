@@ -33,12 +33,12 @@ The previous transaction is a transaction of the same bitcoin.
 The ownership of the bitcoin by the current owner can be verified
 by verifying the whole chain of ownership of the bitcoin.
 A transaction is usually shortend to Tx in Bitcoin related work and is used in images in this report.
-In Figure \ref{fig:transaction-chain} a diagram can be seen of how transactions are chained.
+In Figure \ref{fig:bt-transaction-chain} a diagram can be seen of how transactions are chained.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{relatedWork/figs/transactions.eps}}
 	\caption{Transfer of ownership of bitcoin in a transaction chain.}
-	\label{fig:transaction-chain}
+	\label{fig:bt-transaction-chain}
 \end{figure}
 
 \subsection{Blockchain}
@@ -46,12 +46,13 @@ Multiple transactions are aggregrated into a single block.
 Every block contains the hash of the previous block.
 This creates the block chain.
 Transaction chains span across several blocks inside the block chain.
-A diagram can be seen in Figure \ref{fig:block-chain} of the block chain.
+A diagram can be seen in \todo{Fix direction of arrows}Figure \ref{fig:bt-block-chain} of the block chain.
+
 
 \begin{figure}
         \centerline{\includegraphics[scale=0.3]{relatedWork/figs/blocks.eps}}
         \caption{Block chain}
-        \label{fig:block-chain}
+        \label{fig:bt-block-chain}
 \end{figure}
 
 These blocks in the block chain are created by nodes in the network, so called miners.
