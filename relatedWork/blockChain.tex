@@ -88,18 +88,18 @@ and the time before a new block is found,
 which in turn is how fast transactions are processed.
 The amount of zeros can be seen as the difficulty of finding the a block.
 More zeros decreases the likelyhood a nonce will be valid.
-The growth of the estimated hash rate can be seen in Figure \ref{fig:hash-speed},
-and the difficulty in Figure \ref{fig:hash-difficulty}.
+The growth of the estimated hash rate can be seen in Figure \ref{fig:hash-speed}\cite{Blockchain.info-hashspeed},
+and the difficulty in Figure \ref{fig:hash-difficulty}\cite{Blockchain.info-difficulty}.
 
-\begin{figure}
-        \centerline{\includegraphics[scale=0.6]{relatedWork/figs/hashspeed/hashspeed.eps}}
-        \caption{Estimated amount of hashes calculated per second in the Bitcoin network.\cite{Blockchain.info-hashspeed}}
+\begin{figure}[h]
+        \centerline{\includegraphics[scale=0.5]{relatedWork/figs/hashspeed/hashspeed.eps}}
+        \caption{Estimated amount of hashes per second.}
 	\label{fig:hash-speed}
 \end{figure}
 
 \begin{figure}
-        \centerline{\includegraphics[scale=0.6]{relatedWork/figs/difficulty/difficulty.eps}}
-	\caption{Amount of zeros needed in the hash.\cite{Blockchain.info-difficulty}}
+        \centerline{\includegraphics[scale=0.5]{relatedWork/figs/difficulty/difficulty.eps}}
+	\caption{The difficulty of finding blocks.}
 	\label{fig:hash-difficulty}
 \end{figure}
 
@@ -194,9 +194,9 @@ But the time between blocks is a balance between the orphan rate of blocks
 and how fast transactions are committed to the blockchain.
 
 These two factors currently result in a theoretical limit of 7 transactions per second.
-\todo{Source?}
+This can be calculated by dividing the maximum blocksize with the minimal size of a transaction.
 The performance of Bitcoin can be changed by changing the settings of these two factors.
-This limits the usability of Bitcoins heavily.
+This limits the global usage of Bitcoins.
 In comparison Visanet, that handles transactions under Visa, is able to process 54.000 transactions per second.
 To be a real replacement of the current traditional currencies
 a higher number of transactions per second have to be achieved by a digital currency.

@@ -12,6 +12,6 @@ plot(dateFormatted, value,'r');
 hold on;
 datetick('x','yyyy-mm')
 xlabel('Date')
-ylabel('Difficulty')
+ylabel('Amount of zeros')
 
 
