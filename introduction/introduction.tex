@@ -3,11 +3,18 @@
 Tribler is a peer-to-peer file sharing program developed by the Delft University of Technology for research purposes.
 Tribler expands the BitTorrent protocol and has added multiple improvements on this protocol.
 The main focus of Tribler is to make security and privacy the default for Internet users
-and impossible to shut these users down.
+and make it impossible to shut the infrastructure of the Internet down.
 A fully distributed program, not relying on any central component, is needed to achieve this.
 Tribler has been designed and build using this methodology\cite{Pouwelse-tribler}\cite{Bakker-tribler}.
 A distributed network requires collaboration of it peers to achieve success.
+A schreenshot of Tribler can be seen in figure \ref{fig:tribler-schreenshot}
 This master thesis was conducted as part of the research mission to improve the collaboration within Tribler.
+
+\begin{figure}
+	\centerline{\includegraphics[scale=0.3]{introduction/figs/tribler-screenshot.png}}
+	\caption{Schreenshot of Tribler v6.4.3.}
+	\label{fig:tribler-schreenshot}
+\end{figure}
 
 \section{Tribler}
 In peer-to-peer file sharing a node called a seeder uploads parts
@@ -31,7 +38,8 @@ but this is unlikely\cite{Lai-Incentives}.
 If everyone contributes, files become more available and are downloaded at higher speed.
 This claim is supported by measurements taken in private communities
 \cite{meulpolder-privatecommunities}.
-In private communities high seeding ratio's are enforced by a third party.
+In private communities high seeding ratio's are enforced by a tracker.
+This tracker can be seen as a central, third party.
 Both high availability and high download speeds result in a higher utility for the downloaders.
 But currently freeriding in these networks takes places in high quantities\cite{Adar-Freeriding},
 The BitTorrent Tit-for-Tat protocol is not enough to stop abuse\cite{Pouwelse-tribler}.
@@ -51,13 +59,11 @@ The total cost of bandwidth per file is increased,
 but also the number of nodes helping a single node downloading a file increases.
 This in turn increases the necessity of an incentive system to reward collaboration.
 
-\subsection{Dispersy}
 Dispersy is middleware for data dissemination in a network.
 Dispersy is used heavily within Tribler and maintained by the Tribler organisation.
 MultiChain is build upon Dispersy.
-Dispersy can be used to exchange data between two specific nodes \cite{zeilemaker-dispersy}
-and is used to exchange messages between nodes implementing MultiChain.
-An improvement was added to Dispersy during the thesis.
+Dispersy can be used to exchange data between two specific nodes\cite{zeilemaker-dispersy}.
+Improvements were added to Dispersy during the thesis.
 
 \section{Document structure}
 In chapter 1 we give an overview of what Tribler is and the organization that develops Tribler.
