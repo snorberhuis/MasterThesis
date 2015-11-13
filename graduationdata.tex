@@ -22,7 +22,6 @@ MultiChain: an incremental step in a new distributed data structure\\
 
 \noindent \textbf{Graduation Committee}\\
 \begin{tabular}{ll}
-%TODO: #37 GRADUATION COMMITTEE & Delft University of Technology \\
 % The order of listing the names: Graduation prof, supervisor(s), others ordered by title + alphabetical
 %examples:
 %prof. dr. ir. H. J. Sips (chair) & Delft University of Technology \\
@@ -32,29 +31,8 @@ dr. ir. J. A. Pouwelse        & Delft University of Technology \\
 dr. ir. Z. Erkin              & Delft University of Technology \\
 \end{tabular}
 
-\begin{abstract} %de abstract bevat alleen een korte samenvatting van de inhoud van het onderzoek
-Peer-to-peer networks are often large, collaborative networks where peers can join openly.
-In these networks peers help other peers often in singular interactions and without direct reciprocity.
-Peers can abuse and freeride.
-The network without measures can fall into a tragedy of the commons
-where no one helps another and only takes advantage of the generousity of peers.
-Only if the reputation of a peer is publicly available at scale and tamper proof can a peer-to-peer network
-escape the problems of freeriding and attain high utility for all participants.
+\input{abstract.tex}
 
-This thesis focuses on creating the first step for a tamper proof reputation system within Tribler.
-Tribler is a peer-to-peer BitTorrent system developed at the Delft University of Technology.
-This first step, made by this thesis, is to design and implement a proof-of-concept bookkeeping system MultiChain.
-MultiChain tracks the upload and download amounts of peers to eliminate free riding.
-This bookkeeping system has to be scalable to be able to process enough transactions.
-
-A new design of a distributed data structure that can be used as a ledger is introduced by this thesis.
-This first step with MultiChain is already more resiliant to tampering than previous work.
-The design of MultiChain is to have a chain of blocks for every peer.
-A block contains a transaction shared between a peer.
-This makes both chains of the peers intertwined and entangled between peers.
-Abandoning a global ledger leads to a scalable data structure.
-The implementation of the design is tested and experimented with within this thesis to validate it to correctly work.
-Furthermore, a number of weak points are discussed that are future steps in creating a tamper proof reputation system.
 
 \end{abstract}
 

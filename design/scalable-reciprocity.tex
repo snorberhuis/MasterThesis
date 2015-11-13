@@ -1,12 +1,14 @@
 \subsection{Scalable reciprocity}
 \label{sect:scalable-reciprocity}
 One of the main pillars of the design is to have a transaction history for every peer.
-This is in contrast to not distribute a common, full transaction history containing the transactions of every peer.
+This is in contrast to not distribute a global, full transaction history containing the transactions of every peer.
 For example, used in the design of the blockchain of Bitcoins, discussed in section \ref{sect:bitcoin}.
-The reasoning behind the idea to abandon is that a common, full truth
+The reasoning behind the idea to abandon this type of design is that a common, full truth
 will become the bottleneck in the system.
 This will limit the amount of interactions that can be processed
 or will limit the participiation of less powerfull machines.
+Commonly, this way of design is used to prevent double spending.
+We believe that it is possible and much cheaper to detect and punish double spending than prevent double spending.
 
 The reason for the limitation is that every interactions will have to be distributed to every peer in the network.
 Every transaction has to be processed by every node at the cost of bandwidth, compute power and storage.
