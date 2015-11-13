@@ -1,32 +1,41 @@
 \section{Software engineering tests}
 MultiChain is tested in several ways to verify it is correctly working
 following standard software engineering practices.
-These tests work similair to other tests used to test Tribler.
+The enforcement of these types of tests is a new policy within Tribler.
 
-Tribler uses Python unit tests  to validate small components of code.
+\subsection{Unit Tests \& Integration tests}
+Tribler uses Python unit tests to validate small components of code.
 The tests can be run locally and
 are automatically run on a Jenkins build server\cite{jenkins}\cite{jenkins-tribler}.
-Unit tests are added to increase stability of MultiChain.
+Unit tests were added to increase stability of MultiChain.
+Integration tests were added to test multiple components of MultiChains working integrated together.
+
 Tribler does prove to be hard to test using unit tests.
 This is due to high coupling of code within Tribler.
 But mocking of classes helped in testing difficult to test code.
 The separate unit tests for the conversion, payload and database were the first of it types inside Tribler.
-\todo{Update the table}
+Also Dispersy was expanded to introduce new functionality to make it easier to create unit tests for communities in the future.
 An overview of the coverage can be seen in Table \ref{tab:tests}
+In the end a high level of testing has been achieved, especially in comparison to the rest of Tribler.
+The total test coverage of Tribler was only 16\% at time of writing\cite{jenkins-tribler}.
+A decision using code coverage tools was made that the untested code has little value to further test in comparison to the work required.
+The code was tested in gumby scenario's.
 
 \begin{table}
 \centering
 \begin{tabular}{l|ll|ll}
-Filename   & LOC & \%    & Conditionals & \%    \\ \hline
-Community  & 187 & 86\%  & 37           & 62\%  \\
-Conversion & 60  & 95\%  & 6            & 50\%  \\
-Database   & 113 & 87\%  & 10           & 50\%  \\
-Payload    & 89  & 100\% & 2            & 100\% \\ \hline
-Total      & 672 &       & 47           &
+Filename   & LOC & \% covered   & Conditionals & \% covered    \\ \hline
+Community  & 187 & 81\%         & 37           & 95\%  \\
+Conversion & 60  & 100\%        & 6            & 100\%  \\
+Database   & 100 & 100\%        & 6            & 84\%  \\
+Payload    & 89  & 100\%        & 2            & 100\% \\ \hline
+Total      & 672 &              & 47           &
 \end{tabular}
 \caption{Unit tests coverage of MultiChain.}
 \label{tab:tests}
 \end{table}
+
+\subsection{Gumby}
 
 Next to that, Tribler uses a separated developed test runner Gumby.
 Gumby can start multiple instances of Tribler and follow test scenario's.
@@ -44,6 +53,7 @@ Additionally, signature requests are controlled to not be answered at all.
 During the whole test the crawler is active and scrapes the network for unknown blocks.
 The notation in the scenario is the time an action has to be taken place,
 the action that has to be taken, and by who if necessary.
+The "@0:" can be ignored.
 
 \begin{figure}
 \begin{FVerbatim}[fontsize=\small]
