@@ -2,31 +2,31 @@
 Peer-to-peer networks are often large, collaborative networks where peers can join openly.
 The essence of a collaborative, distributed system is that every node performs tasks for other nodes.
 The peers help often in singular interactions and without direct reciprocity.
-This allows malicious peers to abuse and freeride public goods.
-The network without measures can fall into a tragedy of the commons
-where no one helps another and only takes advantage of the generousity of peers.
+This allows malicious peers to abuse and free ride public goods.
+The network without countermeasures can fall into a tragedy of the commons
+where no one helps another and everyone takes advantage of the generosity of peers.
 Only if the reputation of a peer is publicly available at scale and peers trust this reputation
-can the network escape the problems of freeriding and attain high utility for all participants.
+can the network escape the problems of free riding and attain high utility for all participants.
 
 This thesis focuses on designing and implementing the first step of a tamper proof reputation system within Tribler.
 Tribler is a peer-to-peer BitTorrent system developed at the Delft University of Technology.
 This first step, made by this thesis, is to create MultiChain, a proof-of-concept bookkeeping system.
 MultiChain tracks the upload and download amounts of peers to eliminate free riding.
 MultiChain is cryptographically protected and validated at a basic level.
-The bookkeeping system has to be scalable to be able process enough transactions and be publicily available.
+The bookkeeping system has to be scalable to be publicly available and be able process enough transactions.
 The system has to work in an asynchronous network.
 
 A new design of a distributed data structure that can be used as a ledger is introduced by this thesis.
-This first step with MultiChain is already more resiliant to tampering than previous work.
+This first step with MultiChain is already more resilient to tampering than previous work.
 The design of MultiChain is to have a chain of blocks for every peer as a ledger.
 A block contains a transaction shared between a peer.
-This makes both chains of the peers intertwined and entangled between peers.
+This makes both chains of the peers intertwined and entangled at a shared block.
 The proposed design abandons the typical global, full ledger.
-
 The protocol of creating these blocks between peers is described.
 The problems faced by MultiChain in an asynchronous network are explained.
 The thesis proposes how the design can overcome these problems
-by only allowing single operations at any time to be performed on the block
+by only allowing atomic operations to be performed on the chain
 and to introduce unfinished blocks in the chain.
-The implementation of the design is tested and experimented with within this thesis to validate it to correctly work.
+
+The implementation of the design is tested and experimented with within this thesis to validate it to work correctly.
 Furthermore, a number of weak points are discussed that are future steps in creating a tamper proof reputation system.
