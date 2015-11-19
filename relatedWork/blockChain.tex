@@ -1,4 +1,4 @@
-\section{Blockchain}
+\section{Block chain}
 \label{sect:bitcoin}
 Bitcoin is a digital currency that uses a interaction history
 to keep track of transactions made between nodes.
@@ -41,7 +41,7 @@ In Figure \ref{fig:bt-transaction-chain} a diagram can be seen of how transactio
 	\label{fig:bt-transaction-chain}
 \end{figure}
 
-\subsection{Blockchain}
+\subsection{Block chain}
 Multiple transactions are aggregrated into a single block.
 Every block contains the hash of the previous block.
 This creates the block chain.
@@ -192,7 +192,7 @@ If the time of finding a new block is decreased,
 then more blocks are generated and obviously more transactions can be fitted inside these blocks.
 The reverse is true if the time is increased.
 But the time between blocks is a balance between the orphan rate of blocks
-and how fast transactions are committed to the blockchain.
+and how fast transactions are committed to the block chain.
 
 These two factors currently result in a theoretical limit of 7 transactions per second.
 This can be calculated by dividing the maximum blocksize with the minimal size of a transaction.
