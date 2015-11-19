@@ -1,4 +1,4 @@
-\chapter{Problem Description}
+\chapter{Problem description}
 The essence of a collaborative, distributed system is that every node performs tasks for other nodes.
 With open systems, where every one can join, an unsolved problem is how to prevent nodes
 from only consuming and not contributing to the system.
@@ -66,11 +66,12 @@ This help will be extended in the future under the assumption it is returned.
 
 In a large scale, distributed system, this dilemma occurs with every interaction between nodes.
 The node can already be familiar with the peer,
-but more often the peer will be a peer the node has not interacted with before.
-A further complication is that help is one way and can no longer be exchanged.
-This complication excludes the direct opportunity to barter for help 
-or to barter for help in the future\cite{Lai-Incentives}.
-A third complication is that the cooperation node does not incur a penalty for not helping.
+but more often the peer will be a peer the node has not interacted with before
+and will not be interacted with in the future.
+A further complication is that help is almost always one way.
+Help cannot be exchanged or help now cannot be exchanged for help in the future\cite{Lai-Incentives}.
+A third complication is that a uncooroperative node does not incur a penalty for not helping.
+He will not be incentivized to help.
 The performance of the tit-for-tat or win-stay, lose-shift strategies
 quickly deteriorate in such a situation.
 
@@ -83,7 +84,7 @@ Nodes in general will become more reluctant to help nodes\cite{Nowak-PrisonerDil
 In the end no node will help another and all nodes will receive a penalty.
 This is commonly called the Tragedy of the Commons in the literature \cite{Hardin-Tragedy}.
 The whole network will actually receive more benefit in total if everyone would corporate.
-But nodes have no way of knowing if the peer they encounter are willing to help.
+But nodes have no way of knowing if the peer they encounter are also willing to help.
 A lack of altruism and selfishness will become a problem 
 and will cause the network to be suspectible to freeriding.
 
@@ -128,17 +129,18 @@ In a reputation system, only nodes with a sufficiently good reputation will be h
 The currency or reputation has to be made publicly available to all nodes in the network.
 But a node publicizing to hold a certain reputation is not sufficient as it is not trustworthy.
 So a interaction history, that contains every prior interaction a node has conducted, is publicized.
-Nodes can cross-reference the interaction history with other nodes and calculate the amount of currency 
-or the reputation that a node has.
+Nodes can calculate the amount of currency or the reputation that a node has.
 Based upon this calculation, the node can decide to provide aid or not.
+
+\section{Scalability}
+The interaction has to be accesible by every peer in the network.
 
 The interaction history has to be distributed among the nodes in the network
 to become publicly available.
-Efficient distribution protocols are a difficult challenge themselves and outside the problem scope.
-But distribution is worth mentioning, because it puts constraints on the interaction history.
 The interaction history has to be distributable in an efficient manner.
 Only if it meets these constraints, will an interaction history be usable in a distributed system.
-The network has to achieve network reciprocity\cite{Nowak-Cooperation}.
+Every peer in the network should be able to gain knowledge of the reputation a peer holds and verify this reputation.
+The network will then be able to achieve network reciprocity\cite{Nowak-Cooperation}.
 Helping peers in the network will ensure that peers themselves receive help.
 This is displayed abstractly in Figure \ref{fig:network-reciprocity}.
 
@@ -163,9 +165,6 @@ A system cannot be fully secure,
 but still a reasonable certainty can be achieved that no tampering of the interaction history can occur.
 Reasonable certainty is for example that no attack can happen 
 if more than half of the network consists of honest nodes.
-
-\section{Scalability and no central authority}
-\todo{THIS!!}
 
 \section{Aim of this thesis}
 \label{pb-aim}
