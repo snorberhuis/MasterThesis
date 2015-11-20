@@ -1,0 +1,58 @@
+\subsection{Simple download }
+In this experiment we measure if MultiChain can correctly track the upload and download amounts between two peers.
+A gumby scenario was created that mimicks running a download within Tribler.
+In the scenario a file of 100 MB is downloaded at different speeds,
+respectively 500 KB/s, 750 KB/s, 1000 KB/s, 1250 KB/s, 2000 KB/s, and 3000 KB/s.
+The scheduler waits for 1000MB before scheduling a block.
+The upload and download of the file is done by three different pairs of seeders and leechers.
+Every second these amounts are reported to have been download to the scheduler of MultiChain.
+
+\begin{figure}
+\centering
+\subfigure[Total download amount.]{
+\centerline{\includegraphics[scale=0.5]{experimentation/synthetic/simple/synthetic-simple-down.eps}}
+\label{fig:synthetic-simple-down}
+}
+\subfigure[Total upload amount.]{
+\centerline{\includegraphics[scale=0.5]{experimentation/synthetic/simple/synthetic-simple-up.eps}}
+\label{fig:synthetic-simple-up}
+}
+\caption{Download and upload amounts during the experiment.}
+\label{fig:synthetic-simple-amounts}
+\end{figure}
+
+The total download and upload amounts of every peer is plotted in Figure \ref{fig:synthetic-simple-amounts}.
+Every datapoint is the total download amount in a block.
+These datapoints are connected by a dotted line representing the link between these datapoints.
+The plots show that MultiChain is able to correctly track the download and upload amounts without a problem.
+There are no hitches in the figures and the amounts go up in fixed increments corresponding to the different speeds.
+This means that MultiChain is fast enough to correctly track the amounts.
+
+The download speeds below the threshold of 1000 MB of the scheduler
+are not distinguishable from the download at the threshold speed.
+This is because the scheduler waits until the threshold is reached before initiating the block.
+The amount is tracked in the same amount of blocks,
+but the total time of the experiment is longer for these experiments.
+If the speed goes above the threshold, then this is reflected in the figure.
+
+The graph in Figure \ref{fig:synthetic-simple-graph} shows the graph of the blocks created by the experiment.
+The graph is disconnected, because the different pairs of seeders and leechers did not interact with each other.
+So no block that would connect their chains is created,
+This leaves the graph disconnected.
+
+\begin{figure}
+	\centerline{\includegraphics[scale=0.06]{experimentation/synthetic/simple/synthetic.png}}
+	\caption{MultiChain chain graph of a single downloads.}
+	\label{fig:synthetic-simple-graph}
+\end{figure}
+
+This experiment was run several times before the final version in this report was run.
+Earlier versions of the experiment resulted in two bugfix and two improvements:
+the ability of the scheduler to create a block at the end of a download.
+The experiment was also run multiple times because Dispersy does not always connect to every peer.
+At the start of the experiment the peers are forced to be introduced,
+but this does not always succeed.
+This is a problem in discoverability and has been experienced by previous work aswell\cite{ruigrok-anonymous}.
+This also happens when downloading a torrent in the real world.
+The final version is chosen when Dispersy did connect all the peers.
+
