@@ -1,11 +1,13 @@
 \chapter{Related work}
-In 2007 the notion of bandwidth as a currency was introduced.
-In 2009 the first BitCoins were mined.
-These events can be seen as the first steps in currency or reputation systems.
+In 2007, the notion of bandwidth as a currency was introduced.
+In 2009, the first Bitcoins were mined\cite{Blockchain.info-bcs}.
+These events can be seen as the first steps in reputation or currency systems.
+Currencies have more strict rules to work than a reputation system.
 In this chapter we will discuss related work on tamper-proof interaction histories in currency or reputation systems.
 The block chain used in Bitcoin is explained extensively,
 because there is much similairity between MultiChain.
 Understanding these concepts in the block chain helps understanding MultiChain.
+The differences between the block chain and MultiChain will be explained in section \ref{sect:scalable-reciprocity}.
 Bartercast is the current implemented reputation system used by Tribler that will be replaced by MultiChain.
 Several other related systems are finally briefly discussed.
 
@@ -14,16 +16,15 @@ Several other related systems are finally briefly discussed.
 \input{relatedWork/bartercast.tex}
 
 \section{Other related work}
-The topic of reputation system is currently a subject of research for other projects as well.
-There are two more projects worth to briefly mention because of similairity to the Tribler project
-and the struggle to build a reputation system.
+The topic of reputation system is currently a subject of research for other projects as well
+and show the struggle to build a working reputation system.
+There are two projects worth to briefly mention, because of similairity to the Tribler project.
 These projects are not so thoroughly explained as the block chain
 as they were not used as a starting point in designing MultiChain.
 
 The Tor project is working on a implementation of a reputation system in an effort to incentivize collaboration\cite{dingledine-torincentive}.
 There are currently multiple proposals: PAR\cite{androulaki-torincentive}, BRAIDS\cite{jansen-braid}, LIRA\cite{jansen-lira}, TEARS \cite{jansen-torincentive}, TorCoin\cite{ghosh-torincentive}, and XPAY\cite{chen-torincentive}.
-The amount of proposals demonstrate the complexity of creating a reputation system.
+The amount of proposals demonstrate the complexity of creating a reputation system in an anonymous system.
 
 The InterPlanetary File System \(IPFS\) is a peer-to-peer distributed file system with similairities to the Tribler project.
 IPFS uses an incentivized block exchange to improve collaboration\cite{benet-ipfs}.
-IPFS is interesting because of the large and active following it has gathered on the internet.

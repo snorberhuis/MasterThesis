@@ -1,18 +1,18 @@
 \section{BarterCast}
 BarterCast is the system used by Tribler to incentivise good behaviour by keeping track of reputations
 \cite{pouwelse-buddycast}\cite{meulpolder-bartercast}\cite{meulpolder-bartercast-paper}\cite{dumitrescu-tribler}.
-It is fully decentralized in contrast to previous reputation systems in a peer-to-peer network.
-Private BitTorrent communities for example depend on central servers track reputations\cite{meulpolder-bartercast}.
+It is fully decentralized, in contrast to previous reputation systems in a peer-to-peer network.
+Private BitTorrent communities, for example, depend on central servers to track reputation\cite{meulpolder-bartercast}.
 BarterCast was not designed with the aim to be fully resistant to malicious nodes
 that want to falsify their reputations.
 The initial version has been first deployed in June 2006
 and subsequently has been improved.
-BarterCast will be briefly explained and its vulnerabilities.
+BarterCast will be briefly explained as well as its vulnerabilities.
 
 \subsection{Epidemic protocol}
-At the basis of BarterCast is BuddyCast.
+At the base of BarterCast is BuddyCast.
 BuddyCast is an epidemic protocol stack and BarterCast is part as a protocol of this stack.
-A overview of the BuddyCast stack can be seen in \ref{fig:buddycast-stack}
+A overview of the BuddyCast stack can be seen in Figure \ref{fig:buddycast-stack}
 and a more thorough introduction can be found in the report on BuddyCast\cite{pouwelse-buddycast}.
 
 \begin{figure}
@@ -22,7 +22,7 @@ and a more thorough introduction can be found in the report on BuddyCast\cite{po
 \end{figure}
 
 An epidemic protocol works in a very simple way relying on a receive-and-forward primitive.
-Information is exchanged between peers and forwarded between peers.
+Information is exchanged and forwarded between peers.
 This is called gossiping.
 BarterCasts gossips on the donation of upload bandwidth
 and the consumption of download bandwidth by other peers.
@@ -73,6 +73,7 @@ The center contains the local peer.
 Every circle contains peers for a certain degree.
 The first circle from the centre contains peers that the local peer has direct interactions with.
 The second circle contains peers that peers from the first circle has direct interactions with and so forth.
+The figure shows how BarterCast accumulates data through other peers.
 
 \begin{figure}
 	\centerline{\includegraphics[width=0.8\textwidth]{relatedWork/figs/barterBrowser.eps}}
@@ -89,14 +90,13 @@ then between 1000 MB and 1100 MB.
 The calculation is done without relying on a third party.
 No authority verifies the validity of the received information.
 Also there is no insurance that the information is complete.
-The available information can be incomplete.
 
 Improvements have been done to improve the performance of BarterCast.
-A bloom filter algorithm is implemented to decrease the amount of duplicates barter records
+A bloom filter algorithm is implemented to decrease the amount of duplicate barter records
 being sent to peers already having those records\cite{logiotatidis-splash}.
 Bloom filters can be used to quickly determine with some certainty
-if a database contains records with limited space required\cite{broder-bloomfilter}.
-The bloom filter algorithm works in the following way:
+if a database contains records in limited space\cite{broder-bloomfilter}.
+The bloom filter protocol works in the following way:
 \begin{enumerate}
     \item Peer $A$ creates a specific Bloom filter for peer $B$.
     \item Peer $A$ sends the Bloom filter to peer $B$.
@@ -109,13 +109,13 @@ and only using new barter records since that point.
 
 \subsection{Limitation}
 The proposal of this thesis is to implement a new reputation system for Tribler,
-so obliviously Bartercast is lacking.
-The main problem with Bartercast and why it needs to be replaced with a new system is
+so obviously Bartercast is lacking.
+The main problem with Bartercast, and why it needs to be replaced with a new system is
 that the reputation is self reported.
 Barter records are not signed by any one else.
-So barter records can be created by any malicious node without a limit.
-There is no way to verify these records and enforce truthfullness.
-Finally there is no way to punish malicious nodes and therefore they are free to lie.
+So Barter records can be created by any malicious node without a limit.
+There is no way to verify these records and enforce truthfulness.
+Finally, there is no way to punish malicious nodes and therefore they are free to lie.
 
 
 
