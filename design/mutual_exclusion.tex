@@ -1,12 +1,12 @@
 \section{Atomic operations on the chain}
 \label{sect:deadlock}
-In a chain only a single block of a peer is allowed to point to a previous block.
+In a chain, only a single block of a peer is allowed to point to a previous block.
 A peer cannot have multiple blocks belonging to him all pointing to the same previous block.
 As this is a potential attack as described in section \ref{sect:branch}.
 The chain of a peer can only be moved forward by a single block at any time.
-Only after a new block is created is the new hash available to be used in the next block.
+Only after a new block is created, will the new hash available to be used in the next block.
 
-To ensure this happens correctly the MultiChain community contains mutual exclusive code
+To ensure this happens correctly, the MultiChain community contains mutual exclusive code
 that excludes any new operations on the chain if an operation is already pending.
 The mutual exclusion is achieved by having to acquire an atomic token to allow to perform an operation on the code.
 The MultiChain community will receive incoming signature requests
@@ -27,7 +27,7 @@ as explained in section \ref{des:halfsigned}.
 If MultiChain gets into this potential deadlock one of the peers will eventually time out of their own signature request
 and process the incoming request resolving the circular dependency.
 The deadlock is recovered and both peers can continue operation.
-
 This situation has occured during experimentation and it is explained in section \ref{sect:deadlock-exp}.
 It is shown that MultiChain correctly recovers the potential deadlock.
+A potential attack vector is explained in \ref{sect:denial}
 
