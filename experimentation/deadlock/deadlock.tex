@@ -78,13 +78,7 @@ All instances are run locally on one machine.
 The instances are run in parallel,
 so the fact that all instances are run on a single machine does not cause the deadlock to occur.
 There is no packetloss in this experiment.
-
 The corresponding graph of all the MultiChains of the experiment can be seen in Figure \ref{fig:deadlock-double}.
-In this graph the blocks are depicted as nodes and the previous hash pointers are edges in the graph.
-The nodes have added colouring to indicate extra meaning.
-Green nodes are a first block in a MultiChain of a peer.
-Blue nodes are a sequential block between the same previous peers.
-Red nodes are half-signed blocks.
 
 The potential scenario of two peers both waiting can be seen multiple times in the graph and are encircled.
 The scenario generates a half-signed block at both peers.
