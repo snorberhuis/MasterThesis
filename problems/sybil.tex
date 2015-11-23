@@ -2,7 +2,7 @@
 
 In this section we will explain the Sybil attack\cite{douceur-sybil}
 and how it can be used in the MultiChain system to create an artificial reputation.
-An universallly applicable solution has not yet be found\cite{levine-sybilsurvey}.
+A universallly applicable solution has not yet be found\cite{levine-sybilsurvey}.
 
 \subsection{Using fake indentities}
 In large distributed systems convincingly distinct identities can be presented
@@ -53,12 +53,12 @@ A node can have three potential sources of validation of distinct identities:
 
 A node itself could try to directly validate two identities to be distinct.
 It would challenge several identities to complete a task that only two entities could complete.
-The task would require more resources then a single entity possesses and will be issued simultaneously to all identities.
+The task would require more resources than a single entity possesses and will be issued simultaneously to all identities.
 If the identities complete the task, they have proven to be distinct.
 Example of required resources are communication, storage and computation.
 These challenges can scale to validate more entities at once.
 
-Indirect validation can be used by a node to by delegating validation to other entities.
+Indirect validation can be used by a node by delegating validation to other entities.
 A node could accept additional identities to be distinct when an accepted identity vouches for it.
 The node has the delegated responsibility to challenge the entity with a challenge.
 This would limit the total amount of challenges needed.
@@ -96,3 +96,5 @@ Sybil Attack can have a wide range of sophistication.
 Ranging from a large amount of fake identities with a large amount of transaction between them
 to a single, fake identity boosting the reputation of M in a couple of transaction.
 Even the simple Sybil Attack are hard to defend against if these are not done too obviously.
+But Tribler will have to limit this attack in the future,
+but this will be a difficult challenge.
