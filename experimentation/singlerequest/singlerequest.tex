@@ -1,7 +1,7 @@
 \section{Single block creation}
 In this experiment we try to create a block between two nodes.
 This experiment validates the MultiChain to be able to correctly create a block between nodes in normal circumstances.
-The experiment is locally run using gumby with all nodes running on a single computer.
+The experiment is run using gumby with all nodes running on a single computer.
 Only two instances of MultiChain communities are started and between these two communities a block is created.
 The logging of the both nodes is captured and recorded to verify the results of the experiment.
 
@@ -12,6 +12,8 @@ The hash of the block is displayed in the output.
 The block is sent back as a signature response to node 1.
 The block is saved by node 1 and has the same hash as shown in the output.
 So the block between node 1 and node 2 is the same and a block was succesfully created.
+The result of the experiment were also validated using the databases of both nodes.
+
 The output also shows behaviour of MultiChain
 to correctly exclude any other execution from entering mutual exclusive code.
 The lines related to the mutual exclusion are prepended by "Chain Excl".

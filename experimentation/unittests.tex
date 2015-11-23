@@ -1,7 +1,7 @@
 \section{Software engineering tests}
 MultiChain is tested in several ways to verify it is correctly working
 following standard software engineering practices.
-The enforcement of these types of tests is a new policy within Tribler.
+The enforcement of these types of tests is a policy recently introduced within Tribler.
 
 \subsection{Unit Tests \& Integration tests}
 Tribler uses Python unit tests to validate small components of code.
@@ -19,7 +19,7 @@ An overview of the coverage can be seen in Table \ref{tab:tests}
 In the end a high level of testing has been achieved, especially in comparison to the rest of Tribler.
 The total test coverage of Tribler was only 16\% at time of writing\cite{jenkins-tribler}.
 A decision using code coverage tools was made that the untested code has little value to further test in comparison to the work required.
-The code was tested in gumby scenario's.
+The code was tested in Gumby scenarios.
 
 \begin{table}
 \centering
@@ -37,14 +37,14 @@ Total      & 672 &              & 47           &
 
 \subsection{Gumby}
 
-Next to that, Tribler uses a separated developed test runner Gumby.
-Gumby can start multiple instances of Tribler and follow test scenario's.
+Next to that, Tribler uses a homemade test runner Gumby.
+Gumby can start multiple instances of Tribler and follow test scenarios.
 Gumby can be used to perform system tests and experiments.
 These system tests have to be manually validated.
-Several scenario's have been written to validate MultiChain.
+Several scenarios have been written to validate MultiChain.
 These run MultiChain either in a standalone version or integrated into the TunnelCommunity.
 
-One of these scenario's can be found in Listing \ref{fig:exp-gumby-scenario}
+One of these scenarios can be found in Figure \ref{fig:exp-gumby-scenario}
 In this example basic block creation is tested.
 Normal situations are tested,
 but also situations where the signature requests are answered late
@@ -53,7 +53,7 @@ Additionally, signature requests are controlled to not be answered at all.
 During the whole test the crawler is active and scrapes the network for unknown blocks.
 The notation in the scenario is the time an action has to be taken place,
 the action that has to be taken, and by who if necessary.
-The "@0:" can be ignored.
+The "@0:" can be ignored, but is required in the Gumby format.
 
 \begin{figure}
 \begin{FVerbatim}[fontsize=\small]
@@ -77,6 +77,6 @@ The "@0:" can be ignored.
 @0:111 stop_dispersy
 @0:112 stop
 \end{FVerbatim}
-    \caption{One of the gumby definition files.}
+    \caption{One of the Gumby definition files.}
     \label{fig:exp-gumby-scenario}
 \end{figure}
