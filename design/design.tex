@@ -1,4 +1,4 @@
-\chapter{Design and implementation}
+\chapter{Design}
 \label{chapt:design}
 This chapter presents the design of MultiChain and how it was implemented.
 The first thing that will be introduced is how MultiChain is implemented within Tribler
@@ -8,7 +8,19 @@ We will cover the creation of blocks and the multiple implications of the chosen
 We will explain how MultiChain adresses the freeriding problem.
 Additional pheripheral systems that work with MultiChain are also explained.
 
-\input{design/community.tex}
+Tribler uses communities to add functionalities to peers.
+New communities are packaged into new Tribler versions.
+These versions are downloaded by peers.
+A community provides a set of messages and endpoints for other peers.
+The community can communicate with the endpoints of other peers as well and send a message to these endpoints.
+Other peers are automatically discovered using Dispersy.
+Examples of communities are the TunnelCommunity that adds functionality to download anonymously\cite{Plak-anonymous}
+or the AllChannelCommunity to distribute torrent files.
+Our system will be implemented by adding a new community to Tribler.
+
+The MultiChain community can be run standalone,
+but its main use is to integrate with Tribler and track up and download amounts for torrents.
+It aims to replace the current reputation system Bartercast in the future.
 
 \section{Datastructure design}
 In this section we wil describe the design of the chains inside MultiChain.

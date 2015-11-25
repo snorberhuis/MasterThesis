@@ -1,6 +1,7 @@
 \section{Atomic operations on the chain}
 \label{sect:deadlock}
 In a chain, only a single block of a peer is allowed to point to a previous block.
+No side branches are allowed.
 A peer cannot have multiple blocks belonging to him all pointing to the same previous block.
 As this is a potential attack as described in section \ref{sect:branch}.
 The chain of a peer can only be moved forward by a single block at any time.

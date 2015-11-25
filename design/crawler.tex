@@ -18,11 +18,12 @@ The crawler will persist the block if it is not yet know.
 The newly retrieved block is chained to two blocks with the previous hashes.
 The crawler will check if these blocks are present in the database.
 If any block is not present,
-then the crawler will request that particulair block if the node is known in Dispersy.
-If the node is not known, the block is ignored.
+then the crawler will request that particulair block.
+The peer, to whom the block belongs to, has to be known in Dispersy.
+If the peer is not known, the block is ignored.
 This is done recursively untill the crawler reaches the genesis block of the chain.
 In this fashion a breadth first search is implemented for any unknown block
-that is chained in chronologically before the latest block.
+that is present in the chain before the latest block.
 
 The crawl tries to aggregrate as much blocks as possible.
 But it gives no certainty that the full MultiChain is collected.
@@ -38,10 +39,10 @@ if for every disconnected partition a peer is known by Dispersy.
 An example can be seen in Figure \ref{fig:crawler-example}.
 In this example the line arrows denote paths that the crawler follows
 and dotted lines are paths that the crawler ignores.
-Block 4 is already known by the crawler.
-Block 1 is retrieved by the crawler and the crawler sees hash links to block 2 and 3.
-These are retrieved and the block finds links to block 4 and 5.
-Because block 4 is already known, block 4 is ignored.
+Block 2 is already known by the crawler.
+Block 5 is retrieved first by the crawler and the crawler sees hash links to block 3 and 4.
+These are retrieved and the block finds links to block 1 and 2.
+Because block 2 is already known, it is ignored.
 Only block 5 is retrieved.
 The crawler follows the links further outside the displayed example.
 

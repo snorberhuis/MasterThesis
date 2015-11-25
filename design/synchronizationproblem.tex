@@ -18,7 +18,7 @@ common problems in a challenged network, such as node failure.
 A second design goal is to be able to process transactions quickly and on a large scale.
 These design goals prevent the adaption of a simple design that will halt until node B responds.
 This design would also result in a deadlock situation, as explained in section \ref{sect:deadlock}
-There are several possible designs that are a solution to this problem.
+We will explain three possible design solutions to this problem.
 
 \subsubsection{Fair exchange signature scheme}
 A fair exchange signature scheme (FESS) allows two players to exchange digital signatures in a fair way.
@@ -29,9 +29,9 @@ a FESS could be implement for the fair creation of the block.
 
 But currently all known FESSs use a trusted third party (TTP) at some point\cite{asokan-fairexchange}.
 Some schemes exist that are optimistic and will only need a TTP to resolve conflicts.
-But any TTP will not adhere to the Tribler philosphy
+But any TTP will not adhere to the Tribler philosophy
 of being a truly fully distributed peer-to-peer system.
-The TTP will introduce a single point of trust and a scalability bottleneck.
+The TTP will introduce a central point of trust and a scalability bottleneck.
 
 \subsubsection{Reverse repairing of chain}
 Another potential solution would be to rework part of the chain.

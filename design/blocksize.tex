@@ -7,7 +7,7 @@ Hashing function turn a variable message string to a fixed size message digest\c
 The fixed size is dependend on the choice of hashing function.
 Similair cryptographic signing functions deterimine the size of a signature.
 An overview of the size of the parts of a block can be seen in Table: \ref{table:block_size}.
-The total size of a block is 240 bytes.
+The total size of a block is 296 bytes.
 
 \begin{table}[]
 \begin{adjustwidth}{-.5in}{-.5in}
@@ -19,10 +19,12 @@ Total Up A        & unsigned integer & 8                       & Total Up B     
 Total Down A      & unsigned integer & 8                       & Total Down B      & unsigned integer & 8     \\
 Prior Record A    & SHA1 digest      & 20                      & Prior Record B    & SHA1 digest      & 20    \\
 Sequence Number A & signed integer   & 4                       & Sequence Number B & signed integer   & 4     \\
-Public Key A      & EC binary format & 64                      & Public Key B      & EC binary format & 64    \\
-Signature A       & EC signature     & 40                      & Signature B       & EC signature     & 40
+Public Key A      & EC key           & 64                      & Public Key B      & EC key           & 64    \\
+Signature A       & EC signature     & 40                      & Signature B       & EC signature     & 40    \\ \hline
+Total             &                  & 148                     & Total                  &                  & 148
+
 \end{tabular}
-\caption{Block size}
+\caption{Block subcomponents size.}
 \label{table:block_size}
 \end{center}
 \end{adjustwidth}
@@ -45,9 +47,10 @@ Total Down A      & unsigned integer & 1,2,4,8                & Total Down B    
 Prior Record A    & SHA1 digest      & 20                     & Prior Record B    & SHA1 digest      & 20       \\
 Sequence Number A & signed integer   & 4                      & Sequence Number B & signed integer   & 4        \\
 Mid A             & SHA1 digest      & 20                     & Mid B             & SHA1 digest      & 20       \\
-Signature A       & EC signature     & 40                     & Signature B       & EC signature     & 40
+Signature A       & EC signature     & 40                     & Signature B       & EC signature     & 40       \\ \hline
+Total (min,max)   &                  & 87,104                 & Total (min,max    &                  & 87, 104
 \end{tabular}
-\caption{Block size inside the database.}
+\caption{Block subcomponents size inside the database.}
 \label{table:block_size_persistence}
 \end{center}
 \end{adjustwidth}
