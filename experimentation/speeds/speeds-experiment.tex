@@ -1,4 +1,4 @@
-\subsection{Different speeds }
+\subsection{Tracking downloads with different speeds}
 In this experiment we measure if MultiChain can correctly track the upload and download amounts
 between two peers with different speeds.
 In the scenario a file of 100 MB is downloaded at different speeds,
@@ -18,13 +18,12 @@ Every second these amounts are indicated to have been transferred to the schedul
 \centerline{\includegraphics[scale=0.5]{experimentation/speeds/synthetic-simple-up.eps}}
 \label{fig:synthetic-simple-up}
 }
-\caption{Download and upload amounts during the experiment.}
+\caption{Download and upload amounts when tracking downloads at different speeds.}
 \label{fig:synthetic-simple-amounts}
 \end{figure}
 
 The total download and upload amounts of every peer is plotted in Figure \ref{fig:synthetic-simple-amounts}.
-Every datapoint is a block in the chain of a peer and is the the total amount stored in that block..
-These datapoints are connected by a dotted line representing the link between these blocks.
+These amounts are plotted in the same way as the previous experiment.
 The plots show that MultiChain is able to correctly track the download and upload amounts without a problem.
 There are no hitches in the figures and the amounts go up in fixed increments corresponding to the different speeds.
 This means that MultiChain is fast enough to correctly track the amounts.
@@ -43,7 +42,7 @@ This leaves the graph disconnected.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.06]{experimentation/speeds/synthetic.png}}
-	\caption{MultiChain chain graph of a single downloads.}
+	\caption{Disconnected chain graph of tracking downloads at different speeds.}
 	\label{fig:synthetic-simple-graph}
 \end{figure}
 

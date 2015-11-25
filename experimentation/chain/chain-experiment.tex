@@ -1,0 +1,35 @@
+\subsection{Chaining blocks}
+The next experiment we experiment with MultiChain creating a chain of blocks between two peers.
+The experiment is run using gumby with all peers running on a single computer.
+We try to create 10 subsequent blocks mimicking a download of 10MB with a speed of 1000 KB/s.
+Every second these amounts are indicated to have been transferred to the schedulers of every peer.
+The scheduler waits for 1MB uploaded to another peer before scheduling a block.
+
+The result of the experiment can be seen in the graph in Figure \ref{fig:chain-experiment-graph}.
+In this graph it can be clearly seen that MultiChain is succesful in creating a chain of 10 blocks.
+
+\begin{figure}[!h]
+	\centerline{\includegraphics[scale=0.6]{experimentation/chain/chain.png}}
+	\caption{MultiChain chain graph of a single download of 10 MB.}
+	\label{fig:chain-experiment-graph}
+\end{figure}
+
+The amounts stored in each blocks are plotted in Figure \ref{fig:chain-experiment-amounts}.
+Every datapoint is a block in the chain of a peer and is the the total amount stored in that block..
+These datapoints are connected by a dotted line representing the link between these blocks.
+These plots show that MultiChain correctly tracks the download of 10MB.
+The slope of the figure corresponds with the speed of the download.
+
+\begin{figure}
+\centering
+\subfigure[Total download amount.]{
+\centerline{\includegraphics[scale=0.5]{experimentation/chain/chain-down.eps}}
+\label{fig:chain-experiment-down}
+}
+\subfigure[Total upload amount.]{
+\centerline{\includegraphics[scale=0.5]{experimentation/chain/chain-up.eps}}
+\label{fig:chain-experiment-up}
+}
+\caption{Download and upload amounts when creating a chain of 10 blocks.}
+\label{fig:chain-experiment-amounts}
+\end{figure}
