@@ -1,20 +1,21 @@
-\subsection{Simple download }
-In this experiment we measure if MultiChain can correctly track the upload and download amounts between two peers.
-A gumby scenario was created that mimicks running a download within Tribler.
+\subsection{Different speeds }
+In this experiment we measure if MultiChain can correctly track the upload and download amounts
+between two peers with different speeds.
 In the scenario a file of 100 MB is downloaded at different speeds,
 respectively 500 KB/s, 750 KB/s, 1000 KB/s, 1250 KB/s, 2000 KB/s, and 3000 KB/s.
-The scheduler waits for 1000MB before scheduling a block.
-The upload and download of the file is done by three different pairs of seeders and leechers.
-Every second these amounts are reported to have been download to the scheduler of MultiChain.
+The maximum speed of anonymous download was measured in experiments to be 1150 KB/s\cite{ruigrok-anonymous}.
+The scheduler waits for 1MB uploaded to another peer before scheduling a block.
+The upload and download of the file is done by different pairs of seeders and leechers.
+Every second these amounts are indicated to have been transferred to the schedulers of every peer.
 
 \begin{figure}
 \centering
 \subfigure[Total download amount.]{
-\centerline{\includegraphics[scale=0.5]{experimentation/synthetic/simple/synthetic-simple-down.eps}}
+\centerline{\includegraphics[scale=0.5]{experimentation/speeds/synthetic-simple-down.eps}}
 \label{fig:synthetic-simple-down}
 }
 \subfigure[Total upload amount.]{
-\centerline{\includegraphics[scale=0.5]{experimentation/synthetic/simple/synthetic-simple-up.eps}}
+\centerline{\includegraphics[scale=0.5]{experimentation/speeds/synthetic-simple-up.eps}}
 \label{fig:synthetic-simple-up}
 }
 \caption{Download and upload amounts during the experiment.}
@@ -22,8 +23,8 @@ Every second these amounts are reported to have been download to the scheduler o
 \end{figure}
 
 The total download and upload amounts of every peer is plotted in Figure \ref{fig:synthetic-simple-amounts}.
-Every datapoint is the total download amount in a block.
-These datapoints are connected by a dotted line representing the link between these datapoints.
+Every datapoint is a block in the chain of a peer and is the the total amount stored in that block..
+These datapoints are connected by a dotted line representing the link between these blocks.
 The plots show that MultiChain is able to correctly track the download and upload amounts without a problem.
 There are no hitches in the figures and the amounts go up in fixed increments corresponding to the different speeds.
 This means that MultiChain is fast enough to correctly track the amounts.
@@ -41,7 +42,7 @@ So no block that would connect their chains is created,
 This leaves the graph disconnected.
 
 \begin{figure}
-	\centerline{\includegraphics[scale=0.06]{experimentation/synthetic/simple/synthetic.png}}
+	\centerline{\includegraphics[scale=0.06]{experimentation/speeds/synthetic.png}}
 	\caption{MultiChain chain graph of a single downloads.}
 	\label{fig:synthetic-simple-graph}
 \end{figure}
@@ -49,10 +50,3 @@ This leaves the graph disconnected.
 This experiment was run several times before the final version in this report was run.
 Earlier versions of the experiment resulted in two bugfix and two improvements:
 the ability of the scheduler to create a block at the end of a download.
-The experiment was also run multiple times because Dispersy does not always connect to every peer.
-At the start of the experiment the peers are forced to be introduced,
-but this does not always succeed.
-This is a problem in discoverability and has been experienced by previous work aswell\cite{ruigrok-anonymous}.
-This also happens when downloading a torrent in the real world.
-The final version is chosen when Dispersy did connect all the peers.
-
