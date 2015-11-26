@@ -60,6 +60,8 @@ This can be clearly seen a part of the graph magnified in Figure \ref{fig:synthe
 The middle nodes represent the interaction between the hops.
 The outer nodes are interactions between the seeder and the first hop and between the second hop and leecher.
 The blocks are created alternating resulting in the graph pictured.
+In contrast to the previous experiment, this graph is connected.
+Because every peer interacts indirectly with every other peer.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.5]{experimentation/anonymous/anonymous-magnified.png}}
@@ -78,15 +80,3 @@ The red inner block is referenced by the first block created between the first h
 	\caption{Timeout of the seeder and hop 1, while hop 2 and the leecher continues.}
 	\label{fig:synthetic-anonymous-timeout}
 \end{figure}
-
-The graph in Figure \ref{fig:synthetic-anonymous-graph} shows the graph of the blocks created by the experiment.
-In contrast to the previous experiment, this graph is connected.
-Because every peer interacts indirectly with every other peer.
-
-\begin{figure}
-	\centerline{\includegraphics[scale=0.1]{experimentation/anonymous/anonymous.png}}
-	\caption{MultiChain chain graph of a single download through 2 hops.}
-	\label{fig:synthetic-anonymous-graph}
-\end{figure}
-
-
