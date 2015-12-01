@@ -1,9 +1,7 @@
 \section{Integration with Tribler}
-For integration a scheduler, is implemented between the MultiChain community
-and the community that handles the anonymous download.
-For additional detail on the anonymous download communities
-see the master's theses of R. Ruigrok\cite{ruigrok-anonymous} and R. Plak\cite{Plak-anonymous}.
-The scheduler tracks session up and download amounts and schedules a block to be created,
+For integration a scheduler is implemented between the MultiChain community
+and other parts of Tribler.
+The scheduler tracks session upload and download amounts and schedules a block to be created,
 when the amount of uploaded bytes is above a certain threshold.
 The scheduler currently only tracks traffic of anonymous downloads.
 Bartercast is not yet removed and

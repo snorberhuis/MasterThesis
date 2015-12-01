@@ -84,9 +84,10 @@ The potential scenario of two peers both waiting can be seen multiple times in t
 The scenario generates a half-signed block at both peers.
 Usually the peers continue collaboration and this continuation of a sequence can be seen in subsequent blocks.
 In the graph a more complicated scenario can also be seen where multiple peers timeout between each other.
+The graph shows that MultiChain correctly recovers from all scenario's.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.0375]{experimentation/deadlock/deadlock.png}}
-	\caption{Potential deadlocks in MultiChain.}
+	\caption{Mixing of double-signed blocks(blue/grey) and half-signed blocks(red) in MultiChain.}
 	\label{fig:deadlock-double}
 \end{figure}

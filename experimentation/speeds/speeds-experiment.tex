@@ -18,7 +18,7 @@ Every second these amounts are indicated to have been transferred to the schedul
 \centerline{\includegraphics[scale=0.5]{experimentation/speeds/synthetic-simple-up.eps}}
 \label{fig:synthetic-simple-up}
 }
-\caption{Download and upload amounts when tracking downloads at different speeds.}
+\caption{Download and upload amounts repeated 6 times with different speeds.}
 \label{fig:synthetic-simple-amounts}
 \end{figure}
 
@@ -34,17 +34,6 @@ This is because the scheduler waits until the threshold is reached before initia
 The amount is tracked in the same amount of blocks,
 but the total time of the experiment is longer for these experiments.
 If the speed goes above the threshold, then this is reflected in the figure.
-
-The graph in Figure \ref{fig:synthetic-simple-graph} shows the graph of the blocks created by the experiment.
-The graph is disconnected, because the different pairs of seeders and leechers did not interact with each other.
-So no block that would connect their chains is created,
-This leaves the graph disconnected.
-
-\begin{figure}
-	\centerline{\includegraphics[scale=0.06]{experimentation/speeds/synthetic.png}}
-	\caption{Disconnected chain graph of 6 individual downloads at different speeds.}
-	\label{fig:synthetic-simple-graph}
-\end{figure}
 
 This experiment was run several times before the final version in this report was run.
 Earlier versions of the experiment resulted in two bugfix and two improvements:
