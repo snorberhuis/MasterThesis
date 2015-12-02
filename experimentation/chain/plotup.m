@@ -1,5 +1,5 @@
 % Import midsdataup.dat
-x = 1:101;
+x = 0:9;
 figure('position', [0,0,800,500])
 
 hold on;
