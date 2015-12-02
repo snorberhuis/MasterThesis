@@ -31,20 +31,23 @@ The crawler is able to crawl a disconnected MultiChain,
 if for every disconnected partition a peer is known by Dispersy.
 
 \begin{figure}
-	\centerline{\includegraphics[scale=0.3]{design/figs/crawler.eps}}
-	\caption{Example of the crawler looking for unknown blocks.}
+	\centerline{\includegraphics[scale=0.3]{design/figs/crawler-version2.eps}}
+	\caption{Example of the crawler looking for unknown blocks. The crawler retrieves the most recent block and crawls older blocks.}
 	\label{fig:crawler-example}
 \end{figure}
 
 An example can be seen in Figure \ref{fig:crawler-example}.
-In this example the line arrows denote paths that the crawler follows
-and dotted lines are paths that the crawler ignores.
+In this example the line arrows denote paths that the crawler follows,
+dotted lines are paths that the crawler ignores,
+half dotted lines are paths that the crawler will not know about.
 Block 2 is already known by the crawler.
 Block 5 is retrieved first by the crawler and the crawler sees hash links to block 3 and 4.
 These are retrieved and the block finds links to block 1 and 2.
 Because block 2 is already known, it is ignored.
 Only block 1 is retrieved.
-The crawler follows the links further outside the displayed example.
+The crawler continues to follow the links further outside the displayed example.
+The half dotted lines are not know by the crawler untill a block is retrieved that contains these paths.
+The crawler will retrieve these blocks if for example the most recent block is requested.
 
 \subsection{Recreation over retransmission}
 An effort was made to try to reuse code of the community for the crawler and to not introduce another payload type in the community.
