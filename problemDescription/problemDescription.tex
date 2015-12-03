@@ -2,18 +2,18 @@
 The essence of a collaborative, distributed system is that every node performs tasks for other nodes.
 With open systems, where every one can join, an unsolved problem is how to prevent nodes
 from only consuming and not contributing to the system.
-Our work is an important first step forward in solving this problem without a central system.
+Our work is an important first step forward in solving this problem without a central component.
 
-In this chapter the problem will be described of how to decide to perform a task for a peer or not.
-In such a way that prevents that peer from freeloading.
+In this chapter, the problem will be described of how to decide to perform a task for a peer or not.
+In such a way that prevents that peer from freeriding.
 The problem will first be explained in a simplified form.
 Using this simplification, the problem will be transformed gradually
 into the real world problem faced in distributed systems today.
 
 \section{Freeriding public goods}
-One of the problems in collaborative, distributed systems is nodes freeriding public goods.
+One of the problems in collaborative distributed systems is nodes freeriding public goods.
 Nodes are participants in the system and the free goods are the willingness of these participants to help others.
-For decades the field of game theory has studied this problem of how
+For decades the field of game theory has studied the problem of how
 participants can decide to cooperate with a peer or not\cite{Hardin-Tragedy}.
 Deciding not to help can prevent freeriding.
 The minimal form of this problem is with only two participants.
@@ -51,11 +51,11 @@ At first it might seem that a participant will always choose to defect,
 because it will never incur a cost and receive maximal benefit.
 But the other participant will be reluctant to help a participant if the aid is never returned.
 Simple strategies, like tit-for-tat or win-stay, lose-shift, suffice in the Iterated Prisoner's Dilemma
-and will perform well\cite{Nowak-Cooperation}.
+and perform well\cite{Nowak-Cooperation}.
 
 The participants receive direct reciprocity from the other participant\cite{Nowak-Cooperation}.
 Direct reciprocity is displayed abstractly in Figure \ref{fig:direct-reciprocity}.
-Participant A helps participant B and in returns receives help.
+Participant A helps participant B and in return receives help.
 This help will be extended in the future under the assumption it is returned.
 
 \begin{figure}
@@ -69,30 +69,30 @@ The node can already be familiar with the peer,
 but more often the peer will be a peer the node has not interacted with before
 and will not be interacted with in the future.
 A second complication is that help is almost always one way.
-Help cannot be exchanged or help now cannot be exchanged for help in the future\cite{Lai-Incentives}.
+Help cannot be exchanged and help now cannot be exchanged for help in the future\cite{Lai-Incentives}.
 A third complication is that an uncooroperative node does not incur a penalty for not helping.
-He will not be incentivized to help.
+A node will not be incentivized to help.
 The performance of the tit-for-tat or win-stay, lose-shift strategies
 quickly deteriorate in such a situation.
 
-For a node it is easier to abuse the generosity of others in this more anonymous situation.
+For a node it is easier to abuse the generosity of others in the more anonymous situation of a large scale distributed system.
 Nodes can act irrational and against the best interest of the network
 and this is seen in the real world\cite{Adar-Freeriding}.
 Nodes that help others will be penalized through the cost they incur
 and incentivized to adopt the malicious behavior themselves.
 Nodes in general will become more reluctant to help nodes\cite{Nowak-PrisonerDilemma}.
 In the end no node will help another and all nodes will receive a penalty.
-This is commonly called the Tragedy of the Commons in the literature \cite{Hardin-Tragedy}.
+This is called the Tragedy of the Commons in the literature \cite{Hardin-Tragedy}.
 The whole network will actually receive more benefit if everyone would corporate,
 but nodes have no way of knowing if the peer they encounter are also willing to help.
 A lack of altruism and selfishness will become a problem 
-and will cause the network to be suspectible to freeriding.
+and will cause the network to be susceptible to freeriding.
 
 \section{Recording of community contributions}
 In the Iterated Prisoner's Dilemma the history of the previous transactions can be used 
 to see if a node helped others in the past.
 The simple strategies previously mentioned use a history to improve performance
-to avoid freeriding.
+and to freeriding.
 If a node knows that a history is kept of his previous transactions by a peer,
 the node can be fearful of the consequences of his decision to freeride on public goods now.
 This is known as the shadow of the future\cite{bo-shadow}.
@@ -100,7 +100,7 @@ The shadow of the future can overcome behavior to take advantage of the network.
 
 But this private, individual kept history is not effective
 to achieve high overall benefit in distributed systems\cite{Lai-Incentives},
-because peers are often interacted with for the first time.
+because peers are often interacted with once.
 No history is known for these peers.
 A public history of a node is necessary to prevent abuse.
 The network will be able to achieve high overall benefit of the network\cite{Lai-Incentives}.
@@ -108,7 +108,7 @@ This public history should contain every previous interaction.
 The nodes then receive indirect reciprocity\cite{Nowak-Cooperation}.
 By helping nodes they will receive help from other nodes in the future based upon their good behaviour.
 Indirect reciprocity is displayed abstractly in Figure \ref{fig:indirect-reciprocity}.
-The help of node C to node A is dependend on node A helping node B.
+The help of node C to node A is dependent on node A helping node B.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{problemDescription/figs/indirect-reciprocity.eps}}
@@ -130,7 +130,7 @@ In a reputation system, only nodes with a sufficiently good reputation will be h
 The currency or reputation has to be made publicly available to all nodes in the network.
 But a node publicizing to hold a certain reputation is not sufficient as it is not trustworthy.
 The reputation has to be verifiable and not self-constructed to be trustworthy.
-So a interaction history, that contains every prior interaction a node has conducted, is publicized.
+So an interaction history, that contains every prior interaction a node has conducted, is publicized.
 Nodes can calculate the amount of currency or the reputation that a node has.
 Based upon this calculation, the node can decide to provide aid or not.
 
@@ -178,5 +178,5 @@ This interaction history is cryptographically protected and validated.
 In the future this interaction history can be used to decide the level of cooperation with another node in the network.
 An incremental approach is taken with this thesis.
 This thesis is part of several more steps needed before a fully tamper-proof interaction history is created.
-Several problems with the interaction history is not solved.
+Several problems with the interaction history are not solved.
 These problems are explained in chapter \ref{problems}.
