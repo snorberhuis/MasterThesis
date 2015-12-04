@@ -3,13 +3,13 @@ A peer will upload to and download from other peers in the network.
 The peer A will want to increase its reputation and have a transaction transcribing his contribution.
 A will initiate the process to create a block with peers that he has uploaded to.
 These peers will be referred to as B.
-This process can be seen in Figure \ref{fig:seeder-leecher}
+This process can be seen in Figure \ref{fig:seeder-downloader}
 Every block only contains one transaction.
 
 \begin{figure}
-	\centerline{\includegraphics[scale=0.3]{design/figs/seeder-leecher.eps}}
+	\centerline{\includegraphics[scale=0.3]{design/figs/seeder-downloader.eps}}
 	\caption{A seeder sending a protocol message to request a block.}
-	\label{fig:seeder-leecher}
+	\label{fig:seeder-downloader}
 \end{figure}
 
 The contents of a block can be seen in Figure \ref{fig:block}.

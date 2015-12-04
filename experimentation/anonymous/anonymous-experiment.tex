@@ -2,14 +2,14 @@
 In an anonymous download scenario the data is downloaded through multiple hops.
 A seeder uploads data to the first hop.
 This hop relays the data to the second hop.
-The second hop sends the data to its destination at the leecher.
-This can be seen as sequence of peers and is illustrated in Figure \ref{fig:seeder-hops-leecher}.
+The second hop sends the data to its destination at the downloader.
+This can be seen as sequence of peers and is illustrated in Figure \ref{fig:seeder-hops-downloader}.
 More hops can be added to better safegaurd the anonymity of the download.
 
 \begin{figure}
-	\centerline{\includegraphics[scale=0.3]{experimentation/anonymous/seeder-hops-leecher.eps}}
+	\centerline{\includegraphics[scale=0.3]{experimentation/anonymous/seeder-hops-downloader.eps}}
 	\caption{Block creation in an anonymous download.}
-	\label{fig:seeder-hops-leecher}
+	\label{fig:seeder-hops-downloader}
 \end{figure}
 
 The total download and upload amount is plotted, in the same way as the previous experiment,
@@ -55,11 +55,11 @@ In section \ref{sect:deadlock-exp} we further experiment with the timeouts in th
 \label{fig:synthetic-anonymous-amounts}
 \end{figure}
 
-The seeder and leecher both only interact with one hop.
+The seeder and downloader both only interact with one hop.
 These hops furthermore only interact with each other.
 This can be clearly seen in a part of the graph magnified in Figure \ref{fig:synthetic-anonymous-graph-magnified}.
 The middle nodes represent the interaction between the hops.
-The outer nodes are interactions between the seeder and the first hop and between the second hop and leecher.
+The outer nodes are interactions between the seeder and the first hop and between the second hop and downloader.
 The blocks are created alternating resulting in the graph pictured.
 
 \begin{figure}
@@ -79,12 +79,12 @@ The blocks are created alternating resulting in the graph pictured.
 In the graph the timeout period can be seen clearly in Figure \ref{fig:synthetic-anonymous-timeout}.
 The two half-signed block can be seen in red.
 The block with a reference coming from the outer block is the half-signed block belonging to the seeder.
-The strain of blue nodes are the blocks created between the second hop and the leecher.
+The strain of blue nodes are the blocks created between the second hop and the downloader.
 The red inner block is referenced by the first block created between the first hop and second hop after the timeout.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.1]{experimentation/anonymous/anonymous-timeout.png}}
-	\caption{Zoom of the timeout of the seeder and hop 1, while hop 2 and the leecher continues.}
+	\caption{Zoom of the timeout of the seeder and hop 1, while hop 2 and the downloader continues.}
 	\label{fig:synthetic-anonymous-timeout}
 \end{figure}
 
