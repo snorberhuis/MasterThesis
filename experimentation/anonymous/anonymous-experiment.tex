@@ -25,11 +25,12 @@ The seeder only has upload validating blocks and as such has half the amount of 
 The downloader has viceversa only download validating blocks.
 The slope of his figure is much steeper as a result.
 
-In the plot a hitch can be found in the figures of the seeder and the first hop.
+In the plot a discontinuity can be found at 92\% of the download in the figures of the seeder and the first hop.
 This is the result of the first hop sending a signature request to the second hop.
 The second hop was not able to process this request,
 because it was already working on creating another block.
-The first hop will still wait on the second hop to process its request untill it will timeout.
+The second hop drop this request.
+The first hop will still wait on the second hop to process its request until it will timeout.
 In turn, the seeder sent a request to the first hop that will timeout,
 because the first hop is not able to process this request aswell.
 During the timeouts of the seeder and the first hop,
@@ -56,15 +57,23 @@ In section \ref{sect:deadlock-exp} we further experiment with the timeouts in th
 
 The seeder and leecher both only interact with one hop.
 These hops furthermore only interact with each other.
-This can be clearly seen a part of the graph magnified in Figure \ref{fig:synthetic-anonymous-graph-magnified}.
+This can be clearly seen in a part of the graph magnified in Figure \ref{fig:synthetic-anonymous-graph-magnified}.
 The middle nodes represent the interaction between the hops.
 The outer nodes are interactions between the seeder and the first hop and between the second hop and leecher.
 The blocks are created alternating resulting in the graph pictured.
 
 \begin{figure}
-	\centerline{\includegraphics[scale=0.5]{experimentation/anonymous/anonymous-magnified.png}}
-	\caption{Zoom of the intertwining of the seeder and hop 1 on the left, hop1 and hop 2 in the middle, and hop 2 and the leecher on the right.}
-	\label{fig:synthetic-anonymous-graph-magnified}
+\centering
+\subfigure[Partial example of expected MultiChain graph.]{
+\centerline{\includegraphics[scale=0.35]{experimentation/anonymous/graph-example.eps}}
+\label{fig:synthetic-anonymous-graph-example}
+}
+\subfigure[Zoom of the actual intertwining in the MultiChain graph made with Gephi.]{
+\centerline{\includegraphics[scale=0.2]{experimentation/anonymous/anonymous-magnified.png}}
+\label{fig:synthetic-anonymous-graph-magnified}
+}
+\caption{Intertwining of the seeder and hop 1, hop1 and hop 2, and hop 2 and the downloader.}
+\label{fig:synthetic-anonymous-intertwining}
 \end{figure}
 
 In the graph the timeout period can be seen clearly in Figure \ref{fig:synthetic-anonymous-timeout}.

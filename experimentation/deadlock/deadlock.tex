@@ -1,13 +1,12 @@
-\section{Deadlock recovery}
+\section{Drop event recovery}
 \label{sect:deadlock-exp}
 MultiChain can run during normal operation into a situation
-where a multiple of peers are waiting on each other as explained in section \ref{sect:deadlock}.
-This could resulting in a potential deadlock.
+where a multiple of peers request to create blocks from each other as explained in section \ref{sect:deadlock}.
 A specific experiment was conducted that created the situation manually.
 This situation was also encountered during experimentation
 and the experiment shows MultiChain correctly recovering from this situation.
 
-\subsection{Forced deadlock}
+\subsection{Forced drop event}
 In this experiment a MultiChain node 1 tries to send a request to node 2 to create a block.
 Node 2 is specifically configured for the purpose of the experiment
 to ignore and drop all requests.
@@ -67,16 +66,16 @@ This is validated by a block created between node 3 and node 1.
 3: Persisting sr: 7Y86Ck4duwTduP6j/aIRrWHAZqw=
 3: Chain exclusion: released received signature response.
 \end{FVerbatim}
-    \caption{Output of the manual deadlock experiment}~\label{fig:manual-deadlock-experiment}
+    \caption{Output of the manual drop event experiment}~\label{fig:manual-deadlock-experiment}
 \end{figure}
 
-\subsection{Naturally occuring deadlock}
+\subsection{Naturally occuring drop events}
 In the experiment a 100 megabyte file was downloaded anonymously with 2 hops.
 Anonymously downloading is described more in the thesis report of R. Ruigrok~\cite{ruigrok-anonymous}.
 There are 2 Triblers instances with exit functionality and 18 instances without exit functionality.
 All instances are run locally on one machine.
 The instances are run in parallel,
-so the fact that all instances are run on a single machine does not cause the deadlock to occur.
+so the fact that all instances are run on a single machine does not cause the drop event to occur.
 There is no packetloss in this experiment.
 The corresponding graph of all the MultiChains of the experiment can be seen in Figure \ref{fig:deadlock-double}.
 
@@ -87,7 +86,7 @@ In the graph a more complicated scenario can also be seen where multiple peers t
 The graph shows that MultiChain correctly recovers from all scenario's.
 
 \begin{figure}
-	\centerline{\includegraphics[scale=0.0375]{experimentation/deadlock/deadlock.png}}
+	\centerline{\includegraphics[scale=0.1]{experimentation/deadlock/deadlock.png}}
 	\caption{Mixing of double-signed blocks(blue/grey) and half-signed blocks(red) in MultiChain.}
 	\label{fig:deadlock-double}
 \end{figure}
