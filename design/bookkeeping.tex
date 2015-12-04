@@ -8,7 +8,7 @@ Every block only contains one transaction.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/seeder-leecher.eps}}
-	\caption{A seeder sending a block request.}
+	\caption{A seeder sending a protocol message to request a block.}
 	\label{fig:seeder-leecher}
 \end{figure}
 
@@ -23,7 +23,7 @@ This is the amount summed across the whole chain of A and B respectively.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/block.eps}}
-	\caption{A block in MultiChain.}
+	\caption{All 14 fields in a MultiChain block.}
 	\label{fig:block}
 \end{figure}
 
@@ -38,6 +38,6 @@ Both peers add their signature to the block to announce that they approve the co
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/transaction-chain.eps}}
-	\caption{A chain of blocks in MultiChain.}
+	\caption{A chain of blocks with transaction data in MultiChain.}
 	\label{fig:transaction-chain}
 \end{figure}

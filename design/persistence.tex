@@ -1,21 +1,21 @@
-\section{Block persistence}
+\section{Block storage}
 The blocks in the chain have to be persisted to be usable over a prolonged time.
-A persistence layer is added to the MultiChain community
+A storage layer is added to the MultiChain community
 that provides all functionality to persist blocks and query blocks.
 This layer extends and uses functionality of the Database class in Dispersy.
-An overview of the layering in the software architecture can be seen in Figure \ref{fig:persistence-layer}.
+An overview of the layering in the software architecture can be seen in Figure \ref{fig:storage-layer}.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/persistence-layer.eps}}
-	\caption{Persistence layering in the software architecture}
-	\label{fig:persistence-layer}
+	\caption{Storage layering in the software architecture}
+	\label{fig:storage-layer}
 \end{figure}
 
-The MultiChain Community calls functions in the persistence layer that have implicit knowledge about the model.
-The Persistence layer formats SQL queries and passes these to the Dispersy layer.
+The MultiChain Community calls functions in the storage layer that have implicit knowledge about the model.
+The storage layer formats SQL queries and passes these to the Dispersy layer.
 The Dispersy layer performs several sanitation checks and passes these queries to the SQLite Library.
 The SQLite Library and Dispersy layer both return the result of the SQL query.
-These results are transformed by the Persistence layer into objects of the model usable by the MultiChain Community.
+These results are transformed by the storage layer into objects of the model usable by the MultiChain Community.
 
 The only information that is saved are blocks.
 The information all fits within one table.

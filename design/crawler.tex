@@ -21,7 +21,7 @@ If any block is not present,
 then the crawler will request that particulair block.
 The peer, to whom the block belongs to, has to be known in Dispersy.
 If the peer is not known, the block is ignored.
-This is done recursively untill the crawler reaches the genesis block of the chain.
+This is done recursively until the crawler reaches the genesis block of the chain.
 In this fashion a breadth first search is implemented for any unknown block
 that is present in the chain before the latest block.
 
@@ -31,7 +31,7 @@ The crawler is able to crawl a disconnected MultiChain,
 if for every disconnected partition a peer is known by Dispersy.
 
 \begin{figure}
-	\centerline{\includegraphics[scale=0.3]{design/figs/crawler-version2.eps}}
+	\centerline{\includegraphics[scale=0.44]{design/figs/crawler-version2.eps}}
 	\caption{Example of the crawler looking for unknown blocks. The crawler retrieves the most recent block and crawls older blocks.}
 	\label{fig:crawler-example}
 \end{figure}
@@ -46,7 +46,7 @@ These are retrieved and the block finds links to block 1 and 2.
 Because block 2 is already known, it is ignored.
 Only block 1 is retrieved.
 The crawler continues to follow the links further outside the displayed example.
-The half dotted lines are not know by the crawler untill a block is retrieved that contains these paths.
+The half dotted lines are not know by the crawler until a block is retrieved that contains these paths.
 The crawler will retrieve these blocks if for example the most recent block is requested.
 
 \subsection{Recreation over retransmission}
