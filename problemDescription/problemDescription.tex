@@ -14,10 +14,10 @@ into the real world problem faced in distributed systems today.
 One of the problems in collaborative distributed systems is nodes freeriding public goods.
 Nodes are participants in the system and the free goods are the willingness of these participants to help others.
 For decades the field of game theory has studied the problem of how
-participants can decide to cooperate with a peer or not\cite{Hardin-Tragedy}.
+participants can decide to cooperate with a peer or not~\cite{Hardin-Tragedy}.
 Deciding not to help can prevent freeriding.
 The minimal form of this problem is with only two participants.
-This form is called the Prisoner's Dilemma\cite{Nowak-PrisonerDilemma}\cite{Lai-Incentives}
+This form is called the Prisoner's Dilemma~\cite{Nowak-PrisonerDilemma,Lai-Incentives}
 and we will explain this dilemma.
 
 Participants can help each other at a cost, a negative utility,
@@ -51,9 +51,9 @@ At first it might seem that a participant will always choose to defect,
 because it will never incur a cost and receive maximal benefit.
 But the other participant will be reluctant to help a participant if the aid is never returned.
 Simple strategies, like tit-for-tat or win-stay, lose-shift, suffice in the Iterated Prisoner's Dilemma
-and perform well\cite{Nowak-Cooperation}.
+and perform well~\cite{Nowak-Cooperation}.
 
-The participants receive direct reciprocity from the other participant\cite{Nowak-Cooperation}.
+The participants receive direct reciprocity from the other participant~\cite{Nowak-Cooperation}.
 Direct reciprocity is displayed abstractly in Figure \ref{fig:direct-reciprocity}.
 Participant A helps participant B and in return receives help.
 This help will be extended in the future under the assumption it is returned.
@@ -69,7 +69,7 @@ The node can already be familiar with the peer,
 but more often the peer will be a peer the node has not interacted with before
 and will not be interacted with in the future.
 A second complication is that help is almost always one way.
-Help cannot be exchanged and help now cannot be exchanged for help in the future\cite{Lai-Incentives}.
+Help cannot be exchanged and help now cannot be exchanged for help in the future~\cite{Lai-Incentives}.
 A third complication is that an uncooroperative node does not incur a penalty for not helping.
 A node will not be incentivized to help.
 The performance of the tit-for-tat or win-stay, lose-shift strategies
@@ -77,12 +77,12 @@ quickly deteriorate in such a situation.
 
 For a node it is easier to abuse the generosity of others in the more anonymous situation of a large scale distributed system.
 Nodes can act irrational and against the best interest of the network
-and this is seen in the real world\cite{Adar-Freeriding}.
+and this is seen in the real world~\cite{Adar-Freeriding}.
 Nodes that help others will be penalized through the cost they incur
 and incentivized to adopt the malicious behavior themselves.
-Nodes in general will become more reluctant to help nodes\cite{Nowak-PrisonerDilemma}.
+Nodes in general will become more reluctant to help nodes~\cite{Nowak-PrisonerDilemma}.
 In the end no node will help another and all nodes will receive a penalty.
-This is called the Tragedy of the Commons in the literature \cite{Hardin-Tragedy}.
+This is called the Tragedy of the Commons in the literature ~\cite{Hardin-Tragedy}.
 The whole network will actually receive more benefit if everyone would corporate,
 but nodes have no way of knowing if the peer they encounter are also willing to help.
 A lack of altruism and selfishness will become a problem 
@@ -95,17 +95,17 @@ The simple strategies previously mentioned use a history to improve performance
 and to freeriding.
 If a node knows that a history is kept of his previous transactions by a peer,
 the node can be fearful of the consequences of his decision to freeride on public goods now.
-This is known as the shadow of the future\cite{bo-shadow}.
+This is known as the shadow of the future~\cite{bo-shadow}.
 The shadow of the future can overcome behavior to take advantage of the network.
 
 But this private, individual kept history is not effective
-to achieve high overall benefit in distributed systems\cite{Lai-Incentives},
+to achieve high overall benefit in distributed systems~\cite{Lai-Incentives},
 because peers are often interacted with once.
 No history is known for these peers.
 A public history of a node is necessary to prevent abuse.
-The network will be able to achieve high overall benefit of the network\cite{Lai-Incentives}.
+The network will be able to achieve high overall benefit of the network~\cite{Lai-Incentives}.
 This public history should contain every previous interaction.
-The nodes then receive indirect reciprocity\cite{Nowak-Cooperation}.
+The nodes then receive indirect reciprocity~\cite{Nowak-Cooperation}.
 By helping nodes they will receive help from other nodes in the future based upon their good behaviour.
 Indirect reciprocity is displayed abstractly in Figure \ref{fig:indirect-reciprocity}.
 The help of node C to node A is dependent on node A helping node B.
@@ -142,7 +142,7 @@ The interaction history has to be distributable in an efficient manner.
 The overhead introduced by distributing the data of the interaction history should be minimal.
 Time to construct and commit a transaction should also be small.
 Every peer in the network should be able to gain knowledge of the reputation a peer holds and verify this reputation.
-The network will then be able to achieve network reciprocity\cite{Nowak-Cooperation}.
+The network will then be able to achieve network reciprocity~\cite{Nowak-Cooperation}.
 Helping peers in the network will ensure that peers themselves receive help from other peers,
 because of their good reputation.
 This is displayed abstractly in Figure \ref{fig:network-reciprocity}.
@@ -156,7 +156,7 @@ This is displayed abstractly in Figure \ref{fig:network-reciprocity}.
 \section{Facilitating trust}
 Interaction histories only prevent direct abuse of the generosity of the nodes.
 A malicious node can still try to tamper with the interaction history.
-An example of a type of these attacks are double spending attacks\cite{Nakamoto-bitcoin},
+An example of a type of these attacks are double spending attacks~\cite{Nakamoto-bitcoin},
 where an interaction is altered.
 But a node can also try to deny an interaction.
 The interaction history has to be resilient to attacks that tamper with the interaction history,

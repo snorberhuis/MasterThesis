@@ -1,9 +1,9 @@
 \section{BarterCast}
 \label{sect:bartercast}
 BarterCast is the system used by Tribler to incentivise good behaviour by keeping track of reputations
-\cite{pouwelse-buddycast}\cite{meulpolder-bartercast}\cite{meulpolder-bartercast-paper}\cite{dumitrescu-tribler}.
+~\cite{pouwelse-buddycast,meulpolder-bartercast,meulpolder-bartercast-paper,dumitrescu-tribler}.
 It is fully decentralized, in contrast to previous reputation systems in a peer-to-peer network.
-Private BitTorrent communities, for example, depend on central servers to track reputation\cite{meulpolder-bartercast}.
+Private BitTorrent communities, for example, depend on central servers to track reputation~\cite{meulpolder-bartercast}.
 BarterCast was not designed with the aim to be fully resistant to malicious nodes
 that want to falsify their reputations.
 The initial version has been first deployed in June 2006
@@ -14,11 +14,11 @@ BarterCast will be briefly explained as well as its vulnerabilities.
 At the base of BarterCast is BuddyCast.
 BuddyCast is an epidemic protocol stack and BarterCast is part as a protocol of this stack.
 A overview of the BuddyCast stack can be seen in Figure \ref{fig:buddycast-stack}
-and a more thorough introduction can be found in the report on BuddyCast\cite{pouwelse-buddycast}.
+and a more thorough introduction can be found in the report on BuddyCast~\cite{pouwelse-buddycast}.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{relatedWork/figs/buddycast-stack.eps}}
-	\caption{BuddyCast stack overview\cite{pouwelse-buddycast}.}
+	\caption{BuddyCast stack overview~\cite{pouwelse-buddycast}.}
 	\label{fig:buddycast-stack}
 \end{figure}
 
@@ -38,7 +38,7 @@ A format of the these messages can be seen in Figure \ref{fig:buddycast-format}.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{relatedWork/figs/buddycast-format.eps}}
-	\caption{Format of initial messages in BuddyCast\cite{pouwelse-buddycast}.}
+	\caption{Format of initial messages in BuddyCast~\cite{pouwelse-buddycast}.}
 	\label{fig:buddycast-format}
 \end{figure}
 
@@ -78,12 +78,12 @@ The figure shows how BarterCast accumulates data through other peers.
 
 \begin{figure}
 	\centerline{\includegraphics[width=0.8\textwidth]{relatedWork/figs/barterBrowser.eps}}
-	\caption{A screenshot of BarterBrowser in 2008\cite{pouwelse-buddycast}.}
+	\caption{A screenshot of BarterBrowser in 2008~\cite{pouwelse-buddycast}.}
 	\label{fig:barterbrowser}
 \end{figure}
 
 The information can be used to in conjunction with the maxflow algorithm
-to create a reputation metric\cite{meulpolder-bartercast-paper}.
+to create a reputation metric~\cite{meulpolder-bartercast-paper}.
 The reputation metric measures how well or how poorly a peer has helped the network.
 The calculation takes into account that the difference between 0 and 100 MB is more significant
 then between 1000 MB and 1100 MB.
@@ -94,9 +94,9 @@ Also there is no insurance that the information is complete.
 
 Improvements have been done to improve the performance of BarterCast.
 A bloom filter algorithm is implemented to decrease the amount of duplicate barter records
-being sent to peers already having those records\cite{logiotatidis-splash}.
+being sent to peers already having those records~\cite{logiotatidis-splash}.
 Bloom filters can be used to quickly determine with some certainty
-if a database contains records in limited space\cite{broder-bloomfilter}.
+if a database contains records in limited space~\cite{broder-bloomfilter}.
 The bloom filter protocol works in the following way:
 \begin{enumerate}
     \item Peer $A$ creates a specific Bloom filter for peer $B$.

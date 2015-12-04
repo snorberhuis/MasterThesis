@@ -77,7 +77,7 @@ The crawler is a first, simple step towards a more sophisticated crawler.
 Tribler has implemented already more sophisticated crawlers for Bartercast
 and these techniques can be reused for the MultiChain crawler.
 For example bloom filters can be used in conjunction with the knowledge
-that every record is a part of the chain to quickly request multiple blocks\cite{broder-bloomfilter}\cite{logiotatidis-splash}.
+that every record is a part of the chain to quickly request multiple blocks~\cite{broder-bloomfilter,logiotatidis-splash}.
 Blocks could also be send in a more efficient way by sending multiple blocks per message.
 Secondly, blocks that belong to a different node than the crawled node are requested,
 but the location of this different node is only known by chance.

@@ -10,13 +10,13 @@ The focus of Tribler is two fold:
 \end{itemize}
 
 A fully distributed program, without relying on any central component, is only able to achieve these goals.
-Tribler has been designed and build with this focus\cite{Pouwelse-tribler}\cite{Bakker-tribler}.
+Tribler has been designed and build with this focus~\cite{Pouwelse-tribler,Bakker-tribler}.
 A distributed network requires collaboration of it participants, called peers, to achieve success.
 A screenshot of Tribler can be seen in Figure \ref{fig:tribler-screenshot}.
 This master's thesis was conducted as part of the research mission to improve the collaboration of peers within Tribler.
 
 \begin{figure}
-	\centerline{\includegraphics[scale=0.3]{introduction/figs/tribler-screenshot.png}}
+	\centerline{\includegraphics[scale=0.6]{introduction/figs/tribler-screenshot.png}}
 	\caption{Screenshot of Tribler v6.4.3.}
 	\label{fig:tribler-screenshot}
 \end{figure}
@@ -29,7 +29,7 @@ and a node can be both at the same time for different, parallel connections.
 A seeder can become a downloader when he wishes to download other files
 and downloaders can become seeders,
 when they posses a different file someone else wants.
-The ratio between the total data downloaded and uploaded is called the seeding ratio\cite{Cohen-bittorrent}.
+The ratio between the total data downloaded and uploaded is called the seeding ratio~\cite{Cohen-bittorrent}.
 
 Uploading can be seen as an interaction of one node helping another node.
 Such interactions come at the cost of consuming bandwidth for both parties.
@@ -37,20 +37,19 @@ However, there is only direct benefit for the downloader.
 The downloader receives a file he wants.
 There is no direct barter between the seeder and downloader.
 Because the seeder does not get anything in return for uploading the file.
-With a very small chance, can a downloader also be a seeder for the original seeder\cite{Lai-Incentives}.
+With a very small chance, can a downloader also be a seeder for the original seeder~\cite{Lai-Incentives}.
 
 Both high availability and high download speeds result in a higher utility for the downloaders.
 If everyone contributes, files become more available and are downloaded at higher speed.
-This claim is supported by measurements taken in private communities
-\cite{meulpolder-privatecommunities}.
+This claim is supported by measurements taken in private communities~\cite{meulpolder-privatecommunities}.
 In private communities, high seeding ratios are enforced by a tracker.
 Trackers are servers where nodes in a peer-to-peer network are introduced to each other,
-so that they can upload and download from each other\cite{cohen-titfortat}.
+so that they can upload and download from each other~\cite{cohen-titfortat}.
 This tracker can be seen as a central, third party.
 
-Btt urrently freeriding in these networks takes places in high quantities in public networks\cite{Adar-Freeriding}.
-BitTorrent uses a Tit-for-Tat strategy\cite{cohen-titfortat} to stop freeriding,
-but this strategy does not effectively stop abuse\cite{Pouwelse-tribler}.
+But currently freeriding in these networks takes places in high quantities in public networks~\cite{Adar-Freeriding}.
+BitTorrent uses a Tit-for-Tat strategy~\cite{cohen-titfortat} to stop freeriding,
+but this strategy does not effectively stop abuse~\cite{Pouwelse-tribler}.
 The Tit-for-Tat strategy is to only provide help to peers to peers that return this help.
 
 Tribler wants to achieve a high global seeding ratio by making it beneficial to have such a ratio.
@@ -60,10 +59,10 @@ This history has to be available in the network.
 Those contributing more receive more help in return,
 and malicious nodes cannot abuse the network by tampering with the interaction history.
 
-Within Tribler anonymous connections have been implemented recently using onion routing \\\cite{Plak-anonymous}\cite{ruigrok-anonymous}\cite{tanaskoski-anonymous}.
+Within Tribler anonymous connections have been implemented recently using onion routing~\cite{Plak-anonymous,ruigrok-anonymous,tanaskoski-anonymous}.
 This feature allows downloaders to become indistinguishable from other users in the network.
 Every data packet has to be forwarded
-by a number of intermediate hops between the downloader and seeder\cite{Plak-anonymous}\cite{tanaskoski-anonymous}.
+by a number of intermediate hops between the downloader and seeder~\cite{Plak-anonymous,tanaskoski-anonymous}.
 The total cost of bandwidth per file is increased,
 but also the number of nodes helping a single node downloading a file increases.
 The increase in nodes working together increases the necessity of an incentive system to reward collaboration.
@@ -71,7 +70,7 @@ The increase in nodes working together increases the necessity of an incentive s
 Dispersy is middleware for data dissemination in a network.
 Dispersy is used heavily within Tribler and is maintained by the Tribler organisation.
 Our work is build upon Dispersy.
-Dispersy is used to exchange data between two specific nodes\cite{zeilemaker-dispersy}.
+Dispersy is used to exchange data between two specific nodes~\cite{zeilemaker-dispersy}.
 Functionality was added to Dispersy during the thesis.
 The additions are described in chapter \ref{chapt:design}.
 
