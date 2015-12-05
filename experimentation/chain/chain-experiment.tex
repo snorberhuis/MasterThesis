@@ -1,9 +1,8 @@
 \subsection{Chaining blocks}
 \label{subsect-chain-exp}
-In the next experiments we show that MultiChain can create a chain of blocks between two peers.
+In the next synthetic experiments we show that MultiChain can create a chain of blocks between two peers.
 The experiments are run using gumby.
 In the first synthetic experiment we try to create 10 subsequent blocks simulate a download of 10 MB with a speed of 1000 KB/s.
-Every second these amounts are indicated to have been transferred to the schedulers of every peer.
 The scheduler waits for 1 MB uploaded to another peer before scheduling a block.
 The result of the experiment can be seen in the graph in Figure \ref{fig:chain-experiment-graph}.
 In this graph it can be clearly seen that MultiChain is succesful in creating a chain of 10 blocks.
@@ -27,7 +26,7 @@ The upload amount of every seeder is identical to the amount of download of the 
 \end{figure}
 
 We also experimented with MutliChain running much longer with a bigger download.
-Our next experiment we simulate a download of 10 GB with a speed of 1000 KB/s.
+Our next synthetic experiment we simulate a download of 10 GB with a speed of 1000 KB/s.
 The rest of the setup is the same as in the previous example
 and the result is plotted in the same way in Figure \ref{fig:chain-experiment-amounts-long}.
 The individual points are obscured by the large amount of points in the figure.
