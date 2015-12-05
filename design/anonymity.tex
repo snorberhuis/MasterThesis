@@ -1,9 +1,8 @@
-\section{Anonymity}
-Tribler has made an effort in providing a way for users to download anonymously
+\section{Privacy}
+Tribler has made an effort in providing a way for users to download anonymously and privately
 ~\cite{Plak-anonymous,ruigrok-anonymous,tanaskoski-anonymous}.
-There is anonymity in the contents of what is downloaded, not in how much is downloaded.
-MultiChain obviously cannot break this anonymity to be usuable for anonymous downloads.
-The introduction of anonymity increases the necessity of a good reputation system as more data has to be transferred.
+There is privacy in the contents of what is downloaded and anonimity in what is downloaded.
+MultiChain should not leak information to break privacy and anonymity.
 
 MultiChain only interacts with peers that are directly downloaded from or uploaded to.
 With these peers blocks are created and transferred.
@@ -17,7 +16,7 @@ A block only transcribe the amount of data that has been transferred between pee
 The content of the actual data is not transcribed.
 The block also does not leak information of how big a single, individual transfer is between peers.
 The amounts are aggregrated over all transfers.
-The blocks also does not break the anonymity.
+The blocks also does not break the privacy.
 Network analysis can already measure the total amount of data transferred.
 So the design and implementation of MultiChain does not break anonymity already guaranteed by Tribler.
 
@@ -25,3 +24,18 @@ But MultiChain does make network analysis easier as measurement points between e
 The chain of every node can be requested.
 The chain contains the data of every transaction of a peer and can be used to analyse the network.
 The network analysis can now also be performed retrospectively using data acquired from the MultiChain.
+
+A reputation system can improve privacy.
+The reputation system can be used to indentify nodes with high flow of data traffic.
+These nodes can be used as a hop to send data to a destination.
+Because the nodes have more cover traffic, they will provide more privacy\cite{acquisti-economics}.
+In the absense of high traffic and high collaboration MultiChain should balance punishment of freeriding
+with the wish for using the freeriding traffic as cover traffic to increase privacy\cite{dingledine-reputation}.
+
+In the future we recommend to be able to transfer reputation using cryptographic functions in a new type of block: a transfer block.
+This transfer block identifies a portion of reputation to transfer from one entity to another.
+This make the reputation fungible and provide better safegaurds~\cite{acquisti-economics}, like forward anonymity.
+Reputation can be earned and spend in an other place.
+Reputation mining can be performed by collaborating with other peers.
+
+
