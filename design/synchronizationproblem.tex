@@ -105,6 +105,7 @@ In this example peer A initiates two block creations with B.
 The second block response does not arrive on time at A and A has timed out.
 The block cannot be processed as A has already interacted with C.
 The half signed block is never referenced again by A.
+B does continue using this block.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/halfsigned-chain.eps}}
