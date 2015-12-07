@@ -1,27 +1,27 @@
 \begin{abstract} %de abstract bevat alleen een korte samenvatting van de inhoud van het onderzoek
 Peer-to-peer networks are often large, collaborative networks where peers can join openly.
 The essence of a collaborative, distributed system is that every node performs tasks for other nodes.
-The peers help often in singular interactions and without direct reciprocity.
-This allows malicious peers to abuse and freeride public goods.
+The peers often help in singular interactions and without direct reciprocity.
+Malicious peers can abuse and freeride the public goods.
 The network without countermeasures can fall into a tragedy of the commons
 where no one helps another and everyone takes advantage of the generosity of peers.
 Only when the reputation of a peer is publicly available at scale and peers trust this reputation
-can the network escape the problems of free riding and attain high utility for all participants.
+can the network escape the problems of freeriding and attain high utility for all participants.
 
 This thesis focuses on designing and implementing the first step of a tamper proof reputation system within Tribler.
 Tribler is a peer-to-peer BitTorrent system developed at the Delft University of Technology.
 This first step, made by this thesis, is to create MultiChain, a proof-of-concept bookkeeping system.
-MultiChain tracks the upload and download amounts of peers to eliminate free riding.
+MultiChain tracks the upload and download amounts of peers to eliminate freeriding.
 MultiChain is cryptographically protected and validated.
 The bookkeeping system has to be scalable to be publicly available and be able to process enough transactions.
 The system has to work in an asynchronous network.
 
 A new design of a distributed data structure that can be used as a ledger is introduced by this thesis.
 This first step with MultiChain is already more resilient to tampering than previous work, like BarterCast.
-BarterCast had no security measures against tampering records.
-Peers are participants of a peer-to-peer network.
+BarterCast has no security measures against tampering records.
 The design of MultiChain is to have a chain of blocks for every peer as a ledger.
-A block contains a transaction between a peer.
+Peers are participants of a peer-to-peer network.
+A block contains a transaction between two peers.
 This block is shared and added to both chains.
 This makes both chains of the peers intertwined and entangled at a shared block.
 The proposed design abandons the typical global, full ledger.

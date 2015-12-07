@@ -1,7 +1,8 @@
 \subsection{Bookkeeping}
 A peer will upload to and download from other peers in the network.
-The peer A will want to increase its reputation and have a transaction transcribing his contribution.
-A will initiate the process to create a block with peers that he has uploaded to.
+Peer A is a seeder and peer B is a downloader in the following text.
+A will want to increase its reputation and have a transaction transcribing his contribution.
+A initiates the process to create a block with peers that he has uploaded to.
 These peers will be referred to as B.
 This process can be seen in Figure \ref{fig:seeder-downloader}
 Every block only contains one transaction.
@@ -33,7 +34,7 @@ An overview of a chain of blocks is seen in Figure \ref{fig:transaction-chain}.
 In this overview the chain of B is currently ignored.
 The first block references a special genesis hash identifying the block as the first block.
 A block has two sequence numbers, one for A and for B.
-These numbers allow blocks to be ordered without having to walk across the hashes linking the blocks together
+These numbers allow blocks to be ordered without having to walk across the hashes linking the blocks.
 Both peers add their signature to the block to announce that they approve the contents of the block.
 
 \begin{figure}
@@ -41,3 +42,5 @@ Both peers add their signature to the block to announce that they approve the co
 	\caption{A chain of blocks with transaction data in MultiChain.}
 	\label{fig:transaction-chain}
 \end{figure}
+
+

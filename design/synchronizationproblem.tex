@@ -21,7 +21,7 @@ This design would also result in a deadlock situation, as explained in section \
 We will explain three possible design solutions to this problem.
 
 \subsubsection{Fair exchange signature scheme}
-A fair exchange signature scheme (FESS) allows two players to exchange digital signatures in a fair way.
+A fair exchange signature scheme~(FESS) allows two players to exchange digital signatures in a fair way.
 Fair constitutes that no player can take advantage of the other.
 Either both players receive each others signature or no player receives the other's signature.
 It is infeasible for a node to acquire a signature without giving up their own signature~\cite{asokan-fairexchange},
@@ -53,7 +53,7 @@ When node A sends a signature request to B,
 then A will be optimistic and will wait for B for a timeout period.
 During this time, A will not interact with another node C.
 But if A does not have to interact with node C after the timeout period,
-then A will still accept a response of B.
+then A will keepw waiting for a response of B and accept the response.
 There are three potential scenario's of what will happen to the message.
 
 \begin{enumerate}
@@ -76,12 +76,12 @@ After B has received the request by A,
 B will create a block and adds this block to its chain.
 B will send its response to A,
 but the message will arrive too late at A.
-A will have timeout and  will ignore the message.
+A will have experienced a timeout and  will ignore the message.
 The block is not added to the chain of A.
 \end{enumerate}
 
 The last scenario is the most complex and requires additional clarification.
-A initiates the signature request and therefore the block will be favourable for its reputation.
+A initiates the signature request as a seeder and therefore the block will be favourable for its reputation.
 Because this is a reputation system, this inconsistency is an allowable comprimise.
 In a currency system, this comprimise would not be allowable.
 
@@ -89,3 +89,25 @@ The design is scalable as it will not force a node to wait too long for a failed
 and will try to interact as fast as possible with other nodes.
 A small grace period can be used to allow node B to have enough time to respond in a normal manner.
 No trusted third party is introduced so a distributed design is achieved.
+
+The contents of a half signed block can be seen in Figure \ref{fig:halfsigned-block}.
+The total up, total down, previous hash, sequence number and signature of B are empty in an half signed block.
+These are normally filled in by B and A does not have knowledge of these fields.
+
+\begin{figure}
+	\centerline{\includegraphics[scale=0.3]{design/figs/halfsigned-block.eps}}
+	\caption{The fields of a half signed block in MultiChain. Dotted fields are empty.}
+	\label{fig:halfsigned-block}
+\end{figure}
+
+An example of the chain with an half signed block can be seen in Figure \ref{fig:halfsigned-chain}.
+In this example peer A initiates two block creations with B.
+The second block response does not arrive on time at A and A has timed out.
+The block cannot be processed as A has already interacted with C.
+The half signed block is never referenced again by A.
+
+\begin{figure}
+	\centerline{\includegraphics[scale=0.3]{design/figs/halfsigned-chain.eps}}
+	\caption{A chain of with a half signed block in MultiChain.}
+	\label{fig:halfsigned-chain}
+\end{figure}
