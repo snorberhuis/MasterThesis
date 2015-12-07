@@ -106,9 +106,13 @@ The second block response does not arrive on time at A and A has timed out.
 The block cannot be processed as A has already interacted with C.
 The half signed block is never referenced again by A.
 B does continue using this block.
+This is not double spending because A does not reuse the same previous hash.
+The difference in block is only the addition of the data of B.
+This changes the hash of the block and is why B and A have a different hash.
 
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{design/figs/halfsigned-chain.eps}}
 	\caption{A chain of with a half signed block in MultiChain.}
 	\label{fig:halfsigned-chain}
 \end{figure}
+
