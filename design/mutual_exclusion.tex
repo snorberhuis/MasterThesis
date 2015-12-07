@@ -12,12 +12,13 @@ that excludes any new operations on the chain if an operation is already pending
 The mutual exclusion is achieved by having to acquire an atomic token to allow to perform an operation on the code.
 The MultiChain community will receive incoming signature requests
 or requests by other parts of Tribler to send out an outgoing signature request.
-The community will decline this request if the token is not available
-returns execution to other parts of Tribler.
+The community will decline this request if the token is not available and
+return execution to other parts of Tribler.
 The token can be unavailable while waiting on another peer in the network to finish responding to a signature request.
 
 When a MultiChain peer has a pending signature request,
 then the peer itself will not respond to incoming signature requests from other peers.
+The requests are dropped and we call this a drop event.
 These peers themselves will also not respond as they have a pending signature request.
 This can create a circular dependency on the availability of the token.
 If two peers send a request to each other at the same time, they will wait on each other.

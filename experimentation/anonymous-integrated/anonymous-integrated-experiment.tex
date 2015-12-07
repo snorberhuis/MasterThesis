@@ -22,10 +22,13 @@ The hops roughly download and upload the same amount of their data.
 This is what we expected as they just relay the data.
 The seeder and downloader respectively only uploads and downloads.
 
-Timeouts can be seen in the plots where the plot discontinues and does not grow steadily.
-The reason these timeouts occur is that thresholds of the scheduler of every node is now reached at the same time resulting in a timeout.
+Drop events can be seen in the plots where the plot discontinues and does not grow steadily.
+A drop event is when a block request cannot be processed because a node is busy.
+The requesting node will wait until a timeout occurs.
+The reason these timeouts occur frequently is that thresholds of the scheduler of every node is now reached at the same time resulting in a timeout.
 Our recommendation is to have these thresholds to be shifted by a small amount randomly for every peer
 to prevent them from overlapping.
+We performed some very preliminary experiments that shows that our recommendation reduces the amount of timeouts.
 
 \begin{figure}
 \centering
