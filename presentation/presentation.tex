@@ -14,8 +14,8 @@
 \usepackage{changepage}
 \mode<presentation>{\usetheme{tud}}
 
-\title[MultiChain]{A cybercurrency for cooperation}
-%\subtitle
+\title{MultiChain}
+\subtitle{A cybercurrency for cooperation}
 \institute[TU Delft]{Delft University of Technology}
 \author{Steffan Norberhuis}
 \date{December 14, 2015}
@@ -64,31 +64,61 @@
 }
 
 \section{Problem Description}
+
 \begin{frame}
-\frametitle{Direct Reciprocity}
-\begin{figure}
-	\centerline{\includegraphics[scale=0.3]{images/problem/direct-reciprocity.eps}}
-	\caption{Direct Reciprocity between participants.}
-	\label{fig:direct-reciprocity}
-\end{figure}
+\frametitle{Cooperation}
+    \begin{definition}
+		\emph{Cooperation}* is
+		 \begin{itemize}[<+(1)->]
+		    \item The action or process of working together to the same end.
+		    \item Assitance, especially by complying readily with requests.
+		 \end{itemize}
+     \end{definition}
+    \begin{figure}
+        \centerline{\includegraphics[scale=1]{images/problem/handshake.eps}}
+    \end{figure}
+    * source: The Oxford English Dictionary
 \end{frame}
 
 \begin{frame}
-\frametitle{Indirect Reciprocity}
+\frametitle{Deciding to help}
+    \begin{figure}
+        \centerline{\includegraphics[scale=0.3]{images/problem/direct-reciprocity.eps}}
+        \caption{\emph{Direct Reciprocity} between participants.}
+        \label{fig:direct-reciprocity}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Deciding to help others}
 \begin{figure}
-	\centerline{\includegraphics[scale=0.3]{images/problem/indirect-reciprocity.eps}}
-	\caption{Indirect Reciprocity between nodes.}
+	\includegraphics<1,2,3>[scale=0.3]{images/problem/indirect-reciprocity-first.eps}
+	\includegraphics<4->[scale=0.3]{images/problem/indirect-reciprocity.eps}
+	\caption{\emph{Indirect Reciprocity} between nodes.}
 	\label{fig:indirect-reciprocity}
 \end{figure}
+  \uncover<2->{
+    \begin{definition}
+        \emph{Free rider problem} is
+        \begin{itemize}
+            \item those who benefit from public goods, do not pay for them.
+        \end{itemize}
+        \uncover<3->{
+            If no one helps, the public goods gets exhausted and you arrive at the \emph{Tragedy of the Commons}.
+        }
+    \end{definition}
+  }
 \end{frame}
 
 \begin{frame}
-\frametitle{Network Reciprocity}
+\frametitle{Public history}
 \begin{figure}
 	\centerline{\includegraphics[scale=0.3]{images/problem/network-reciprocity.eps}}
-	\caption{Network reciprocity between nodes.}
+	\caption{\emph{Network Reciprocity} between nodes.}
 	\label{fig:network-reciprocity}
 \end{figure}
+\pause
+We need a tamper proof interaction history to incentivize collaboration and facilitate trust!
 \end{frame}
 
 \section{Design}
@@ -167,8 +197,8 @@
 \begin{figure}
     \centering
     \begin{adjustwidth}{-3em}{-3em}
-    \subfloat[]{\fbox{\includegraphics[trim={.5cm 0cm 0cm 0cm},clip=true,width=.46\linewidth]{images/experimentation/synthetic-anonymous-down.eps}}}\hspace{0em}%
-    \subfloat[]{\fbox{\includegraphics[trim={.5cm 0cm 1cm 0cm},clip=true,width=.46\linewidth]{images/experimentation/synthetic-anonymous-up.eps}}}
+    \subfloat[]{\includegraphics[trim={.5cm 0cm 0cm 0cm},clip=true,width=.46\linewidth]{images/experimentation/synthetic-anonymous-down.eps}}\hspace{0em}%
+    \subfloat[]{\includegraphics[trim={.5cm 0cm 1cm 0cm},clip=true,width=.46\linewidth]{images/experimentation/synthetic-anonymous-up.eps}}
     \end{adjustwidth}
     \caption{Download and upload amounts during the anonymous download experiment.}
 \end{figure}
@@ -181,7 +211,7 @@
     \centering
     \begin{adjustwidth}{-3em}{-3em}
     \subfloat[Entanglement]{\fbox{\includegraphics[trim={.5cm 0cm 0cm 0cm},clip=true,width=.46\linewidth]{images/experimentation/anonymous-magnified.png}}}\hspace{0em}%
-    \subfloat[Drop event]{\fbox{\includegraphics[trim={.5cm 0cm 1cm 0cm},clip=true,width=.46\linewidth]{images/experimentation/anonymous-timeout.png}}}
+    \pause\subfloat[Drop event]{\fbox{\includegraphics[trim={.5cm 0cm 1cm 0cm},clip=true,width=.46\linewidth]{images/experimentation/anonymous-timeout.png}}}
     \end{adjustwidth}
     \caption{Zooms of the entanglement and the drop event.}
 \end{figure}
@@ -211,9 +241,9 @@
 \begin{frame}
 \frametitle{Conclusion}
 \begin{itemize}
-\item{Difficult to make a scalable reputation system. But a different approach can work.}
-\item{Experiments shows that MultiChain has promise to be a good replacement.}
-\item{A lot of work is still needed to provide adequate security.}
+\pause \item{Difficult to make a scalable reputation system. But a different approach can work.}
+\pause \item{Experiments shows that MultiChain has promise to be a good replacement.}
+\pause \item{A lot of work is still needed to provide adequate security.}
 \end{itemize}
 \end{frame}
 
