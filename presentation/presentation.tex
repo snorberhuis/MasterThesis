@@ -73,7 +73,7 @@ I will first tell you the outline of my presentation.
 \note{
 I will start with describing you the problem that the new cybercurrency: MultiChain is trying to solve.
 After that I will tell you about the design of MultiChain.
-With MultiChain experiments were done to validate and test the system.
+With MultiChain tests were done to validate and evaluate the system.
 I will show you the result of these.
 As this is a first step, some known vulnerabilities do exist and I will explain these.
 Finally, I will conclude my thesis and describe future work.
@@ -352,19 +352,38 @@ So this inconsitency is acceptable.
 
 B chains does continue using the full block.
 A does not include the full block.
-
 }
 
-\section{Experiments}
+\section{System tests and evaluation}
 
 \begin{frame}
-\frametitle{Experimenting with chain creation}
+\frametitle{Evaluating downloads at different speeds}
 
 \begin{figure}
 \centerline{\includegraphics[scale=0.5]{images/experimentation/synthetic-simple-down.eps}}
 \caption{Total download amounts repeated 6 times with different speeds.}
 \end{figure}
 \end{frame}
+\note{
+The first experiment that I will describe is a simulation of a download between a uploader and a downloader.
+A file of 100 MB is repeatedly downloaded at different speeds.
+Important to note is that the x axis does not plot time,
+but the number of blocks used.
+Upload amounts are only updated every second because of limitations of the simulation.
+But MultiChain will wait for a certain amount of data before it would schedule a block.
+
+MultiChain is designed to only schedule to create blocks above a certain threshold.
+That is why there are three overlapping lines at 1 MB every block.
+This is exactly the threshold.
+We call this The Scheduler Effect.
+
+The speed increase above the threshold can be seen in the slope of the figures.
+Also the numbers of blocks needed for the download is less.
+
+There are no discontinuities in the graph.
+MultiChain has no problem in keeping up with the traffic
+and correctly transcribes the traffic.
+}
 
 \begin{frame}
 \frametitle{Anonymous downloading}
@@ -374,6 +393,15 @@ A does not include the full block.
 	\caption{Block creation in an anonymous download.}
 	\end{figure}
 \end{frame}
+\note{
+MultiChain was developed to be used to track anonymous downloading.
+This is a more complicated situation that I will explain.
+In anonymous downloading the data is transferred through intermediate hops.
+These hops relay the data to a next hop.
+This number of hops can be varied to increase anonymity at the cost of download speed.
+
+We also simulated this situation to evaluate MultiChain.
+}
 
 \begin{frame}
 \frametitle{Anonymous download experiment}
@@ -386,8 +414,8 @@ A does not include the full block.
     \end{adjustwidth}
     \caption{Download and upload amounts during the anonymous download experiment.}
 \end{figure}
-
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Zooms of the MultiChain Graph}
