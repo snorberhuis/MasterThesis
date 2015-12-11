@@ -367,6 +367,7 @@ A does not include the full block.
 \note{
 The first experiment that I will describe is a simulation of a download between a uploader and a downloader.
 A file of 100 MB is repeatedly downloaded at different speeds.
+The download transcribed in the blocks are plotted.
 Important to note is that the x axis does not plot time,
 but the number of blocks used.
 Upload amounts are only updated every second because of limitations of the simulation.
@@ -415,6 +416,22 @@ We also simulated this situation to evaluate MultiChain.
     \caption{Download and upload amounts during the anonymous download experiment.}
 \end{figure}
 \end{frame}
+\note{
+Here the result of the experiment is plotted.
+Again the download of every block is plotted on the left, Now the upload amounts are also plotted on the right.
+MultiChain correctly tracks the download until 92% of the download.
+
+Here we a drop event occurs.
+A request by hop 1 is dropped by hop 2.
+Hop 1 has to wait for the timeout and in turns causes the uploader to experience a dropevent.
+Meanwhile hop 2 and the downloader continue to track their download amounts.
+This can be seen in the plot.
+The download as a whole is not paused due to the dropevent.
+Only the tracking of amounts is postponed.
+
+Later you see MultiChain to correctly recover and continue tracking amounts.
+MultiChain is able to track anonymous downloads.
+}
 
 
 \begin{frame}
