@@ -76,6 +76,7 @@ After that I will tell you about the design of MultiChain.
 With MultiChain tests were done to validate and evaluate the system.
 I will show you the result of these.
 As this is a first step, some known vulnerabilities do exist and I will explain these.
+I will make some recommendations for future work.
 Finally, I will conclude my thesis and describe future work.
 }
 
@@ -521,15 +522,40 @@ This chain shows him contributing to A, B, C, and D.
 
 But in reality: A,B,C,and D are just fake identities created by the malicious node that report fake contributions.
 }
+\section{Recommendations}
+\begin{frame}
+    \frametitle{Recommendations}
+    \begin{itemize}
+        \pause \item Add queuing to minimize drop events.
+        \pause \item Create fungible reputations to increase anonymity.
+        \pause \item Crawl the network looking for double spending proofs and broadcast these proofs in the network.
+        \pause \item Look for outgoing edges of sybil networks.
+    \end{itemize}
+\end{frame}
+\note{
+So now I will shortly summarize some recommendations I have for the next steps to make MultiChain production ready.
+
+First, a queue should be added that prevents messages to be dropped.
+
+Secondly, reputations should be made transferable in a special block.
+This will create fungible reputations and increase anonymity.
+
+The network can be crawled looking for double spending proofs.
+These proofs can be used to punish peers by excluding them from the network.
+
+Sybil attacks will create a network of identities all refering to themselves.
+Outgoing edges will most likely be easy to spot and can be used to identify Sybil Attacks.
+}
+
 
 \section{Conclusion}
 
 \begin{frame}
 \frametitle{Conclusion}
 \begin{itemize}
-\pause \item{Difficult to make a scalable reputation system. But a different approach can work.}
-\pause \item{Experiments shows that MultiChain has promise to be a good replacement.}
-\pause \item{A lot of work is still needed to provide adequate security.}
+    \item{Difficult to make a scalable reputation system. But a different approach can work.}
+    \pause \item{Experiments shows that MultiChain has promise to be a good replacement.}
+    \pause \item{A lot of work is still needed to provide adequate security.}
 \end{itemize}
 \end{frame}
 
