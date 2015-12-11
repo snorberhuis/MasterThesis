@@ -479,7 +479,8 @@ This results in the following structure.
 During the drop event,
 the structure changes.
 Half signed blocks are created while hop 2 and the downloader continue creating blocks.
-When MultiChain recovers the normal structure continues.}
+When MultiChain recovers the normal structure continues.
+}
 
 
 \section{Known vulnerabilities}
@@ -487,18 +488,39 @@ When MultiChain recovers the normal structure continues.}
 \begin{frame}
 \frametitle{Double spending}
 \begin{figure}
-	\centerline{\includegraphics[scale=0.3]{images/vulnerabilities/branch-multiple.eps}}
+	\includegraphics<1>[scale=0.3]{images/vulnerabilities/branch-multiple-1.eps}
+	\includegraphics<2>[scale=0.3]{images/vulnerabilities/branch-multiple-2.eps}
+	\includegraphics<3->[scale=0.3]{images/vulnerabilities/branch-multiple-3.eps}
 	\caption{Double spending by M.}
 \end{figure}
 \end{frame}
+\note{
+I will now discuss with you the known vulnerabilities of MultiChain
+The malicious node can have a block with A he is unhappy with.
+This could be because that block records a huge download of him.
+He will forget this chain and create a new branch.
+His freeriding will not be exposed and he can continue his abuse.
+He can even do this multiple times.
+But if some one has both blocks containing the double hash pointer,
+his fraud will be exposed.
+}
 
 \begin{frame}
 \frametitle{Sybil attack}
 \begin{figure}
-	\centerline{\includegraphics[scale=0.3]{images/vulnerabilities/sybil.eps}}
+    \includegraphics<1>[scale=0.3]{images/vulnerabilities/sybil-1.eps}
+	\includegraphics<2->[scale=0.3]{images/vulnerabilities/sybil-2.eps}
 	\caption{The sybil attack by M.}
 	\end{figure}
 \end{frame}
+\note{
+Another known vulnerability is The Sybil Attack.
+This is a well known attack within reputations systems that has not yet been solved.
+For example this could be an example of a the chain of the malicious node.
+This chain shows him contributing to A, B, C, and D.
+
+But in reality: A,B,C,and D are just fake identities created by the malicious node that report fake contributions.
+}
 
 \section{Conclusion}
 
