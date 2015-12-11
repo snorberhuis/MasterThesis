@@ -354,6 +354,23 @@ B chains does continue using the full block.
 A does not include the full block.
 }
 
+\begin{frame}
+\frametitle{Atomic operations on the chain}
+    \begin{itemize}
+        \item A chain is immutable and can only be appended to.
+        \item Only atomic operations are allowed on the chain. This prevents branches.
+        \item A peer drops any incoming requests during outstanding request. This is a Drop Event.
+    \end{itemize}
+\end{frame}
+\note{
+The chain is immutable and can only be appended to.
+
+Only atomic operations are allowed on the chain. This prevents branches.
+
+A peer drops any incoming requests during outstanding request. This is a Drop Event.
+He cannot process that request, because only atomic operations are allowed.
+}
+
 \section{System tests and evaluation}
 
 \begin{frame}
@@ -435,16 +452,35 @@ MultiChain is able to track anonymous downloads.
 
 
 \begin{frame}
-\frametitle{Zooms of the MultiChain Graph}
+\frametitle{Entanglement in an anonymous download}
 \begin{figure}
     \centering
-    \begin{adjustwidth}{-3em}{-3em}
-    \subfloat[Entanglement]{\fbox{\includegraphics[trim={.5cm 0cm 0cm 0cm},clip=true,width=.46\linewidth]{images/experimentation/anonymous-magnified.png}}}\hspace{0em}%
-    \pause\subfloat[Drop event]{\fbox{\includegraphics[trim={.5cm 0cm 1cm 0cm},clip=true,width=.46\linewidth]{images/experimentation/anonymous-timeout.png}}}
-    \end{adjustwidth}
-    \caption{Zooms of the entanglement and the drop event.}
+        \includegraphics[scale=0.3]{images/experimentation/anonymous-chain.eps}
+    \caption{Entanglement}
 \end{figure}
 \end{frame}
+\note{
+Here a diagram is shown about how the MultiChain will be constructed during the experiment.
+The uploader creates blocks with the first hop.
+The first hop creates in turn blocks with the second hop.
+This second hop creates blocks with the downloader.
+This results in the following structure.
+}
+
+\begin{frame}
+\frametitle{Dropevent in an anonymous download}
+\begin{figure}
+    \centering
+        \includegraphics[scale=0.2]{images/experimentation/anonymous-dropevent.eps}
+    \caption{Entanglement}
+\end{figure}
+\end{frame}
+\note{
+During the drop event,
+the structure changes.
+Half signed blocks are created while hop 2 and the downloader continue creating blocks.
+When MultiChain recovers the normal structure continues.}
+
 
 \section{Known vulnerabilities}
 
