@@ -277,9 +277,9 @@ The block is now present in both chains.
 	\caption{All 14 fields in a MultiChain block.}
 	\end{figure}
 	\uncover<9->{
-	    \begin{definition}
-	        Signatures have the property of non-repud.
-	    \end{definition}
+	    \begin{itemize}
+	        \item Signatures have the property of non-repudiation. Authors cannot revoke their authorship.
+	    \end{itemize}
 	}
 \end{frame}
 \note{
@@ -306,6 +306,7 @@ The block contains the signature of A and B.
 The signature of A is only on part of the block.
 While B signs the whole block.
 
+Because A and B signs the block they announce that it is truthfull and cannot later renounce that statement.
 }
 
 
@@ -313,11 +314,46 @@ While B signs the whole block.
 \begin{frame}
 \frametitle{Half signed blocks}
 \begin{figure}
-	\centerline{\includegraphics[scale=0.25]{images/design/halfsigned-chain.eps}}
+	\includegraphics<1>[scale=0.3]{images/design/halfsigned-chain-1.eps}
+	\includegraphics<2>[scale=0.3]{images/design/halfsigned-chain-2.eps}
+	\includegraphics<3>[scale=0.3]{images/design/halfsigned-chain-3.eps}
+	\includegraphics<4>[scale=0.3]{images/design/halfsigned-chain-4.eps}
+	\includegraphics<5->[scale=0.3]{images/design/halfsigned-chain-5.eps}
 	\caption{A chain of with a half signed block in MultiChain.}
 	\end{figure}
 
 \end{frame}
+\note{
+But there is a problem in the protocol that arises from the fact that it is used in a asynchronous system.
+There is no way of synchronizing with absolute certainty that both A and B commit their block to the chain.
+So if A has given out a message that B can complete to create a blockm
+he can always create this block at any moment he desires.
+
+This causes the problem that A would have to wait indefinetly until B responds to create a new block.
+If A would continue, then A would create a branch in his chain if B does create a block.
+But B could fail or be malicious and deny A his response.
+
+A major contribution of my thesis is the solution to this problem.
+We introduce the notion of a half signed block.
+
+So A and B have created a block like before.
+A will wait on B until a certain period expires.
+If B does not respond within this period, A will create a halfsigned block.
+The part of B is missing.
+After that A can continue interacting with for example C.
+
+It is possible that B did create the block, but was to late to respond fast enough.
+This block is added to the chain of B.
+There is now an inconsitency of A and B.
+But A gives proof that he tried to create a block and is not double spending.
+The block is initiated by A and is therefore beneficial for him to exist,
+so no abuse can happen.
+So this inconsitency is acceptable.
+
+B chains does continue using the full block.
+A does not include the full block.
+
+}
 
 \section{Experiments}
 
