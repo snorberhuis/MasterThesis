@@ -185,8 +185,6 @@ This is the Shadow of the Future.
 But a peer-to-peer system is much larger!
 }
 
-
-
 \begin{frame}
 \frametitle{Public history}
 \begin{figure}
@@ -374,11 +372,47 @@ He cannot process that request, because only atomic operations are allowed.
 \begin{frame}
 \frametitle{Half signed blocks}
     \begin{figure}
-        \includegraphics<1>[scale=0.3]{images/design/halfsigned-chain-1.eps}
-        \includegraphics<2>[scale=0.3]{images/design/halfsigned-chain-2.eps}
-        \includegraphics<3>[scale=0.3]{images/design/halfsigned-chain-3.eps}
-        \includegraphics<4>[scale=0.3]{images/design/halfsigned-chain-4.eps}
-        \includegraphics<5->[scale=0.3]{images/design/halfsigned-chain-5.eps}
+        \includegraphics<1>[scale=0.3]{images/design/crawler-1.eps}
+        \includegraphics<2>[scale=0.3]{images/design/crawler-2.eps}
+        \includegraphics<3>[scale=0.3]{images/design/crawler-3.eps}
+        \includegraphics<4>[scale=0.3]{images/design/crawler-4.eps}
+        \includegraphics<5->[scale=0.3]{images/design/crawler-5.eps}
+        \caption{A chain of with a half signed block in MultiChain.}
+	\end{figure}
+\end{frame}
+\note{
+A simple crawler was implemented that allows full chains to be gathered.
+The crawler will be useful in the future to measure MultiChain
+and harden a currently known vulnerability.
+
+The crawler works by requesting the latest block from a known peer in the network.
+For example the latest block of A.
+
+This block has a previous hash pointer belonging to A.
+This previous block is requested at A.
+
+The same is for B.
+The previous block is requested at B.
+
+The previous block of A will be returned.
+This block of A contains previous pointers that are followed.
+
+As is the same for the block of B.
+The chain is crawled recursively.
+
+There may exists pointers to these blocks belonging to C and D.
+But these are not revealed by the current way of crawling.
+These can be revealed by requesting the latest blocks of C and D.
+}
+
+\begin{frame}
+\frametitle{Crawler}
+    \begin{figure}
+        \includegraphics<1>[scale=0.3]{images/design/crawler-1.eps}
+        \includegraphics<2>[scale=0.3]{images/design/crawler-2.eps}
+        \includegraphics<3>[scale=0.3]{images/design/crawler-3.eps}
+        \includegraphics<4>[scale=0.3]{images/design/crawler-4.eps}
+        \includegraphics<5->[scale=0.3]{images/design/crawler-5.eps}
         \caption{A chain of with a half signed block in MultiChain.}
 	\end{figure}
 
@@ -413,6 +447,8 @@ So this beneficial inconsitency is acceptable in a reputation system.
 B chains does continue using the full block.
 A does not include the full block.
 }
+
+
 
 \section{System tests and evaluation}
 
