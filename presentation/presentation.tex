@@ -77,7 +77,7 @@ With MultiChain tests were done to validate and evaluate the system.
 I will show you the result of these.
 As this is a first step, some known vulnerabilities do exist and I will explain these.
 I will make some recommendations for future work.
-Finally, I will conclude my thesis and describe future work.
+Finally, I will conclude my thesis.
 }
 
 \section{Problem Description}
@@ -103,7 +103,9 @@ Finally, I will conclude my thesis and describe future work.
 So lets start with the problem description.
 As the subtitle mentioned, MultiChain is to improve cooperation in a peer-to-peer system.
 Cooperation is defined as the action or process of working together to the same end.
+
 It is giving assitance upon request.
+
 And this is the essence of a collaborative, distributed system: every participant helps each other.
 This system is open to join by any participant.
 A peer-to-peer network is such a system.
@@ -132,18 +134,25 @@ A peer-to-peer network is such a system.
 \note{
 But participants do not always help.
 Lets take two participants A and B as an example.
-Participant A can decide to provide help to B.
+
+A can decide to provide help to B.
+
 And B can return this help.
+
 But he can also choose to not provide this help.
 
-B now benefits from the help of A without contributing.
+B now benefits from the help of A without contributing back.
 The help of A can be seen as a public good.
+
 I now have explained the problem of Free riding to you.
+Those who benefit from public goods do not pay for them.
+
 If A remembers that B does not contribute,
 he can prevent the freeriding of B by not giving him help in the future.
 So a private history can prevent freeriding in the future.
 
-But most often interactions between participants in a peer-to-peer network are single, and help cannot be exchanged.
+But most often interactions between participants in a peer-to-peer network are one off,
+and help cannot be exchanged.
 }
 
 \begin{frame}
@@ -188,10 +197,11 @@ We need a public, tamper proof interaction history to incentivize collaboration 
 \end{frame}
 \note{
 You can have a whole network of participants connecting and providing help.
-To still prevent freeriding the interactions have to be made public.
+To still prevent freeriding the interaction histories have to be made public.
 In such a network a participant can be malicious and we need to prevent his malicious behaviour.
-We need a public, tamper proof interaction history to incentivize collaboration and facilitate trust!
-So I now have described you the problem that MultiChain tries to solve.
+
+So, ee need a public, tamper proof interaction history to incentivize collaboration and facilitate trust!
+I now have described you the problem that MultiChain tries to solve.
 }
 
 \section{Design}
@@ -211,25 +221,26 @@ So I now have described you the problem that MultiChain tries to solve.
 \end{frame}
 \note{
 I will now explain to you the design of MultiChain.
+
 The basis of MultiChain are blocks.
 A and B will create a block together.
 This contains the data about the interaction between A and B.
 I will later describe the contents of the blocks.
 
 This block can be retrieved and inspected by anyone by contacting A or B.
-Using this information he will be able to decide to help A.
+Using this information he will be able to determine the reputation of A and B.
 
 If A and B were to interact again they will create a new block.
 This block is chained to the previous block using a hash pointer.
 A hash pointer can be described shortly as cryptographic value that describes the block it points to.
-Both A and B have an individual pointer that points to the previous block.
+Both A and B have an individual pointer that points to the whole, previous block.
 This is because A and B both have a chain themselves,
 and the previous block could be different blocks.
 
-A now receives help from C,
+A now give help to C,
 and A and C now create a block together.
 This block will be chained to the previous block of A.
-Now the chain of A and C is entangled at the new block.
+Now the chains of A and C are entangled at the new block.
 
 Also B could interact with another peer D.
 }
@@ -246,11 +257,13 @@ Also B could interact with another peer D.
 	\end{figure}
 \end{frame}
 \note{
+I will now explain how these blocks are created between A and B.
 If A is the uploader he will initiate the block creation protocol with B.
 He wants his contribution to be commit to MultiChain.
 So he creates a message and adds his data and signature on this message.
 
-He will send this message containing requesting to B add his signature to the block.
+He will send this message containing his requesti.
+The request will ask B to add his signature to the block.
 
 B will append his data and his signature. THe block is now created.
 
@@ -295,9 +308,9 @@ The public keys of A and B indentify A and B and are added to the block.
 
 The total up and total down of A for the whole chain is added.
 
-The hash pointer of A is added and a sequence number that identifies the block number in the chain of A.
+The hash pointer of A  and a sequence number that identifies the block number in the chain of A.
 
-This is all the added supplied by A.
+This is all the data supplied by A.
 
 Next, the total up and total down of B is added by B.
 
@@ -310,7 +323,22 @@ While B signs the whole block.
 Because A and B signs the block they announce that it is truthfull and cannot later renounce that statement.
 }
 
+\begin{frame}
+\frametitle{Atomic operations on the chain}
+    \begin{itemize}
+        \item A chain is immutable and can only be appended to.
+        \pause \item Only atomic operations are allowed on the chain. This prevents branches.
+        \pause \item A peer drops any incoming requests during outstanding request. This is a Drop Event.
+    \end{itemize}
+\end{frame}
+\note{
+The chain is immutable and can only be appended to.
 
+Only atomic operations are allowed on the chain. This prevents branches.
+
+A peer drops any incoming requests during outstanding request. This is a Drop Event.
+He cannot process that request, because only atomic operations are allowed.
+}
 
 \begin{frame}
 \frametitle{Half signed blocks}
@@ -327,10 +355,11 @@ Because A and B signs the block they announce that it is truthfull and cannot la
 \note{
 But there is a problem in the protocol that arises from the fact that it is used in a asynchronous system.
 There is no way of synchronizing with absolute certainty that both A and B commit their block to the chain.
-So if A has given out a message that B can complete to create a blockm
-he can always create this block at any moment he desires.
+A gives out a message to B to create a block.
+B create this block at any moment he desires.
 
 This causes the problem that A would have to wait indefinetly until B responds to create a new block.
+As only atomic operations are allowed.
 If A would continue, then A would create a branch in his chain if B does create a block.
 But B could fail or be malicious and deny A his response.
 
@@ -344,32 +373,15 @@ The part of B is missing.
 After that A can continue interacting with for example C.
 
 It is possible that B did create the block, but was to late to respond fast enough.
-This block is added to the chain of B.
-There is now an inconsitency of A and B.
+This block is still added to the chain of B.
+There is now an inconsitency between A and B.
 But A gives proof that he tried to create a block and is not double spending.
 The block is initiated by A and is therefore beneficial for him to exist,
 so no abuse can happen.
-So this inconsitency is acceptable.
+So this inconsitency is acceptable in a reputation system.
 
 B chains does continue using the full block.
 A does not include the full block.
-}
-
-\begin{frame}
-\frametitle{Atomic operations on the chain}
-    \begin{itemize}
-        \item A chain is immutable and can only be appended to.
-        \pauze \item Only atomic operations are allowed on the chain. This prevents branches.
-        \pauze \item A peer drops any incoming requests during outstanding request. This is a Drop Event.
-    \end{itemize}
-\end{frame}
-\note{
-The chain is immutable and can only be appended to.
-
-Only atomic operations are allowed on the chain. This prevents branches.
-
-A peer drops any incoming requests during outstanding request. This is a Drop Event.
-He cannot process that request, because only atomic operations are allowed.
 }
 
 \section{System tests and evaluation}
@@ -389,9 +401,9 @@ The download transcribed in the blocks are plotted.
 Important to note is that the x axis does not plot time,
 but the number of blocks used.
 Upload amounts are only updated every second because of limitations of the simulation.
-But MultiChain will wait for a certain amount of data before it would schedule a block.
 
-MultiChain is designed to only schedule to create blocks above a certain threshold.
+But MultiChain will wait for a certain amount of data before it would schedule a block anyway.
+Because MultiChain is designed to only schedule to create blocks above a certain threshold.
 That is why there are three overlapping lines at 1 MB every block.
 This is exactly the threshold.
 We call this The Scheduler Effect.
@@ -417,7 +429,7 @@ MultiChain was developed to be used to track anonymous downloading.
 This is a more complicated situation that I will explain.
 In anonymous downloading the data is transferred through intermediate hops.
 These hops relay the data to a next hop.
-This number of hops can be varied to increase anonymity at the cost of download speed.
+The number of hops can be varied to increase anonymity at the cost of download speed.
 
 We also simulated this situation to evaluate MultiChain.
 }
@@ -435,9 +447,9 @@ We also simulated this situation to evaluate MultiChain.
 \end{figure}
 \end{frame}
 \note{
-Here the result of the experiment is plotted.
+Here the result of the experiment are plotted.
 Again the download of every block is plotted on the left, Now the upload amounts are also plotted on the right.
-MultiChain correctly tracks the download until 92% of the download.
+MultiChain correctly tracks the download without problems until 92% of the download.
 
 Here we a drop event occurs.
 A request by hop 1 is dropped by hop 2.
@@ -465,7 +477,7 @@ Here a diagram is shown about how the MultiChain will be constructed during the 
 The uploader creates blocks with the first hop.
 The first hop creates in turn blocks with the second hop.
 This second hop creates blocks with the downloader.
-This results in the following structure.
+This results in the following structure that shows the entanglement of chains.
 }
 
 \begin{frame}
@@ -499,10 +511,12 @@ When MultiChain recovers the normal structure continues.
 I will now discuss with you the known vulnerabilities of MultiChain
 The malicious node can have a block with A he is unhappy with.
 This could be because that block records a huge download of him.
+
 He will forget this chain and create a new branch.
 His freeriding will not be exposed and he can continue his abuse.
+
 He can even do this multiple times.
-But if some one has both blocks containing the double hash pointer,
+But if some one has both blocks containing the same hash pointer,
 his fraud will be exposed.
 }
 
@@ -517,7 +531,7 @@ his fraud will be exposed.
 \note{
 Another known vulnerability is The Sybil Attack.
 This is a well known attack within reputations systems that has not yet been solved.
-For example this could be an example of a the chain of the malicious node.
+For example this could be an example of the chain of the malicious node.
 This chain shows him contributing to A, B, C, and D.
 
 But in reality: A,B,C,and D are just fake identities created by the malicious node that report fake contributions.
@@ -533,7 +547,7 @@ But in reality: A,B,C,and D are just fake identities created by the malicious no
     \end{itemize}
 \end{frame}
 \note{
-So now I will shortly summarize some recommendations I have for the next steps to make MultiChain production ready.
+So now I will shortly summarize some recommendations I have for the next steps to improve  MultiChain.
 
 First, a queue should be added that prevents messages to be dropped.
 
