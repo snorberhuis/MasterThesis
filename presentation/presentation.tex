@@ -20,7 +20,7 @@
 \author{Steffan Norberhuis}
 \date{December 14, 2015}
 
-\setbeameroption{show notes}
+%\setbeameroption{show notes}
 
 \AtBeginSection[] % Do nothing for \section*
 {
@@ -160,11 +160,12 @@ and help cannot be exchanged.
     \begin{figure}
         \includegraphics<1>[scale=0.3]{images/problem/indirect-reciprocity-1.eps}
         \includegraphics<2>[scale=0.3]{images/problem/indirect-reciprocity-2.eps}
-        \includegraphics<3->[scale=0.3]{images/problem/indirect-reciprocity-3.eps}
+        \includegraphics<3>[scale=0.3]{images/problem/indirect-reciprocity-3.eps}
+        \includegraphics<4->[scale=0.3]{images/problem/indirect-reciprocity-4.eps}
 	    \caption{\emph{Indirect Reciprocity} between nodes.}
 	\end{figure}
 
-	\uncover<4->{
+	\uncover<5->{
          \begin{definition}
              The \emph{Shadow the Future} prevents A, B, C from deciding not to help.
          \end{definition}
@@ -200,7 +201,7 @@ You can have a whole network of participants connecting and providing help.
 To still prevent freeriding the interaction histories have to be made public.
 In such a network a participant can be malicious and we need to prevent his malicious behaviour.
 
-So, ee need a public, tamper proof interaction history to incentivize collaboration and facilitate trust!
+So, we need a public, tamper proof interaction history to incentivize collaboration and facilitate trust!
 I now have described you the problem that MultiChain tries to solve.
 }
 
@@ -236,6 +237,8 @@ A hash pointer can be described shortly as cryptographic value that describes th
 Both A and B have an individual pointer that points to the whole, previous block.
 This is because A and B both have a chain themselves,
 and the previous block could be different blocks.
+The design of MultiChain takes a different approach here.
+Because we abandon the idea of global ledger, and have indivual ledgers.
 
 A now give help to C,
 and A and C now create a block together.
@@ -262,7 +265,7 @@ If A is the uploader he will initiate the block creation protocol with B.
 He wants his contribution to be commit to MultiChain.
 So he creates a message and adds his data and signature on this message.
 
-He will send this message containing his requesti.
+He will send this message containing his request.
 The request will ask B to add his signature to the block.
 
 B will append his data and his signature. THe block is now created.
@@ -321,6 +324,34 @@ The signature of A is only on part of the block.
 While B signs the whole block.
 
 Because A and B signs the block they announce that it is truthfull and cannot later renounce that statement.
+This is called non-repudiation.
+}
+
+\begin{frame}
+\frametitle{Size of a block}
+    \begin{figure}
+        \begin{adjustwidth}{-1em}{0em}
+            \includegraphics[scale=0.25]{images/design/size.eps}
+        \end{adjustwidth}
+            \caption{Size of a block in MultiChain.}
+        \end{figure}
+    \begin{itemize}
+        \item The size of a block is important as it will determine how fast the data structure grows.
+        \pause \item The size is dependent on the hashing algorithm and signature algorithms.
+    \end{itemize}
+\end{frame}
+\note{
+The size of the blocks are important.
+If they are too big, the datastructure will grow too fast.
+MultiChain will not be usable on small devices and will not be scalable.
+
+Here an overview of the subcomponent size is shown.
+Most of the size is due to the cryptographic components added to the block.
+This is determined by the hashing algorithm and signature algorithms used.
+
+The size of the counters determine how much data MultiChain can track.
+The upper limit in total is 4.6 x10^9 petabytes.
+So this is sufficient for the future.
 }
 
 \begin{frame}
@@ -342,13 +373,13 @@ He cannot process that request, because only atomic operations are allowed.
 
 \begin{frame}
 \frametitle{Half signed blocks}
-\begin{figure}
-	\includegraphics<1>[scale=0.3]{images/design/halfsigned-chain-1.eps}
-	\includegraphics<2>[scale=0.3]{images/design/halfsigned-chain-2.eps}
-	\includegraphics<3>[scale=0.3]{images/design/halfsigned-chain-3.eps}
-	\includegraphics<4>[scale=0.3]{images/design/halfsigned-chain-4.eps}
-	\includegraphics<5->[scale=0.3]{images/design/halfsigned-chain-5.eps}
-	\caption{A chain of with a half signed block in MultiChain.}
+    \begin{figure}
+        \includegraphics<1>[scale=0.3]{images/design/halfsigned-chain-1.eps}
+        \includegraphics<2>[scale=0.3]{images/design/halfsigned-chain-2.eps}
+        \includegraphics<3>[scale=0.3]{images/design/halfsigned-chain-3.eps}
+        \includegraphics<4>[scale=0.3]{images/design/halfsigned-chain-4.eps}
+        \includegraphics<5->[scale=0.3]{images/design/halfsigned-chain-5.eps}
+        \caption{A chain of with a half signed block in MultiChain.}
 	\end{figure}
 
 \end{frame}
@@ -376,9 +407,8 @@ It is possible that B did create the block, but was to late to respond fast enou
 This block is still added to the chain of B.
 There is now an inconsitency between A and B.
 But A gives proof that he tried to create a block and is not double spending.
-The block is initiated by A and is therefore beneficial for him to exist,
-so no abuse can happen.
-So this inconsitency is acceptable in a reputation system.
+The block is initiated by A and is therefore beneficial for him to exist.
+So this beneficial inconsitency is acceptable in a reputation system.
 
 B chains does continue using the full block.
 A does not include the full block.
@@ -485,7 +515,7 @@ This results in the following structure that shows the entanglement of chains.
 \begin{figure}
     \centering
         \includegraphics[scale=0.2]{images/experimentation/anonymous-dropevent.eps}
-    \caption{Entanglement}
+    \caption{Drop event structure}
 \end{figure}
 \end{frame}
 \note{
@@ -540,16 +570,16 @@ But in reality: A,B,C,and D are just fake identities created by the malicious no
 \begin{frame}
     \frametitle{Recommendations}
     \begin{itemize}
-        \pause \item Add queuing to minimize drop events.
+        \item Add queuing to minimize drop events.
         \pause \item Create fungible reputations to increase anonymity.
         \pause \item Crawl the network looking for double spending proofs and broadcast these proofs in the network.
-        \pause \item Look for outgoing edges of sybil networks.
+        \pause \item Look for outgoing edges of Sybil networks.
     \end{itemize}
 \end{frame}
 \note{
 So now I will shortly summarize some recommendations I have for the next steps to improve  MultiChain.
 
-First, a queue should be added that prevents messages to be dropped.
+First, a queue should be added that prevents messages to be dropped. This reduce the occurances of drop events.
 
 Secondly, reputations should be made transferable in a special block.
 This will create fungible reputations and increase anonymity.
@@ -561,15 +591,14 @@ Sybil attacks will create a network of identities all refering to themselves.
 Outgoing edges will most likely be easy to spot and can be used to identify Sybil Attacks.
 }
 
-
 \section{Conclusion}
 
 \begin{frame}
 \frametitle{Conclusion}
 \begin{itemize}
-    \item{Difficult to make a scalable reputation system. But a different approach can work.}
-    \pause \item{Experiments shows that MultiChain has promise to be a good replacement.}
-    \pause \item{A lot of work is still needed to provide adequate security.}
+    \item{Difficult to make a scalable reputation system. But a different approach of individual ledgers can work.}
+    \pause \item{Experiments shows that MultiChain has promise to be a scalable reputation system.}
+    \pause \item{A lot of work is still needed to provide adequate security within MultiChain.}
 \end{itemize}
 \end{frame}
 
