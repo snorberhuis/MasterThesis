@@ -214,7 +214,7 @@ I now have described you the problem that MultiChain tries to solve.
         \caption{MultiChain blocks chained together and becoming entangled.}
 	\end{figure}
 	\begin{itemize}
-	    \item<2-> The blocks are chained using pointers hash.
+	    \item<2-> The blocks are chained using hash pointers.
 	    \item<3-> The chain of A and C are entangled.
     \end{itemize}
 \end{frame}
@@ -412,7 +412,8 @@ These can be revealed by requesting the latest blocks of C and D.
         \includegraphics<2>[scale=0.3]{images/design/crawler-2.eps}
         \includegraphics<3>[scale=0.3]{images/design/crawler-3.eps}
         \includegraphics<4>[scale=0.3]{images/design/crawler-4.eps}
-        \includegraphics<5->[scale=0.3]{images/design/crawler-5.eps}
+        \includegraphics<5>[scale=0.3]{images/design/crawler-5.eps}
+        \includegraphics<6->[scale=0.3]{images/design/crawler-6.eps}
         \caption{A chain of with a half signed block in MultiChain.}
 	\end{figure}
 
@@ -609,7 +610,7 @@ But in reality: A,B,C,and D are just fake identities created by the malicious no
         \item Add queuing to minimize drop events.
         \pause \item Create fungible reputations to increase anonymity.
         \pause \item Crawl the network looking for double spending proofs and broadcast these proofs in the network.
-        \pause \item Look for outgoing edges of Sybil networks.
+        \pause \item Work on hardening MultiChain against Sybil attacks.
     \end{itemize}
 \end{frame}
 \note{
